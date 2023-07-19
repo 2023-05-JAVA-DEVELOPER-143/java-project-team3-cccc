@@ -2,7 +2,7 @@ package test;
 
 import cart.CartDao;
 
-public class CartDaoTestMain {
+public class CartDaoTestMain {  
 	
 	public static void main(String[] args) throws Exception {
 		// 상품창에서 갯수 추가 update  테스트 완료
