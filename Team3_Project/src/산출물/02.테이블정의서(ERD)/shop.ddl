@@ -10,18 +10,21 @@ CREATE TABLE product(
 		p_price                       		NUMBER(10)		 DEFAULT 0		 NOT NULL,
 		p_image                       		VARCHAR2(100)		 DEFAULT 'images/no_image.jpg'		 NOT NULL,
 		p_desc                        		VARCHAR2(200)		 NULL ,
-		p_click_count                 		VARCHAR2(10)		 DEFAULT 0		 NOT NULL
+		p_ctg                         		VARCHAR2(50)		 NULL 
 );
 
 DROP SEQUENCE product_p_no_SEQ;
 
 CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+
 CREATE TABLE userinfo(
 		userId                        		VARCHAR2(100)		 NULL ,
 		password                      		VARCHAR2(100)		 NULL ,
 		name                          		VARCHAR2(100)		 NULL ,
-		email                         		VARCHAR2(100)		 NULL 
+		address                       		VARCHAR2(100)		 NULL ,
+		phone                         		VARCHAR2(50)		 NULL ,
+		gender                        		VARCHAR2(10)		 NULL 
 );
 
 
