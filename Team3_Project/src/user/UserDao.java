@@ -24,6 +24,7 @@ public class UserDao {
 		dataSource = new DataSource();
 	}
 	
+	
 	public int insert(User user) throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_INSERT);
