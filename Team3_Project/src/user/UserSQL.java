@@ -21,6 +21,6 @@ public class UserSQL {
 	"select * from userinfo where userid = ?";
 	
 	public static final String USER_SELECT_BY_ID_COUNT =
-	"select count(*)";
+	"select count(*) from userinfo where userid=?";
 	
 }
