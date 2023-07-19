@@ -18,6 +18,7 @@ public class UserSQL {
 	
 	public static final String USER_FIND_BY_ID =
 	"";
-	
+	public static final String USER_DELETE =
+			"delete from userinfo where userid=?";
 
 }
