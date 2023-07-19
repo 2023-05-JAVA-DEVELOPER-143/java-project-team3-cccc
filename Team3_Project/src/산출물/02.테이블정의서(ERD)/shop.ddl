@@ -9,14 +9,12 @@ CREATE TABLE product(
 		p_name                        		VARCHAR2(50)		 NOT NULL,
 		p_price                       		NUMBER(10)		 DEFAULT 0		 NOT NULL,
 		p_image                       		VARCHAR2(100)		 DEFAULT 'images/no_image.jpg'		 NOT NULL,
-		p_desc                        		VARCHAR2(200)		 NULL ,
-		p_ctg                         		VARCHAR2(50)		 NULL 
+		p_desc                        		VARCHAR2(200)		 NULL 
 );
 
 DROP SEQUENCE product_p_no_SEQ;
 
 CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 CREATE TABLE userinfo(
 		userId                        		VARCHAR2(100)		 NULL ,
@@ -39,7 +37,6 @@ DROP SEQUENCE cart_cart_no_SEQ;
 
 CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-
 CREATE TABLE orders(
 		o_no                          		NUMBER(10)		 NULL ,
 		o_desc                        		VARCHAR2(100)		 NULL ,
@@ -51,7 +48,6 @@ CREATE TABLE orders(
 DROP SEQUENCE orders_o_no_SEQ;
 
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 CREATE TABLE order_item(
 		oi_no                         		NUMBER(10)		 NULL ,
