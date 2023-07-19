@@ -33,4 +33,10 @@ public class UserService {
 		return loginupdate;
 	}
 	
+	//회원탈퇴
+	   public int deleteUser(String userId) throws Exception{
+	      return userDao.delete(userId);
+	   }
+	
+	   
 }
