@@ -1,7 +1,11 @@
 package order;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import common.DataSource;
 
 public class OrderDao {
@@ -9,7 +13,6 @@ public class OrderDao {
 
 	// 데이터 소스 생성
 	public OrderDao() throws Exception {
-
 		dataSource = new DataSource();
 	}
 	
@@ -55,8 +58,23 @@ public class OrderDao {
 	
 
 	// 주문 리스트	전체_유저아이디로 주문검색(ORDER_SELECT_BY_USERID)
+	public Order findOrderbyUserId(String userId) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_BY_USERID);
+		pstmt.setString(1, userId);
+		ResultSet rs = pstmt.executeQuery();
+		Order order = null;
+		while(rs.next()) {
+			int no = rs.getInt("o_no");
+			String desc = rs.getString("o_desc");
+			Date date = rs.getDate("o_date");
+			int price = rs.getInt("o_price");
+			String id = rs.getString("userid");
+			order = new Order(no, desc, date, price, userId, new ArrayList<OrderItem>());
+		}
+		return order;
+	}
 	
 	// 주문 리스트 1건_유저아이디+상품로 주문 검색(ORDER_SELECT_WITH_PRODUCT_BY_USERID)
-
 
 }
