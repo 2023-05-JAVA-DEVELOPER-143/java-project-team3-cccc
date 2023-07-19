@@ -14,10 +14,13 @@ public class UserSQL {
 	public static final String USER_UPDATE =
 	"update userinfo set password = ?,name = ?,address=?,phone=?,gender=? where userid = ?";
 
-
 	public static final String USER_DELETE =
 	"delete from userinfo where userid=?";
 
 	public static final String USER_SELECT_BY_ID =
 	"select * from userinfo where userid = ?";
+	
+	public static final String USER_SELECT_BY_ID_COUNT =
+	"select count(*) from userinfo where userid=?";
+	
 }
