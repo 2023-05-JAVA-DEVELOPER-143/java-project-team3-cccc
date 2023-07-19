@@ -1,5 +1,7 @@
 package cart;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import common.DataSource;
@@ -18,8 +20,24 @@ public class CartDao {
 	}
 	
 	//cart insert
-	public int insert(Cart cart)  {
-		return 0;
+	public int insert(Cart cart) throws Exception {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int insertRowCount=0;
+		try {  
+				con=dataSource.getConnection();
+				pstmt=con.prepareStatement(CartSQL.CART_INSERT);				
+				pstmt.setString(1, cart.getUserId());
+				pstmt.setInt(2, cart.getProduct().getP_no());
+				pstmt.setInt(3, cart.getCart_qty());
+				insertRowCount = pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+			
+		}
+		return insertRowCount;
 	}
 	//상품창에서 갯수 추가 update
 	public int updateByProductNo(String userId, int p_no, int cart_qty)  {
