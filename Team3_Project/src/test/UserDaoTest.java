@@ -11,6 +11,7 @@ public class UserDaoTest {
 		// TODO Auto-generated method stub
 	UserDao userDao = new UserDao();
 	
+	
 	System.out.println("0.delete   --> "+userDao.delete("dddd"));
 	System.out.println("1.insert   --> "+userDao.insert(new User("dddd", "dddd", "김삼조", "서울시","1234-1234" ,"남")));
 	System.out.println("2.update   --> "+userDao.update(new User("dddd", "dddd", "이감조", "수원시","1234-1234" ,"남")));
