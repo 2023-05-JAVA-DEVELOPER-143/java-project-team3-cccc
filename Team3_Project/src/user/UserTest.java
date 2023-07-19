@@ -13,7 +13,8 @@ public class UserTest {
 		
 		//회원수정
 		service.loginUpdate(new User("zzzz", "1234", "바뀜", "제주", "1234", "남"));
-		
+		//회원 탈퇴
+		service.deleteUser("zzzz");
 		
 		
 	}
