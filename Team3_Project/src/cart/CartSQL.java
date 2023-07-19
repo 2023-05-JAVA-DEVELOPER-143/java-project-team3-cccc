@@ -1,7 +1,10 @@
 package cart;
 
 public class CartSQL {
-
+//select count(*) as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
+	public static final String CART_COUNT_PRODUCT_BY_USERID =
+			"select count(*) as p_count from cart c join userinfo u on c.userid=u.userid where u.userid=? and c.p_no=?";
+	
 // insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval, 'guard1',1,2);
 	public static final String CART_INSERT 
 		= "insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval, ?,?,?)";
@@ -16,11 +19,11 @@ public class CartSQL {
 	
 //update cart set cart_qty=cart_qty+1 where userId = 'guard1' and p_no=1;
 	public static final String CART_PRODUCT_1UP 
-		= "update cart set cart_qty=cart_qty+1 where userId = ? and p_no=?";
+		= "update cart set cart_qty=cart_qty+? where userId = ? and p_no=?";
 	
 //update cart set cart_qty=3 where userId = 'guard1' and p_no=1;
 	public static final String CART_PRODUCT_UP_QTYSET 
-		= "update cart set cart_qty=3 where userId =? and p_no=?";
+		= "update cart set cart_qty=? where userId =? and p_no=?";
 	
 //delete from cart where cart_no=1;	
 	public static final String CART_DELETE_BY_NO 
