@@ -43,7 +43,7 @@ public class UserDao {
 	
 	public User selectById(String userId) throws Exception{
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(null);
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_SELECT_BY_ID);
 		
 		
 		return null;
