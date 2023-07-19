@@ -1,7 +1,15 @@
 package cart;
 
-public class CartDao {
+import common.DataSource;
 
+public class CartDao {
+	
+	private DataSource dataSource;
+	
+	public CartDao() throws Exception{
+		this.dataSource = new DataSource();
+	}
+	
 	// cart 제품 존재여부
 	
 	//cart insert
