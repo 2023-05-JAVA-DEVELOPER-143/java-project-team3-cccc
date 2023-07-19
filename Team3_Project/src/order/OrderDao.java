@@ -70,11 +70,12 @@ public class OrderDao {
 			Date date = rs.getDate("o_date");
 			int price = rs.getInt("o_price");
 			String id = rs.getString("userid");
-			order = new Order(no, desc, date, price, userId, new ArrayList<OrderItem>());
+			order = new Order(no, desc, date, price, id, order.getOrderItemList() );
 		}
 		return order;
 	}
 	
 	// 주문 리스트 1건_유저아이디+상품로 주문 검색(ORDER_SELECT_WITH_PRODUCT_BY_USERID)
-
+	
+	
 }
