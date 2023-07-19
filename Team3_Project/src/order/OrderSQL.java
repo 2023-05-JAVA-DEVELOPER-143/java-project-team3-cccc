@@ -4,7 +4,7 @@ public class OrderSQL {
 
 	
 	// 주문추가
-	public final static String ORDER_INSERT = "insert into orders(o_no,o_desc,o_date,o_price,o_price, userId) values (orders_o_no_SEQ.nextval,?,sysdate,?,?,?)";
+	public final static String ORDER_INSERT = "insert into orders(o_no,o_desc,o_date,o_price, userId) values (orders_o_no_SEQ.nextval,?,sysdate,?,?)";
 	
 	// 주문상품추가
 	public final static String ORDERITEM_INSERT = "insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,?,orders_o_no_SEQ.currval,?)";

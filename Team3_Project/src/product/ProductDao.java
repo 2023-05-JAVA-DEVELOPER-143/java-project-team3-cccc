@@ -8,7 +8,7 @@ import java.util.List;
 
 import common.DataSource;
 
-public class ProductDao {
+public class ProductDao {  
 	private DataSource dataSource;
 
 	public ProductDao() throws Exception {
@@ -16,7 +16,7 @@ public class ProductDao {
 
 	}
 	
-
+  
 	/*
 	 * selelctByPK : 상품번호로 검색
 	 */
