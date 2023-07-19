@@ -51,7 +51,7 @@ public class UserDao {
 		
 	    return deleteRowCount;
 	}
-	
+	//ss
 
 	public int update(User user)throws Exception {
 		Connection con = dataSource.getConnection();
