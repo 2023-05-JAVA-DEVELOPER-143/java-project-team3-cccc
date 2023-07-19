@@ -1,4 +1,4 @@
-package product;
+package product;  
 /*
  ------- -------- ------------- 
 P_NO    NOT NULL NUMBER(10)    
