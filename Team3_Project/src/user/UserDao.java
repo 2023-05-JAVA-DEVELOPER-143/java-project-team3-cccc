@@ -26,6 +26,7 @@ public class UserDao {
 		dataSource = new DataSource();
 	}
 	
+	
 	public int insert(User user) throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_INSERT);
@@ -64,16 +65,31 @@ public class UserDao {
 		dataSource.close(con);
 		return user;
 	}
-	
-	public int countByUserId(String userId) throws Exception {
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_ID_COUNT);
-		pstmt.setString(1, userId);
-		ResultSet rs=pstmt.executeQuery();
-		rs.next();
-		int userCount = rs.getInt(1);
+
+	public int update(User user) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_UPDATE);
+		pstmt.setString(1, user.getPassword());
+		pstmt.setString(2, user.getName());
+		pstmt.setString(3, user.getAddress());
+		pstmt.setString(4, user.getPhone());
+		pstmt.setString(5, user.getGender());
+		pstmt.setString(6, user.getUserId());
+		int rowCount = pstmt.executeUpdate();
+		pstmt.close();
+		dataSource.close(con);
+		return rowCount;
 		
-		return userCount;
+	}
+	
+	public int delete(String uesrid)throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_DELETE);
+		pstmt.setString(1, uesrid);
+		int rowCount = pstmt.executeUpdate();
+		pstmt.close();
+		dataSource.close(con);
+		return rowCount;
 	}
 	
 }

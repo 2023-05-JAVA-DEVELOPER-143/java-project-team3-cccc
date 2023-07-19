@@ -1,16 +1,22 @@
 package user;
 
 public class UserService {
-	private UserDao userdao;
-	
+
+	private UserDao userDao;
 	public UserService() throws Exception{
-		userdao = new UserDao();
+		userDao = new UserDao();
 	}
 	
-	public void login(String userid) throws Exception{
-		User findUser = userdao.selectById(userid);
+	public User login(String userid,String password)throws Exception{
+		User loginUser =userDao.selectById(userid);
+		if(loginUser!=null && loginUser.getPassword().equals(password)) {
+			
+			return loginUser;
+		}
 		
 		
+		return null;
+			
 	}
 	
 }
