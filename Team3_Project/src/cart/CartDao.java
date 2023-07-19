@@ -40,11 +40,8 @@ public class CartDao {
 		return insertRowCount;
 	}
 	
-	
-	
-	
-	
-	//상품창에서 갯수 추가 update
+
+	//상품창에서 갯수 추가 update 
 	public int updateByProductNo(String userId, int p_no, int cart_qty) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -64,6 +61,8 @@ public class CartDao {
 		return rowCount;
 	}
 	
+	//  이해 못한 부분있어서 남깁니다
+	/*
 	//본인 카트에서 갯수 추가 update
 	public int updateProduct1up(int cart_no, int cart_qty)  {
 		Connection con=null;
@@ -83,18 +82,9 @@ public class CartDao {
 		}
 		return rowCount;
 
-	}
+	}*/
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	//cart List-find
 	public List<Cart> findByUserId(String userId)  {
 		return null;
