@@ -27,4 +27,9 @@ public class UserService {
 		return null;
 	}
 	
+	//회원탈퇴
+	   public int deleteUser(String userId) throws Exception{
+	      return userDao.delete(userId);
+	   }
+	
 }
