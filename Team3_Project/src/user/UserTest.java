@@ -15,6 +15,7 @@ public class UserTest {
 		service.loginUpdate(new User("zzzz", "1234", "바뀜", "제주", "1234", "남"));
 		
 		
+		
 	}
 	
 	
