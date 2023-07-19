@@ -58,6 +58,9 @@ public class UserDao {
 			return user = new User(userid, password, name, address, phone, gender);
 		}
 		
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return user;
 	}
 	
