@@ -6,7 +6,7 @@ public class UserService {
 	public UserService() throws Exception{
 		userDao = new UserDao();
 	}
-	
+	//로그인
 	public User login(String userid,String password)throws Exception{
 		User loginUser =userDao.selectById(userid);
 		if(loginUser!=null && loginUser.getPassword().equals(password)) {
@@ -18,6 +18,11 @@ public class UserService {
 		return null;
 		
 		
+	}
+	//회원 수정 
+	public int loginUpdate(User user)throws Exception{
+		int loginupdate=userDao.update(user);
+		return loginupdate;
 	}
 	
 	
