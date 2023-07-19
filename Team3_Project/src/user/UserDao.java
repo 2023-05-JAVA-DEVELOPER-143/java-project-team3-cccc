@@ -2,6 +2,7 @@ package user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import common.DataSource;
 
@@ -34,8 +35,35 @@ public class UserDao {
 		pstmt.setString(6, user.getGender());
 		int rowCount = pstmt.executeUpdate();
 		
+		pstmt.close();
+		dataSource.close(con);
+		
 		return rowCount;
 	}
+	
+	
+	public User selectById(String userId) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_SELECT_BY_ID);
+		pstmt.setString(1, userId);
+		ResultSet rs = pstmt.executeQuery();
+		User user = null;
+		while(rs.next()) {
+			String userid = rs.getString("userid");
+			String password = rs.getString("password");
+			String name = rs.getString("name");
+			String address = rs.getString("address");
+			String phone = rs.getString("phone");
+			String gender = rs.getString("gender");
+			return user = new User(userid, password, name, address, phone, gender);
+		}
+		
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
+		return user;
+	}
+	
 	
 	
 }
