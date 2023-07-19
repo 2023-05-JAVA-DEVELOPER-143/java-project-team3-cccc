@@ -41,7 +41,6 @@ public class UserDao {
 		return rowCount;
 	}
 	
-	
 	public User selectById(String userId) throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_SELECT_BY_ID);
