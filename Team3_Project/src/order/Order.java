@@ -4,17 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 
-/**
-VO(Value Object),DTO(Data Transfer Object)
-	이름      널?       유형            
-	------- -------- ------------- 
-	O_NO    NOT NULL NUMBER(10)    
-	O_DESC           VARCHAR2(100) 
-	O_DATE           DATE          
-	O_PRICE          NUMBER(10)    
-	USERID           VARCHAR2(100) FK
-*/
-
 public class Order {
 	private int o_no; //PK
 	private String o_desc;
