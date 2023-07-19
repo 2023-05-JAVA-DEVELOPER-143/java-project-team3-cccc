@@ -34,9 +34,25 @@ public class UserDao {
 		pstmt.setString(6, user.getGender());
 		int rowCount = pstmt.executeUpdate();
 		
+		pstmt.close();
+		dataSource.close(con);
+		
 		return rowCount;
 	}
+	//delete:고객 아이디에 해당하는를 고객정보를 삭제
+	public int delete(String userId) throws Exception {
+	    Connection con = dataSource.getConnection();
+	    PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_DELETE);
+	    pstmt.setString(1, userId);
+	    int deleteRowCount = pstmt.executeUpdate();
+		
+	    pstmt.close();
+	    dataSource.close(con);
+		
+	    return deleteRowCount;
+	}
 	
+
 	public int update(User user)throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_UPDATE);
@@ -52,5 +68,13 @@ public class UserDao {
 		return rowCount;
 	}
 	
-	
+
+	public User selectById(String userId) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(null);
+		
+		
+		return null;
+	}
+
 }
