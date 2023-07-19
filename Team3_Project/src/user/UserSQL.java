@@ -5,5 +5,7 @@ public class UserSQL {
 	public static final String USER_INSERT =
 	"insert into userinfo values(?,?,?,?,?,?)";
 	
+	public static final String USER_FIND_BY_ID =
+	"";
 	
 }

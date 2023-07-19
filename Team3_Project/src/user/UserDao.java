@@ -34,8 +34,19 @@ public class UserDao {
 		pstmt.setString(6, user.getGender());
 		int rowCount = pstmt.executeUpdate();
 		
+		pstmt.close();
+		dataSource.close(con);
+		
 		return rowCount;
 	}
 	
+	
+	public User selectById(String userId) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(null);
+		
+		
+		return null;
+	}
 	
 }
