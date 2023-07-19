@@ -8,7 +8,11 @@ public class UserService {
 	}
 	
 	public User login(String userid,String password)throws Exception{
-		 
+		User loginUser =userDao.selectById(userid);
+		if(loginUser!=null && loginUser.getPassword().equals(password)) {
+			
+			return loginUser;
+		}
 		
 		
 		return null;
