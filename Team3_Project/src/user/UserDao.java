@@ -37,5 +37,20 @@ public class UserDao {
 		return rowCount;
 	}
 	
+	public int update(User user)throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSQL.USER_UPDATE);
+		pstmt.setString(1, user.getPassword());
+		pstmt.setString(2, user.getName());
+		pstmt.setString(3, user.getAddress());
+		pstmt.setString(4, user.getPhone());
+		pstmt.setString(5, user.getGender());
+		pstmt.setString(6, user.getUserId());
+		int rowCount = pstmt.executeUpdate();
+		
+		
+		return rowCount;
+	}
+	
 	
 }
