@@ -20,6 +20,7 @@ public class UserSQL {
 	public static final String USER_SELECT_BY_ID =
 	"select * from userinfo where userid = ?";
 	
-	
+	public static final String USER_SELECT_BY_ID_COUNT =
+	"select count(*)";
 	
 }

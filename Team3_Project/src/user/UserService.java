@@ -7,6 +7,10 @@ public class UserService {
 		userdao = new UserDao();
 	}
 	
-	
+	public void login(String userid) throws Exception{
+		User findUser = userdao.selectById(userid);
+		
+		
+	}
 	
 }

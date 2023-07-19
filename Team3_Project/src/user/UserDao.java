@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.itwill.shop.user.UserSQL;
+
 import common.DataSource;
 
 /*
@@ -63,6 +65,15 @@ public class UserDao {
 		return user;
 	}
 	
-	
+	public int countByUserId(String userId) throws Exception {
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_ID_COUNT);
+		pstmt.setString(1, userId);
+		ResultSet rs=pstmt.executeQuery();
+		rs.next();
+		int userCount = rs.getInt(1);
+		
+		return userCount;
+	}
 	
 }
