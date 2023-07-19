@@ -6,6 +6,7 @@ public class UserService {
 	public UserService() throws Exception{
 		userDao = new UserDao();
 	}
+
 	
 	public int create(User user) throws Exception{
 		int check = userDao.countByUserId(user.getUserId());
@@ -25,6 +26,11 @@ public class UserService {
 			return loginUser;
 		}
 		return null;
+	}
+	//회원 수정 
+	public int loginUpdate(User user)throws Exception{
+		int loginupdate=userDao.update(user);
+		return loginupdate;
 	}
 	
 	//회원탈퇴

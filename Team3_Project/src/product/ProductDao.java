@@ -41,7 +41,7 @@ public class ProductDao {
 	/*
 	 * selectAll : 상품전체검색
 	 */
-	public List<Product> findAll() throws Exception{
+	public List<Product> selectAll() throws Exception{
 		List<Product> productList=new ArrayList<Product>();
 		
 		Connection con=dataSource.getConnection();
