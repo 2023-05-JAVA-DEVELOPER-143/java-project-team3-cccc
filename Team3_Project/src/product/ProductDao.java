@@ -2,6 +2,9 @@ package product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import common.DataSource;
 
@@ -13,40 +16,48 @@ public class ProductDao {
 
 	}
 	
-	public int insert(Product newProduct) throws Exception {
 
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_INSERT);
-		pstmt.setString(1, newProduct.getP_name());
-		pstmt.setInt(2, newProduct.getP_price());
-		pstmt.setString(3, newProduct.getP_image());
-		pstmt.setString(4, newProduct.getP_desc());
-		int rowCount = pstmt.executeUpdate();
-		pstmt.close(); 
-		dataSource.close(con);
-
-		return rowCount;
+	/*
+	 * selelctByPK : 상품번호로 검색
+	 */
+	public Product SelectByPK(int p_no) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_NO);
+		pstmt.setInt(1, p_no);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product=
+					new Product(
+							rs.getInt("p_no"),
+							rs.getString("p_name"), 
+							rs.getInt("p_price"), 
+							rs.getString("p_image"), 
+							rs.getString("p_desc"));
+	
+		}
+		return product;
 	}
-	
-/*	public int update(Product updateProduct) throws Exception {
-
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_UPDATE);
-//update product set  p_name = ?, p_price = ?, p_image = ?, p_desc = ? where p_no = ?
-		pstmt.setString(1, Pro.getName());
-		pstmt.setString(2, updateAddress.getPhone());
-		pstmt.setString(3, updateAddress.getAddress());
-		pstmt.setInt(4, updateAddress.getNo());
-
-		int rowCount = pstmt.executeUpdate();
-		pstmt.close();
-		dataSource.close(con);
-		return rowCount;
-	}*/
-	
-	
-	
-	
+	/*
+	 * selectAll : 상품전체검색
+	 */
+	public List<Product> findAll() throws Exception{
+		List<Product> productList=new ArrayList<Product>();
+		
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_ALL);
+		ResultSet rs=pstmt.executeQuery();
+		while(rs.next()) {
+			Product product=new Product(
+								rs.getInt("p_no"),
+								rs.getString("p_name"), 
+								rs.getInt("p_price"), 
+								rs.getString("p_image"), 
+								rs.getString("p_desc"));
+			productList.add(product);
+		}
+		return productList;
+	}
 	
 	
 	
