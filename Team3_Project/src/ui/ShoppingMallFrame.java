@@ -85,6 +85,7 @@ public class ShoppingMallFrame extends JFrame {
 	private JScrollPane cart_ScrollPane;
 	private JPanel cart_ContentPanel;
 	private JComboBox info_GenderComboBox;
+	private JComboBox join_GenderComboBox;
 
 	/**
 	 * Launch the application.
@@ -1118,6 +1119,27 @@ public class ShoppingMallFrame extends JFrame {
 		shop_JoinPanel.add(join_PasswordField);
 		
 		JButton join_Btn = new JButton("회원가입");
+		join_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String id = join_IdTextField.getText();
+					String password = new String(join_PasswordField.getPassword());
+					String name = join_NameTextFiled.getText();
+					String address = join_AddressTextField.getText();
+					String phone = join_PhoneTextField.getText();
+					String gender = "";
+					if(join_GenderComboBox.getSelectedIndex()==0) {
+						join_GenderComboBox.requestFocus();
+						return;
+					}else {
+						gender = (String)join_GenderComboBox.getSelectedItem();
+					}
+					userservice.create(new User(id, password, name, address, phone, gender));
+				} catch (Exception e2) {
+					
+				}
+			}
+		});
 		join_Btn.setBackground(new Color(255, 255, 255));
 		join_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		join_Btn.setBounds(142, 405, 115, 33);
@@ -1139,7 +1161,7 @@ public class ShoppingMallFrame extends JFrame {
 		join_Icon.setBounds(104, 32, 92, 103);
 		shop_JoinPanel.add(join_Icon);
 		
-		JComboBox join_GenderComboBox = new JComboBox();
+		join_GenderComboBox = new JComboBox();
 		join_GenderComboBox.setModel(new DefaultComboBoxModel(new String[] {"성별", "남성", "여성"}));
 		join_GenderComboBox.setBounds(189, 333, 92, 23);
 		shop_JoinPanel.add(join_GenderComboBox);
