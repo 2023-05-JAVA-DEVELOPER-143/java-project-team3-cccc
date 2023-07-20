@@ -40,7 +40,7 @@ public class CartDao {
 		return count;
 	}
 	
-	//cart insert
+	//cart insert(Test완료)
 	public int insert(Cart cart) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
