@@ -5,9 +5,7 @@ import product.Product;
 public class Cart {
 
 	private int cart_no;
-	
 	private String userId; //FK -userInfo
-	
 	private Product product; //FK
 	private int cart_qty;
 	
