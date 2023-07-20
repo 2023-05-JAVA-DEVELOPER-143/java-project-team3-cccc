@@ -9,7 +9,8 @@ public class CartService {
 	/*
 	 * 카트추가 or 수정
 	 */
-	public void addCart() {
+	public void addCart(Cart cart) throws Exception{
+		cartdao.countByProductNo(cart.getUserId(), cart.getProduct().getP_no());
 		
 	}
 	
