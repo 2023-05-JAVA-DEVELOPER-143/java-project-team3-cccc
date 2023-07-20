@@ -37,7 +37,6 @@ import java.awt.Rectangle;
 import java.awt.GridLayout;
 
 
-
 import cart.CartService;
 import order.OrderService;
 import product.ProductService;
@@ -672,7 +671,6 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JPanel shop_InfoPanel = new JPanel();
 		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
-		shopTabbedPane.setEnabledAt(3, false);
 		shop_InfoPanel.setLayout(null);
 		
 		JLabel info_IdLabel = new JLabel("아이디");
@@ -732,13 +730,13 @@ public class ShoppingMallFrame extends JFrame {
 		JButton info_Btn = new JButton("회원탈퇴");
 		info_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
-		info_Btn.setBounds(287, 381, 95, 33);
+		info_Btn.setBounds(107, 381, 95, 33);
 		shop_InfoPanel.add(info_Btn);
 		
 		JButton info_Cancle_Btn = new JButton("취소");
 		info_Cancle_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Cancle_Btn.setBackground(Color.WHITE);
-		info_Cancle_Btn.setBounds(394, 381, 71, 33);
+		info_Cancle_Btn.setBounds(311, 381, 71, 33);
 		shop_InfoPanel.add(info_Cancle_Btn);
 		
 		info_GenderComboBox = new JComboBox();
@@ -769,7 +767,7 @@ public class ShoppingMallFrame extends JFrame {
 		});
 		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Cancle_Btn_1.setBackground(new Color(255, 255, 102));
-		info_Cancle_Btn_1.setBounds(190, 381, 85, 33);
+		info_Cancle_Btn_1.setBounds(214, 381, 85, 33);
 		shop_InfoPanel.add(info_Cancle_Btn_1);
 		
 		JLabel info_Icon = new JLabel("");
@@ -782,24 +780,6 @@ public class ShoppingMallFrame extends JFrame {
 		lblNewLabel.setBounds(224, 54, 129, 39);
 		shop_InfoPanel.add(lblNewLabel);
 		
-
-		JButton info_User_Btn = new JButton("회원정보");
-		info_User_Btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				displayUserInfo(loginUser);
-				
-			}
-		});
-		info_User_Btn.setFont(new Font("굴림", Font.BOLD, 15));
-		info_User_Btn.setBackground(Color.WHITE);
-		info_User_Btn.setBounds(83, 381, 95, 33);
-		shop_InfoPanel.add(info_User_Btn);
-		
-		JPanel shop_AdminPanel = new JPanel();
-		shopTabbedPane.addTab("관리창", null, shop_AdminPanel, null);
-		
-
 		JPanel shop_CartPanel = new JPanel();
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
@@ -1275,7 +1255,3 @@ public class ShoppingMallFrame extends JFrame {
 		
 	} // 생성자 끝
 }
-
-
-
-
