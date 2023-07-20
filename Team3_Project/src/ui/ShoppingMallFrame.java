@@ -1040,7 +1040,7 @@ public class ShoppingMallFrame extends JFrame {
 		login_joinBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				shopTabbedPane.setSelectedIndex(2);
 			}
 		});
 		login_joinBtn.setBounds(262, 342, 97, 23);
