@@ -1147,7 +1147,7 @@ public class ShoppingMallFrame extends JFrame {
 	
 		userservice = new UserService();
 		
-<<<<<<< HEAD
+<<<<<<< HEAD  
 		
 	}
 	void loginProcess(User loginUser)throws Exception{
