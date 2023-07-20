@@ -45,8 +45,6 @@ import user.User;
 import user.UserService;
 import javax.swing.table.DefaultTableModel;
 
-import com.itwill.member.Member;
-
 public class ShoppingMallFrame extends JFrame {
 
 	/************ 1. 서비스 객체변수 선언 **************/
@@ -80,11 +78,11 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel cart_ContentPanel;
 	private JComboBox info_GenderComboBox;
 	private JComboBox join_GenderComboBox;
-	private JLabel order_ItemNameLable_2_1;
 
 	private JComboBox fashion_CartQtyComboBox;
 	private JComboBox fashion_CartQtyComboBox2;
 	private JTable cartTable;
+	private JTable orderTable;
 
 
 	/**
@@ -1480,150 +1478,22 @@ public class ShoppingMallFrame extends JFrame {
 		order_ItemPanel.setBackground(Color.WHITE);
 		order_ContentPane.add(order_ItemPanel);
 		
-		JPanel order_ProductPanel1 = new JPanel();
-		order_ProductPanel1.setLayout(null);
-		order_ProductPanel1.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		order_ProductPanel1.setBounds(0, 40, 485, 80);
-		order_ItemPanel.add(order_ProductPanel1);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(30, 10, 393, 241);
+		order_ItemPanel.add(scrollPane_1);
 		
-		JLabel order_ItemNameLable_2 = new JLabel(" 디지털 외 3종.....");
-		order_ItemNameLable_2.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2.setBounds(211, 34, 103, 16);
-		order_ProductPanel1.add(order_ItemNameLable_2);
-		
-		JLabel order_ItemTotPrice_2 = new JLabel("￦ 900,000");
-		order_ItemTotPrice_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		order_ItemTotPrice_2.setFont(new Font("나눔고딕", Font.PLAIN, 13));
-		order_ItemTotPrice_2.setBounds(361, 34, 69, 16);
-		order_ProductPanel1.add(order_ItemTotPrice_2);
-		
-		order_ItemNameLable_2_1 = new JLabel("2023/07/20");
-		order_ItemNameLable_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_1.setBounds(103, 34, 81, 16);
-		order_ProductPanel1.add(order_ItemNameLable_2_1);
-		
-		JCheckBox chckbxNewCheckBox_2_2_1_1 = new JCheckBox("");
-		chckbxNewCheckBox_2_2_1_1.setBounds(42, 34, 21, 23);
-		order_ProductPanel1.add(chckbxNewCheckBox_2_2_1_1);
-		
-		Panel order_ListTiltlePanel = new Panel();
-		order_ListTiltlePanel.setBounds(0, 0, 485, 33);
-		order_ItemPanel.add(order_ListTiltlePanel);
-		order_ListTiltlePanel.setLayout(null);
-		
-		JLabel order_ItemNameLable_4 = new JLabel("상세내역");
-		order_ItemNameLable_4.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_4.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		order_ItemNameLable_4.setBounds(228, 10, 69, 16);
-		order_ListTiltlePanel.add(order_ItemNameLable_4);
-		
-		JLabel order_ItemNo_4 = new JLabel("주문일");
-		order_ItemNo_4.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNo_4.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		order_ItemNo_4.setBounds(121, 10, 44, 16);
-		order_ListTiltlePanel.add(order_ItemNo_4);
-		
-		JLabel order_ItemTotPrice_4 = new JLabel("주문금액");
-		order_ItemTotPrice_4.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemTotPrice_4.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		order_ItemTotPrice_4.setBounds(361, 10, 69, 16);
-		order_ListTiltlePanel.add(order_ItemTotPrice_4);
-		
-		JCheckBox chckbxNewCheckBox_2_2_1 = new JCheckBox("");
-		chckbxNewCheckBox_2_2_1.setBackground(new Color(255, 255, 255));
-		chckbxNewCheckBox_2_2_1.setBounds(8, 7, 21, 23);
-		order_ListTiltlePanel.add(chckbxNewCheckBox_2_2_1);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("전체선택");
-		lblNewLabel_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		lblNewLabel_2_1.setBounds(37, 11, 57, 15);
-		order_ListTiltlePanel.add(lblNewLabel_2_1);
-		
-		JPanel order_ProductPanel2 = new JPanel();
-		order_ProductPanel2.setLayout(null);
-		order_ProductPanel2.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		order_ProductPanel2.setBounds(0, 130, 485, 80);
-		order_ItemPanel.add(order_ProductPanel2);
-		
-		JLabel order_ItemNameLable_2_2 = new JLabel(" 디지털 외 3종.....");
-		order_ItemNameLable_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_2.setBounds(211, 34, 103, 16);
-		order_ProductPanel2.add(order_ItemNameLable_2_2);
-		
-		JLabel order_ItemTotPrice_2_1 = new JLabel("￦ 900,000");
-		order_ItemTotPrice_2_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		order_ItemTotPrice_2_1.setFont(new Font("나눔고딕", Font.PLAIN, 13));
-		order_ItemTotPrice_2_1.setBounds(361, 34, 69, 16);
-		order_ProductPanel2.add(order_ItemTotPrice_2_1);
-		
-		JLabel order_ItemNameLable_2_1_1 = new JLabel("2023/07/20");
-		order_ItemNameLable_2_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_1_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_1_1.setBounds(103, 34, 81, 16);
-		order_ProductPanel2.add(order_ItemNameLable_2_1_1);
-		
-		JCheckBox chckbxNewCheckBox_2_2_1_1_1 = new JCheckBox("");
-		chckbxNewCheckBox_2_2_1_1_1.setBounds(42, 34, 21, 23);
-		order_ProductPanel2.add(chckbxNewCheckBox_2_2_1_1_1);
-		
-		JPanel order_ProductPanel3 = new JPanel();
-		order_ProductPanel3.setLayout(null);
-		order_ProductPanel3.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		order_ProductPanel3.setBounds(0, 220, 485, 80);
-		order_ItemPanel.add(order_ProductPanel3);
-		
-		JLabel order_ItemNameLable_2_2_1 = new JLabel(" 디지털 외 3종.....");
-		order_ItemNameLable_2_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_2_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_2_1.setBounds(211, 34, 103, 16);
-		order_ProductPanel3.add(order_ItemNameLable_2_2_1);
-		
-		JLabel order_ItemTotPrice_2_1_1 = new JLabel("￦ 900,000");
-		order_ItemTotPrice_2_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		order_ItemTotPrice_2_1_1.setFont(new Font("나눔고딕", Font.PLAIN, 13));
-		order_ItemTotPrice_2_1_1.setBounds(361, 34, 69, 16);
-		order_ProductPanel3.add(order_ItemTotPrice_2_1_1);
-		
-		JLabel order_ItemNameLable_2_1_1_1 = new JLabel("2023/07/20");
-		order_ItemNameLable_2_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_1_1_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_1_1_1.setBounds(103, 34, 81, 16);
-		order_ProductPanel3.add(order_ItemNameLable_2_1_1_1);
-		
-		JCheckBox chckbxNewCheckBox_2_2_1_1_1_1 = new JCheckBox("");
-		chckbxNewCheckBox_2_2_1_1_1_1.setBounds(42, 34, 21, 23);
-		order_ProductPanel3.add(chckbxNewCheckBox_2_2_1_1_1_1);
-		
-		JPanel order_ProductPanel4 = new JPanel();
-		order_ProductPanel4.setLayout(null);
-		order_ProductPanel4.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		order_ProductPanel4.setBounds(0, 310, 485, 80);
-		order_ItemPanel.add(order_ProductPanel4);
-		
-		JLabel order_ItemNameLable_2_2_1_1 = new JLabel(" 디지털 외 3종.....");
-		order_ItemNameLable_2_2_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_2_1_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_2_1_1.setBounds(211, 34, 103, 16);
-		order_ProductPanel4.add(order_ItemNameLable_2_2_1_1);
-		
-		JLabel order_ItemTotPrice_2_1_1_1 = new JLabel("￦ 900,000");
-		order_ItemTotPrice_2_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		order_ItemTotPrice_2_1_1_1.setFont(new Font("나눔고딕", Font.PLAIN, 13));
-		order_ItemTotPrice_2_1_1_1.setBounds(361, 34, 69, 16);
-		order_ProductPanel4.add(order_ItemTotPrice_2_1_1_1);
-		
-		JLabel order_ItemNameLable_2_1_1_1_1 = new JLabel("2023/07/20");
-		order_ItemNameLable_2_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		order_ItemNameLable_2_1_1_1_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_1_1_1_1.setBounds(103, 34, 81, 16);
-		order_ProductPanel4.add(order_ItemNameLable_2_1_1_1_1);
-		
-		JCheckBox chckbxNewCheckBox_2_2_1_1_1_1_1 = new JCheckBox("");
-		chckbxNewCheckBox_2_2_1_1_1_1_1.setBounds(42, 34, 21, 23);
-		order_ProductPanel4.add(chckbxNewCheckBox_2_2_1_1_1_1_1);
+		orderTable = new JTable();
+		orderTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uAC00\uACA9"
+			}
+		));
+		scrollPane_1.setViewportView(orderTable);
 		
 		
 		JPanel order_BntPanel = new JPanel();
