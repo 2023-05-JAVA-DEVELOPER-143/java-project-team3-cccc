@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -38,6 +40,7 @@ import javax.swing.border.LineBorder;
 
 
 import cart.CartService;
+import order.Order;
 import order.OrderService;
 import product.ProductService;
 import user.User;
@@ -74,8 +77,6 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel order_ContentPane;
 	private JScrollPane cart_ScrollPane;
 	private JPanel cart_ContentPanel;
-	private JComboBox join_GenderComboBox;
-	private JComboBox info_GenderComboBox;
 	private JComboBox info_GenderComboBox;
 	private JComboBox join_GenderComboBox;
 	private JLabel order_ItemNameLable_2_1;
@@ -1524,6 +1525,17 @@ public class ShoppingMallFrame extends JFrame {
 		
 
 		JButton cart_DelBnt = new JButton("구매");
+		cart_DelBnt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					System.out.println("주문완료");
+					List<Order> orderList = orderservice.OrderList(loginUser.getUserId());
+					orderservice.OrderCash(orderList.get(0));
+				}catch (Exception e1) {
+					// TODO: handle exception
+				}
+			}
+		});
 		cart_DelBnt.setBounds(0, 7, 97, 23);
 		cart_ListSumPanel.add(cart_DelBnt);
 		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
