@@ -276,6 +276,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.add(fashion_DescLabel);
 		
 		JButton fashion_CartAddButton = new JButton("");
+		fashion_CartAddButton.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton.setOpaque(false);
 		fashion_CartAddButton.setForeground(Color.WHITE);
 		fashion_CartAddButton.setBorder(null);
@@ -319,6 +320,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product2.add(fashion_DescLabel2);
 		
 		JButton fashion_CartAddButton2 = new JButton("");
+		fashion_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton2.setOpaque(false);
 		fashion_CartAddButton2.setForeground(Color.WHITE);
 		fashion_CartAddButton2.setBorder(null);
@@ -370,6 +372,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product1.add(sport_DescLabel_1);
 		
 		JButton sport_CartAddButton_1 = new JButton("");
+		sport_CartAddButton_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton_1.setOpaque(false);
 		sport_CartAddButton_1.setForeground(Color.WHITE);
 		sport_CartAddButton_1.setBorder(null);
@@ -413,6 +416,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product2.add(sport_DescLabel2);
 		
 		JButton sport_CartAddButton2 = new JButton("");
+		sport_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton2.setOpaque(false);
 		sport_CartAddButton2.setForeground(Color.WHITE);
 		sport_CartAddButton2.setBorder(null);
@@ -560,6 +564,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product1.add(furniture_DescLabel1);
 		
 		JButton furniture_CartAddButton1 = new JButton("");
+		furniture_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton1.setOpaque(false);
 		furniture_CartAddButton1.setForeground(Color.WHITE);
 		furniture_CartAddButton1.setBorder(null);
@@ -603,6 +608,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product2.add(furniture_DescLabel2);
 		
 		JButton furniture_CartAddButton2 = new JButton("");
+		furniture_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton2.setOpaque(false);
 		furniture_CartAddButton2.setForeground(Color.WHITE);
 		furniture_CartAddButton2.setBorder(null);
@@ -654,6 +660,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product1.add(digital_DescLabel1);
 		
 		JButton digital_CartAddButton1 = new JButton("");
+		digital_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton1.setOpaque(false);
 		digital_CartAddButton1.setForeground(Color.WHITE);
 		digital_CartAddButton1.setBorder(null);
@@ -697,6 +704,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product2.add(digital_DescLabel2);
 		
 		JButton digital_CartAddButton2 = new JButton("");
+		digital_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton2.setOpaque(false);
 		digital_CartAddButton2.setForeground(Color.WHITE);
 		digital_CartAddButton2.setBorder(null);
@@ -748,6 +756,7 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product1.add(food_DescLabel1);
 		
 		JButton food_CartAddButton1 = new JButton("");
+		food_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton1.setOpaque(false);
 		food_CartAddButton1.setForeground(Color.WHITE);
 		food_CartAddButton1.setBorder(null);
@@ -791,6 +800,7 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product2.add(food_DescLabel2);
 		
 		JButton food_CartAddButton2 = new JButton("");
+		food_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton2.setOpaque(false);
 		food_CartAddButton2.setForeground(Color.WHITE);
 		food_CartAddButton2.setBorder(null);
