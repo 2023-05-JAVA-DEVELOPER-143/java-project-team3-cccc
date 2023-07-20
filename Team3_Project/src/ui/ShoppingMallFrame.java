@@ -462,10 +462,15 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(loginUser!=null) {
+					System.out.println(fashion_CartAddButton2.getActionCommand());
+					System.out.println(fashion_CartQtyComboBox2.getSelectedItem());
 				
-				System.out.println(fashion_CartAddButton2.getActionCommand());
-				System.out.println(fashion_CartQtyComboBox2.getSelectedItem());
-				
+				}else {
+					//로그인이 필요합니다 팝업
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+					shopTabbedPane.setSelectedIndex(1);
+				}
 			}
 		});
 		fashion_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
