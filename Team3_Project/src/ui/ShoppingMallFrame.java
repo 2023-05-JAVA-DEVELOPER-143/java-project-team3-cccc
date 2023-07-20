@@ -86,6 +86,8 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel cart_ContentPanel;
 	private JComboBox info_GenderComboBox;
 	private JComboBox join_GenderComboBox;
+	private JComboBox fashion_CartQtyComboBox;
+	private JComboBox fashion_CartQtyComboBox2;
 
 	/**
 	 * Launch the application.
@@ -373,6 +375,15 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.add(fashion_DescLabel);
 		
 		JButton fashion_CartAddButton = new JButton("");
+		fashion_CartAddButton.setActionCommand("1");
+		fashion_CartAddButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println(fashion_CartAddButton.getActionCommand());
+				System.out.println(fashion_CartQtyComboBox.getSelectedItem());
+				
+			}
+		});
 		fashion_CartAddButton.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton.setOpaque(false);
 		fashion_CartAddButton.setForeground(Color.WHITE);
@@ -381,7 +392,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton.setBounds(136, 119, 31, 23);
 		fashion_Product1.add(fashion_CartAddButton);
 		
-		JComboBox fashion_CartQtyComboBox = new JComboBox();
+		fashion_CartQtyComboBox = new JComboBox();
 		fashion_CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox.setOpaque(false);
 		fashion_CartQtyComboBox.setMaximumRowCount(10);
@@ -426,7 +437,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton2.setBounds(136, 119, 31, 23);
 		fashion_Product2.add(fashion_CartAddButton2);
 		
-		JComboBox fashion_CartQtyComboBox2 = new JComboBox();
+		fashion_CartQtyComboBox2 = new JComboBox();
 		fashion_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox2.setOpaque(false);
 		fashion_CartQtyComboBox2.setMaximumRowCount(10);
