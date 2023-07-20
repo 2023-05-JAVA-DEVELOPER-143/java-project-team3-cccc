@@ -17,9 +17,6 @@ public class OrderDao {
 	public OrderDao() throws Exception {
 		dataSource = new DataSource();
 	}
-	
-	// 상품주문_장바구니내
-	
 
 	// 상품주문_전체주문_유저
 	public int insert(Order order) throws Exception{
