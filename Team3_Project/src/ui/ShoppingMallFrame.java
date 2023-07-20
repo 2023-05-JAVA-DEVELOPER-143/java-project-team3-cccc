@@ -178,13 +178,14 @@ public class ShoppingMallFrame extends JFrame {
 				if (loginUser == null) {
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
 					shopTabbedPane.setSelectedIndex(1);				
-				}else {
-					
-				}			
-				
+
+				}else {		
+					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.");
+					loginUser = null;
+					loginLabel.setText("  로그인");
+					}
 			}
-		}
-		);
+		});
 		loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		loginLabel.setToolTipText(" ");
 		menuBar.add(loginLabel);
@@ -1590,9 +1591,12 @@ public class ShoppingMallFrame extends JFrame {
 		if (loginUser != null) {
 			shopTabbedPane.setSelectedIndex(0);
 			loginLabel.setText("  로그아웃");
-			}
-			
+		}	
 	}
+				
+			
+			
+	
 
 	private void displayUserInfo(User loginUser) {
 		/**** 로그인한회원상세데이타보여주기 *****/
