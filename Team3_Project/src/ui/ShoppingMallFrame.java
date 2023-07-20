@@ -13,8 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -36,7 +34,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import cart.CartService;
 import order.OrderService;
@@ -1503,6 +1501,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		order_Table = new JTable();
 		order_Table.setModel(new DefaultTableModel(
+
 			new Object[][] {
 				{null, null, null},
 				{null, null, null},
@@ -1511,8 +1510,10 @@ public class ShoppingMallFrame extends JFrame {
 			new String[] {
 				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uAC00\uACA9"
 			}
-		));
+			));
+
 		order_scrollPane.setViewportView(order_Table);
+
 		
 		
 		JPanel order_BntPanel = new JPanel();
@@ -1522,6 +1523,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		order_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		order_BntPanel.add(order_Btn);
