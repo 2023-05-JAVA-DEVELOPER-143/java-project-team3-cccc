@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -37,6 +38,8 @@ import java.awt.GridLayout;
 
 
 import cart.CartService;
+import order.OrderService;
+import product.ProductService;
 import user.User;
 import user.UserService;
 
@@ -52,12 +55,12 @@ public class ShoppingMallFrame extends JFrame {
 	/************1. 서비스 객체변수 선언**************/
 	private UserService userservice;
 	private CartService cartservice;
+	private ProductService productservice;
+	private OrderService orderservice;
 	
 	/************loginUser**************/
-	private User loginUser;
+	private User loginUser = null;
 
-	
-	
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -745,7 +748,7 @@ public class ShoppingMallFrame extends JFrame {
 					String gender = (String)info_GenderComboBox.getSelectedItem();
 					
 					User updateUser = new User(id, password, name, address, phoneNumber, gender);
-					userService.loginUpdate(updateUser);
+					userservice.loginUpdate(updateUser);
 					
 					//회원정보 변경
 					
