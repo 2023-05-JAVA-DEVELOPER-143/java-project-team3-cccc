@@ -53,10 +53,29 @@ public class OrderDao {
 		return 0;
 	}
 
-	// 주문삭제(ORDER_DELETE_BY_USERID)
+	// 개인주문삭제(ORDER_DELETE_BY_USERID)
+	public int deleteByUserid(String userid) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_BY_USERID);
+		pstmt.setString(1, userid);
+		int rowCount = pstmt.executeUpdate();
+		
+		pstmt.close();
+		dataSource.close(con);
+		return rowCount;
+	}
 	
-	
-	// 주문 전체삭제()_유저아이디로 주문삭제(ORDER_DELETE_BY_O_NO)
+	// 주문번호로 삭제 (ORDER_DELETE_BY_O_NO)
+	public int deleteByO_NO(int o_no) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(OrderSQL.ORDER_DELETE_BY_O_NO);
+		pstmt.setInt(1, o_no);
+		int rowCount = pstmt.executeUpdate();
+		
+		pstmt.close();
+		dataSource.close(con);
+		return rowCount;
+	}
 	
 
 	// 주문 리스트 유저의 전체주문리스트(ORDER_SELECT_BY_USERID)

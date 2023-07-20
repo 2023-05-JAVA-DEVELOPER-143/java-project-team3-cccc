@@ -9,10 +9,10 @@ public class OrderSQL {
 	// 주문상품추가
 	public final static String ORDERITEM_INSERT = "insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,?,orders_o_no_SEQ.currval,?)";
 	
-	// 선택삭제_유저아이디로 주문삭제
+	// 유저아이디로 주문삭제
 	public final static String ORDER_DELETE_BY_USERID= "delete from orders where userid=?";
 	
-	// 선택삭제_주문번호로 주문삭제
+	// 주문번호로 주문삭제
 	public final static String ORDER_DELETE_BY_O_NO ="delete from orders where o_no=?";
 
 	// 유저아이디로 주문 검색
