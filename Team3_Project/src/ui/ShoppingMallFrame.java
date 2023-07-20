@@ -207,6 +207,7 @@ public class ShoppingMallFrame extends JFrame {
 		lblNewLabel_3_3_1_1.setBounds(348, 332, 57, 15);
 		homePanel.add(lblNewLabel_3_3_1_1);
 		
+		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/옷.png")));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
