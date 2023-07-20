@@ -3,9 +3,11 @@ package cart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import common.DataSource;
+import product.Product;
 
 public class CartDao {  
 	
@@ -106,9 +108,34 @@ public class CartDao {
 	}*/
 	
 
-	//cart List-find
-	public List<Cart> findByUserId(String userId)  {
-		return null;
+	//cart List-find //userId를 이용해서 사용자 카트 안의 모든 제품 찾기
+	public List<Cart> findByUserId(String userId) throws Exception  {
+		List<Cart> cartList=new ArrayList<Cart>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL. CART_FIND_ALL_PRODUCT_BY_USERID);
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				cartList.add(new Cart( rs.getInt("cart_no"),
+						 			   rs.getString("userid"),
+								       new Product(rs.getInt("p_no"),
+							    		       rs.getString("p_name"),
+							    		       rs.getInt("p_price"),
+							    		       rs.getString("p_image"),
+							    		       rs.getString("p_desc")),
+									   rs.getInt("cart_qty")));
+			}
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		
+		return cartList;
 	}
 	
 	
@@ -147,8 +174,8 @@ public class CartDao {
 		return deleteRowCount;
 	}
 	//Cart no로 Cart search
-	public Cart findByCartNo(int Cart_no) {
-	return null;
+	public Cart findByCartNo(int cart_no) throws Exception {
+		return null;
 	}
 	
 	
