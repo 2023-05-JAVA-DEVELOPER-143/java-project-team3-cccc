@@ -34,6 +34,9 @@ public class CartDaoTestMain {
 		List listA =cartDao.findByUserId("aaa");
 		System.out.println(listA);
 		
+		//cart PK delete   deleteByCartNo(Test완료)
+		System.out.println(cartDao.deleteByCartNo(34));
+		
 	}
 
 	
