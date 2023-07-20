@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.DataSource;
-
-import user.User;
-
 import product.Product;
 
 
@@ -158,7 +155,7 @@ public class CartDao {
 		}
 		return deleteRowCount;
 	}
-	//cart userId delete
+	//cart userId delete(Test완료)
 	public int deleteByUserId(String userId) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -175,7 +172,7 @@ public class CartDao {
 		}
 		return deleteRowCount;
 	}
-	//Cart no로 Cart search
+	//Cart no로 Cart search(
 	public Cart findByCartNo(int cart_no) throws Exception {
 		return null;
 	}
