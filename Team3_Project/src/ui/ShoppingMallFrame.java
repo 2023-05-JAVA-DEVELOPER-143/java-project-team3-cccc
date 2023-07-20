@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -15,6 +16,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JPasswordField;
+import javax.swing.JPopupMenu;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
@@ -36,6 +38,8 @@ import java.awt.GridLayout;
 
 
 import cart.CartService;
+import order.OrderService;
+import product.ProductService;
 import user.User;
 import user.UserService;
 
@@ -51,12 +55,12 @@ public class ShoppingMallFrame extends JFrame {
 	/************1. 서비스 객체변수 선언**************/
 	private UserService userservice;
 	private CartService cartservice;
+	private ProductService productservice;
+	private OrderService orderservice;
 	
 	/************loginUser**************/
-	private User loginUser;
+	private User loginUser = null;
 
-	
-	
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -78,6 +82,7 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel order_ContentPane;
 	private JScrollPane cart_ScrollPane;
 	private JPanel cart_ContentPanel;
+	private JComboBox info_GenderComboBox;
 
 	/**
 	 * Launch the application.
@@ -895,6 +900,10 @@ public class ShoppingMallFrame extends JFrame {
 		shop_LoginPanel.add(login_PasswordField);
 		
 		JButton login_Btn = new JButton("로그인");
+		login_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		login_Btn.setBounds(143, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		
@@ -1075,12 +1084,32 @@ public class ShoppingMallFrame extends JFrame {
 		info_Cancle_Btn.setBounds(311, 381, 71, 33);
 		shop_InfoPanel.add(info_Cancle_Btn);
 		
-		JComboBox info_GenderComboBox = new JComboBox();
+		info_GenderComboBox = new JComboBox();
 		info_GenderComboBox.setModel(new DefaultComboBoxModel(new String[] {"성별", "남성", "여성"}));
 		info_GenderComboBox.setBounds(178, 317, 92, 23);
 		shop_InfoPanel.add(info_GenderComboBox);
 		
 		JButton info_Cancle_Btn_1 = new JButton("수정");
+		info_Cancle_Btn_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String id = info_IdTextField.getText();
+					String password = new String(info_PasswordField.getPassword());
+					String name = info_NameTextField.getText();
+					String address = info_AddressTextField.getText();
+					String phoneNumber = info_PhoneTextField.getText();
+					String gender = (String)info_GenderComboBox.getSelectedItem();
+					
+					User updateUser = new User(id, password, name, address, phoneNumber, gender);
+					userservice.loginUpdate(updateUser);
+					
+					//회원정보 변경
+					
+				}catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "회원 수정 에러 : "+e1.getMessage());
+				}
+			}
+		});
 		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Cancle_Btn_1.setBackground(new Color(255, 255, 102));
 		info_Cancle_Btn_1.setBounds(214, 381, 85, 33);
@@ -1552,8 +1581,22 @@ public class ShoppingMallFrame extends JFrame {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
+
+		shopTabbedPane.setEnabledAt(3, true);
+		shopTabbedPane.setSelectedIndex(0);
+		
+
 		shopTabbedPane.setSelectedIndex(0);
 	}
 
-
-		}
+	private void displayUserInfo(User loginUser) {
+		/****로그인한회원상세데이타보여주기*****/
+		info_IdTextField.setText(loginUser.getUserId());
+		info_AddressTextField.setText(loginUser.getAddress());
+		info_NameTextField.setText(loginUser.getName());
+		info_PasswordField.setText(loginUser.getPassword());
+		info_PhoneTextField.setText(loginUser.getPhone());
+		info_GenderComboBox.setSelectedItem(loginUser.getGender()+"");
+		
+	} // 생성자 끝
+}
