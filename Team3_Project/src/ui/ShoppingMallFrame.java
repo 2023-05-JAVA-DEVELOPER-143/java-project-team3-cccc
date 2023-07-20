@@ -16,6 +16,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JPasswordField;
+import javax.swing.JPopupMenu;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
@@ -647,6 +648,26 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_GenderComboBox);
 		
 		JButton info_Cancle_Btn_1 = new JButton("수정");
+		info_Cancle_Btn_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String id = info_IdTextField.getText();
+					String password = new String(info_PasswordField.getPassword());
+					String name = info_NameTextField.getText();
+					String address = info_AddressTextField.getText();
+					String phoneNumber = info_PhoneTextField.getText();
+					String gender = (String)info_GenderComboBox.getSelectedItem();
+					
+					User updateUser = new User(id, password, name, address, phoneNumber, gender);
+					userService.loginUpdate(updateUser);
+					
+					//회원정보 변경
+					
+				}catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "회원 수정 에러 : "+e1.getMessage());
+				}
+			}
+		});
 		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Cancle_Btn_1.setBackground(new Color(255, 255, 102));
 		info_Cancle_Btn_1.setBounds(214, 381, 85, 33);
