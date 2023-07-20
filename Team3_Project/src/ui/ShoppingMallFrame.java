@@ -1459,7 +1459,7 @@ public class ShoppingMallFrame extends JFrame {
 		JLabel order_ItemNameLable_2 = new JLabel(" 디지털 외 3종.....");
 		order_ItemNameLable_2.setHorizontalAlignment(SwingConstants.CENTER);
 		order_ItemNameLable_2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2.setBounds(211, 34, 103, 16);
+		order_ItemNameLable_2.setBounds(208, 35, 103, 16);
 		order_ProductPanel1.add(order_ItemNameLable_2);
 		
 		JLabel order_ItemTotPrice_2 = new JLabel("￦ 900,000");
@@ -1471,7 +1471,7 @@ public class ShoppingMallFrame extends JFrame {
 		JLabel order_ItemNameLable_2_1 = new JLabel("2023/07/20");
 		order_ItemNameLable_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		order_ItemNameLable_2_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
-		order_ItemNameLable_2_1.setBounds(103, 34, 81, 16);
+		order_ItemNameLable_2_1.setBounds(103, 35, 81, 16);
 		order_ProductPanel1.add(order_ItemNameLable_2_1);
 		
 		JCheckBox chckbxNewCheckBox_2_2_1_1 = new JCheckBox("");
@@ -1502,6 +1502,11 @@ public class ShoppingMallFrame extends JFrame {
 		order_ListTiltlePanel.add(order_ItemTotPrice_4);
 		
 		JCheckBox chckbxNewCheckBox_2_2_1 = new JCheckBox("");
+		chckbxNewCheckBox_2_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		chckbxNewCheckBox_2_2_1.setBackground(new Color(255, 255, 255));
 		chckbxNewCheckBox_2_2_1.setBounds(8, 7, 21, 23);
 		order_ListTiltlePanel.add(chckbxNewCheckBox_2_2_1);
