@@ -48,4 +48,8 @@ public class CartService {
 	public int cartDeleteByUserId(String userId) throws Exception  {
 		return cartDao.deleteByUserId(userId);
 	}
+	
+	/*
+	 * 결제하기
+	 */
 }

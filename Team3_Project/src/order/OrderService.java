@@ -42,9 +42,5 @@ public class OrderService {
 		return orderDao.findOrderWithProductByUserId(order.getUserId(), order.getO_no());
 	}
 	
-	/*
-	 * cart에서 주문
-	 */
-	
 	
 }
