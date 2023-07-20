@@ -574,8 +574,10 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_NameTextField);
 		
 		info_IdTextField = new JTextField();
+		info_IdTextField.setEditable(false);
+		info_IdTextField.setEnabled(false);
 		info_IdTextField.setColumns(10);
-		info_IdTextField.setBounds(178, 141, 107, 21);
+		info_IdTextField.setBounds(178, 141, 204, 21);
 		shop_InfoPanel.add(info_IdTextField);
 		
 		info_PasswordField = new JPasswordField();
@@ -587,10 +589,6 @@ public class ShoppingMallFrame extends JFrame {
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(107, 381, 95, 33);
 		shop_InfoPanel.add(info_Btn);
-		
-		JButton info_jungbok_Btn = new JButton("중복체크");
-		info_jungbok_Btn.setBounds(290, 140, 92, 23);
-		shop_InfoPanel.add(info_jungbok_Btn);
 		
 		JButton info_Cancle_Btn = new JButton("취소");
 		info_Cancle_Btn.setFont(new Font("굴림", Font.BOLD, 15));
