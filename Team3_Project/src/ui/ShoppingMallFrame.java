@@ -36,8 +36,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import cart.Cart;
 import cart.CartService;
 import order.OrderService;
+import product.Product;
 import product.ProductService;
 import user.User;
 import user.UserService;
@@ -369,10 +371,22 @@ public class ShoppingMallFrame extends JFrame {
 		JButton fashion_CartAddButton = new JButton("");
 		fashion_CartAddButton.setActionCommand("1");
 		fashion_CartAddButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				System.out.println(fashion_CartAddButton.getActionCommand());
-				System.out.println(fashion_CartQtyComboBox.getSelectedItem());
+			public void actionPerformed(ActionEvent e)  {
+				if(loginUser!=null) {
+					Integer addCart_No = Integer.valueOf(fashion_CartAddButton.getActionCommand());
+					Integer addCart_Qty = Integer.valueOf((String)fashion_CartQtyComboBox.getSelectedItem());
+					try {
+						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
+									new Product(4, "티셔츠",500000 , "ui/image/fashion_Tshirt.png", "티셔츠다"), addCart_Qty));
+						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}else {
+					//로그인이 필요합니다 팝업
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+					shopTabbedPane.setSelectedIndex(1);
+				}
 				
 			}
 		});
