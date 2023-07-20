@@ -162,6 +162,7 @@ public class ShoppingMallFrame extends JFrame {
 		subPanel.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel homePanel = new JPanel();
+		homePanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("HOME", null, homePanel, null);
 		homePanel.setLayout(null);
 		
@@ -394,6 +395,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		
 		JPanel shop_LoginPanel = new JPanel();
+		shop_LoginPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("로그인", null, shop_LoginPanel, null);
 		shop_LoginPanel.setLayout(null);
 		
@@ -436,6 +438,7 @@ public class ShoppingMallFrame extends JFrame {
 				shop_LoginPanel.add(login_Icon);
 		
 		JPanel shop_JoinPanel = new JPanel();
+		shop_JoinPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("회원가입", null, shop_JoinPanel, null);
 		shop_JoinPanel.setLayout(null);
 		
@@ -528,6 +531,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_JoinPanel.add(join_Label);
 		
 		JPanel shop_InfoPanel = new JPanel();
+		shop_InfoPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
 		shop_InfoPanel.setLayout(null);
 		
@@ -680,6 +684,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_ListTiltlePanel_1.add(chckbxNewCheckBox_1);
 		
 		JPanel cart_ItemPanel = new JPanel();
+		cart_ItemPanel.setBackground(Color.WHITE);
 		cart_ItemPanel.setLayout(null);
 		cart_ItemPanel.setPreferredSize(new Dimension(390, 780));
 		cart_ItemPanel.setBorder(null);
@@ -697,7 +702,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_1_1_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/Food1.png")));
-		lblNewLabel_1_1_1_1_1.setBounds(49, 0, 64, 72);
+		lblNewLabel_1_1_1_1_1.setBounds(49, 10, 64, 70);
 		cart_ItemPanel1.add(lblNewLabel_1_1_1_1_1);
 		
 		JComboBox comboBox_1_1_1_1 = new JComboBox();
@@ -772,6 +777,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ListTiltlePanel.add(order_ItemTotPrice_4_2);
 		
 		JCheckBox chckbxNewCheckBox_2_2 = new JCheckBox("");
+		chckbxNewCheckBox_2_2.setBackground(Color.WHITE);
 		chckbxNewCheckBox_2_2.setBounds(20, 8, 21, 23);
 		cart_ListTiltlePanel.add(chckbxNewCheckBox_2_2);
 		
@@ -928,6 +934,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		
 		JPanel shop_OrderListPanel = new JPanel();
+		shop_OrderListPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
 		
