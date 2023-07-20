@@ -10,6 +10,10 @@ public class OrderService {
 	private ProductDao productDao;
 	private CartDao cartDao;
 	
+	public OrderService() throws Exception{
+		orderDao = new OrderDao();
+	}
+	
 	/*
 	 * 주문1개삭제
 	 */
@@ -24,15 +28,12 @@ public class OrderService {
 		return orderDao.deleteByUserid(userid);
 	}
 	
-	
 	/*
 	 * 주문목록
 	 */
 	public List<Order> OrderList(String userid) throws Exception{
 		return orderDao.findOrderbyUserId(userid);
 	}
-	
-	
 	
 	/*
 	 * 주문상세보기
@@ -42,11 +43,9 @@ public class OrderService {
 	}
 	
 	/*
-	 * cart에서 주문
+	 * 결제하기
 	 */
 	
-	
-	//결제하기
-	
+
 	
 }

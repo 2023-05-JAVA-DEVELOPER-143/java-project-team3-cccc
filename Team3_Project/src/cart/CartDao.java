@@ -66,7 +66,7 @@ public class CartDao {
 	}
 	
 
-	//상품창에서 갯수 추가 update (Test완료)
+	//상품창에서 갯수 선택 추가 update (Test완료)
 	public int updateByProductNo(String userId, int p_no, int cart_qty) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -86,7 +86,7 @@ public class CartDao {
 		return rowCount;
 	}
 	
-	// 상품리스트에서 장바구니 클릭 update
+	// 상품리스트에서 장바구니 클릭(1개 추가) update 
 	public int updateProduct1up(String userId , int p_no) throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
