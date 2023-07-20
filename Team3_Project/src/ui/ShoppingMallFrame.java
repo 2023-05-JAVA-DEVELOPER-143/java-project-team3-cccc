@@ -479,7 +479,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		join_IdTextField = new JTextField();
 		join_IdTextField.setColumns(10);
-		join_IdTextField.setBounds(189, 157, 107, 21);
+		join_IdTextField.setBounds(189, 157, 197, 21);
 		shop_JoinPanel.add(join_IdTextField);
 		
 		join_PasswordField = new JPasswordField();
@@ -497,10 +497,6 @@ public class ShoppingMallFrame extends JFrame {
 		join_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		join_Btn.setBounds(142, 405, 115, 33);
 		shop_JoinPanel.add(join_Btn);
-		
-		JButton join_jungbok_Btn = new JButton("중복체크");
-		join_jungbok_Btn.setBounds(301, 156, 92, 23);
-		shop_JoinPanel.add(join_jungbok_Btn);
 		
 		JButton join_Cancle_Btn = new JButton("취소");
 		join_Cancle_Btn.setFont(new Font("굴림", Font.BOLD, 15));
