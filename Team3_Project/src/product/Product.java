@@ -7,7 +7,7 @@ public class Product {
 	private String p_image;
 	private String p_desc;
 	public Product() {
-		super();
+
 	
 	}
 	
