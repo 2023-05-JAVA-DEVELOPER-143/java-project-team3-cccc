@@ -36,8 +36,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Rectangle;
 import java.awt.GridLayout;
 
-
-
+import cart.Cart;
 import cart.CartService;
 import order.OrderService;
 import product.ProductService;
@@ -48,6 +47,7 @@ import user.UserService;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.security.Provider.Service;
+import java.util.List;
 
 
 
@@ -150,9 +150,11 @@ public class ShoppingMallFrame extends JFrame {
 				if (loginUser == null) {
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
 					shopTabbedPane.setSelectedIndex(1);
+					
 				}else {			
 			try {
 				shopTabbedPane.setSelectedIndex(5);
+				shopTabbedPane.setEnabledAt(6, true);
 			} catch (Exception e2) {
 				
 			}
@@ -1276,8 +1278,15 @@ public class ShoppingMallFrame extends JFrame {
 
 		JPanel shop_CartPanel = new JPanel();
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
+		shopTabbedPane.setEnabledAt(5, false);
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
-		
+		if(loginUser!=null) {
+			CartService cartService = null;
+			String userId = loginUser.getUserId();
+			List<Cart> cartList = 
+			cartService.getCartItemByUserId(userId);
+			shopTabbedPane.setEnabledAt(5, true);
+			}
 		
 		
 		cart_ScrollPane = new JScrollPane();
@@ -1340,11 +1349,13 @@ public class ShoppingMallFrame extends JFrame {
 
 		
 		JLabel cart_Item_Icon1 = new JLabel("");
+		cart_Item_Icon1.setHorizontalAlignment(SwingConstants.CENTER);
 		cart_Item_Icon1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/Food1.png")));
-		cart_Item_Icon1.setBounds(49, 0, 64, 72);
+		cart_Item_Icon1.setBounds(49, 6, 73, 72);
 		cart_ItemPanel1.add(cart_Item_Icon1);
 		
 		JComboBox cart_ItemComboBox1 = new JComboBox();
+		cart_ItemComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cart_ItemComboBox1.setBounds(219, 25, 44, 23);
 		cart_ItemPanel1.add(cart_ItemComboBox1);
 		
@@ -1458,10 +1469,13 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemPanel.add(cart_ItemPanel2);
 		
 		JLabel cart_Item_Icon2 = new JLabel("");
-		cart_Item_Icon2.setBounds(49, 0, 64, 72);
+		cart_Item_Icon2.setHorizontalAlignment(SwingConstants.CENTER);
+		cart_Item_Icon2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/furniture.chair.png")));
+		cart_Item_Icon2.setBounds(49, 6, 73, 72);
 		cart_ItemPanel2.add(cart_Item_Icon2);
 		
 		JComboBox cart_ItemComboBox2 = new JComboBox();
+		cart_ItemComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cart_ItemComboBox2.setBounds(219, 25, 44, 23);
 		cart_ItemPanel2.add(cart_ItemComboBox2);
 		
@@ -1503,10 +1517,13 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemPanel.add(cart_ItemPanel3);
 		
 		JLabel cart_Item_Icon3 = new JLabel("");
-		cart_Item_Icon3.setBounds(49, 0, 64, 72);
+		cart_Item_Icon3.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/digital3.jpg")));
+		cart_Item_Icon3.setHorizontalAlignment(SwingConstants.CENTER);
+		cart_Item_Icon3.setBounds(49, 6, 64, 72);
 		cart_ItemPanel3.add(cart_Item_Icon3);
 		
 		JComboBox cart_ItemComboBox3 = new JComboBox();
+		cart_ItemComboBox3.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		cart_ItemComboBox3.setBounds(219, 25, 44, 23);
 		cart_ItemPanel3.add(cart_ItemComboBox3);
 		
@@ -1747,8 +1764,16 @@ public class ShoppingMallFrame extends JFrame {
 		info_PhoneTextField.setText(loginUser.getPhone());
 		info_GenderComboBox.setSelectedItem(loginUser.getGender()+"");
 		
-	} // 생성자 끝
+	}
+	private void displayCartInfo(String userId) throws Exception {
+		/****로그인한 회원장바구니 보여주기*****/
+		CartService cartService = null;
+		cartService.getCartItemByUserId(userId);
+	}
+		
+	// 생성자 끝
 }
+
 
 
 
