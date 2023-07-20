@@ -53,7 +53,8 @@ public class OrderDao {
 		return 0;
 	}
 
-	// 주문 선택삭제_주문번호로 주문삭제(ORDER_DELETE_BY_USERID)
+	// 주문삭제(ORDER_DELETE_BY_USERID)
+	
 	
 	// 주문 전체삭제()_유저아이디로 주문삭제(ORDER_DELETE_BY_O_NO)
 	
