@@ -84,9 +84,7 @@ public class CartDao {
 		return rowCount;
 	}
 	
-	//  이해 못한 부분있어서 남깁니다
-	
-	//본인 카트에서 갯수 추가 update
+	// 상품리스트에서 장바구니 클릭 update
 	public int updateProduct1up(Cart cart) throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -94,9 +92,8 @@ public class CartDao {
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_PRODUCT_1UP);
-			pstmt.setInt(1, cart.getCart_qty());
-			pstmt.setString(2, cart.getUserId());
-			pstmt.setInt(3, cart.getProduct().getP_no());
+			pstmt.setString(1, cart.getUserId());
+			pstmt.setInt(2, cart.getProduct().getP_no());
 			rowCount = pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
@@ -107,12 +104,10 @@ public class CartDao {
 
 	}
 	
-
 	//cart List-find
 	public List<Cart> findByUserId(String userId)  {
 		return null;
 	}
-	
 	
 	//cart PK delete
 	public int deleteByCartNo(int cart_no) throws Exception {  

@@ -19,7 +19,7 @@ public class CartSQL {
 	
 //update cart set cart_qty=cart_qty+1 where userId = 'guard1' and p_no=1;
 	public static final String CART_PRODUCT_1UP 
-		= "update cart set cart_qty=cart_qty+? where userId = ? and p_no=?";
+		= "update cart set cart_qty=cart_qty+1 where userId=? and p_no=?";
 	
 //update cart set cart_qty=3 where userId = 'guard1' and p_no=1;
 	public static final String CART_PRODUCT_UP_QTYSET 

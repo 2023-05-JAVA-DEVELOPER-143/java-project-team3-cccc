@@ -25,6 +25,9 @@ public class CartDaoTestMain {
 		int b = cartDao.updateByProductNo("dddd", 1, 145);
 		System.out.println(b);
 		
+		cart = new Cart(17,"aaaa", new Product(1, "컴퓨터", 800000, null, "23년도 최신형 컴퓨터"), 1);
+		b  = cartDao.updateProduct1up(cart);
+		
 		
 
 		
