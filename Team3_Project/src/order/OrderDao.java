@@ -5,8 +5,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import common.DataSource;
+import product.Product;
 
 public class OrderDao {
 	private DataSource dataSource;
@@ -17,8 +19,7 @@ public class OrderDao {
 	}
 	
 	// 상품주문_장바구니내
-
-	// 상품주문_선택주문_1건
+	
 
 	// 상품주문_전체주문_유저
 	public int insert(Order order) throws Exception{
@@ -37,9 +38,9 @@ public class OrderDao {
 			
 			pstmt2 = con.prepareStatement(OrderSQL.ORDER_INSERT);
 			for(OrderItem orderItem:order.getOrderItemList()) {
-			pstmt2.setInt(1, orderItem.getOi_qty());
-			pstmt2.setInt	(2, orderItem.getOi_no());
-			pstmt2.executeUpdate();
+				pstmt2.setInt(1, orderItem.getOi_qty());
+				pstmt2.setInt(2, orderItem.getOi_no());
+				pstmt2.executeUpdate();
 			}
 			con.commit();
 		} catch (Exception e) {
@@ -57,12 +58,13 @@ public class OrderDao {
 	// 주문 전체삭제()_유저아이디로 주문삭제(ORDER_DELETE_BY_O_NO)
 	
 
-	// 주문 리스트	전체_유저아이디로 주문검색(ORDER_SELECT_BY_USERID)
-	public Order findOrderbyUserId(String userId) throws Exception{
+	// 주문 리스트 유저의 전체주문리스트(ORDER_SELECT_BY_USERID)
+	public List<Order> findOrderbyUserId(String userId) throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_BY_USERID);
 		pstmt.setString(1, userId);
 		ResultSet rs = pstmt.executeQuery();
+		ArrayList<Order> orderList = new ArrayList<Order>();
 		Order order = null;
 		while(rs.next()) {
 			int no = rs.getInt("o_no");
@@ -70,12 +72,47 @@ public class OrderDao {
 			Date date = rs.getDate("o_date");
 			int price = rs.getInt("o_price");
 			String id = rs.getString("userid");
-			order = new Order(no, desc, date, price, id, order.getOrderItemList() );
+			order = new Order(no, desc, date, price, id , null );
+			orderList.add(order);
 		}
-		return order;
+		
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
+		return orderList;
 	}
 	
 	// 주문 리스트 1건_유저아이디+상품로 주문 검색(ORDER_SELECT_WITH_PRODUCT_BY_USERID)
-	
+	public Order findOrderWithProductByUserId(String userid,int o_no) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_PRODUCT_BY_USERID);
+		pstmt.setString(1, userid);
+		pstmt.setInt(2, o_no);
+		ResultSet rs = pstmt.executeQuery();
+		Order order = null;
+		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>(); 
+		if(rs.next()) {
+			String o_desc = rs.getString("o_desc");
+			Date o_date = rs.getDate("o_date");
+			int o_price = rs.getInt("o_price");
+			
+			while(rs.next()) {
+				int oi_no = rs.getInt("oi_no");
+				int oi_qty = rs.getInt("oi_qty");
+				
+				orderItemList.add(new OrderItem(oi_no, oi_qty, o_no,
+						new Product(rs.getInt("p_no"),
+								rs.getString("p_name"),
+								rs.getInt("p_price"),
+								rs.getString("p_image"),
+								rs.getString("p_desc"))));
+			}
+			order = new Order(o_no, o_desc, o_date, o_price, userid, orderItemList);
+		}
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
+		return order;
+	}
 	
 }
