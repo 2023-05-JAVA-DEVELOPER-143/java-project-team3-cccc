@@ -20,8 +20,9 @@ public class OrderDaoTestMain {
 		orderDao.insert(Jumun1);
 		System.out.println(orderDao.insert(Jumun1));*/
 		
-		orderDao.insert(new Order(0, "asd", null, 50000, "aaa", null));
-		
+		//orderDao.insert(new Order(0, "asd", null, 50000, "aaa", null));
+		//orderDao.deleteByUserid("aaa");
+		orderDao.deleteByO_NO(5);
 		
 	}
 
