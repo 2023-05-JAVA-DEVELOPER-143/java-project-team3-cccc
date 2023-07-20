@@ -197,145 +197,145 @@ public class ShoppingMallFrame extends JFrame {
 		tabbedPane.addTab("HOME", null, homePanel, null);
 		homePanel.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("패  션");
-		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+		JLabel fashionLabel = new JLabel("패  션");
+		fashionLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(1);	
 			}
 			
 		});
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(90, 177, 57, 15);
-		homePanel.add(lblNewLabel_3);
+		fashionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		fashionLabel.setBounds(90, 177, 57, 15);
+		homePanel.add(fashionLabel);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("스포츠");
-		lblNewLabel_3_1.addMouseListener(new MouseAdapter() {
+		JLabel sportLabel = new JLabel("스포츠");
+		sportLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(2);	
 			}
 		});
-		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setBounds(219, 177, 57, 15);
-		homePanel.add(lblNewLabel_3_1);
+		sportLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		sportLabel.setBounds(219, 177, 57, 15);
+		homePanel.add(sportLabel);
 		
-		JLabel lblNewLabel_3_1_1 = new JLabel("생  활");
-		lblNewLabel_3_1_1.addMouseListener(new MouseAdapter() {
+		JLabel dailyLabel = new JLabel("생  활");
+		dailyLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(3);	
 			}
 		});
-		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1.setBounds(348, 177, 57, 15);
-		homePanel.add(lblNewLabel_3_1_1);
+		dailyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		dailyLabel.setBounds(348, 177, 57, 15);
+		homePanel.add(dailyLabel);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("가  구");
-		lblNewLabel_3_3.addMouseListener(new MouseAdapter() {
+		JLabel furnitureLabel = new JLabel("가  구");
+		furnitureLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(4);	
 			}
 		});
-		lblNewLabel_3_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3.setBounds(90, 332, 57, 15);
-		homePanel.add(lblNewLabel_3_3);
+		furnitureLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		furnitureLabel.setBounds(90, 332, 57, 15);
+		homePanel.add(furnitureLabel);
 		
-		JLabel lblNewLabel_3_3_1 = new JLabel("디지털");
-		lblNewLabel_3_3_1.addMouseListener(new MouseAdapter() {
+		JLabel digitalLabel = new JLabel("디지털");
+		digitalLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(5);	
 			}
 		});
-		lblNewLabel_3_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3_1.setBounds(219, 332, 57, 15);
-		homePanel.add(lblNewLabel_3_3_1);
+		digitalLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		digitalLabel.setBounds(219, 332, 57, 15);
+		homePanel.add(digitalLabel);
 		
-		JLabel lblNewLabel_3_3_1_1 = new JLabel("음  식");
-		lblNewLabel_3_3_1_1.addMouseListener(new MouseAdapter() {
+		JLabel foodLabel = new JLabel("음  식");
+		foodLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(6);	
 			}
 		});
-		lblNewLabel_3_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3_1_1.setBounds(348, 332, 57, 15);
-		homePanel.add(lblNewLabel_3_3_1_1);
+		foodLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		foodLabel.setBounds(348, 332, 57, 15);
+		homePanel.add(foodLabel);
 		
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+		JLabel fashionImage = new JLabel("");
+		fashionImage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(1);	
 			}
 		});
-		lblNewLabel_4.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/옷.png")));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(80, 87, 77, 80);
-		homePanel.add(lblNewLabel_4);
+		fashionImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/옷.png")));
+		fashionImage.setHorizontalAlignment(SwingConstants.CENTER);
+		fashionImage.setBounds(80, 87, 77, 80);
+		homePanel.add(fashionImage);
 		
-		JLabel lblNewLabel_4_1 = new JLabel("");
-		lblNewLabel_4_1.addMouseListener(new MouseAdapter() {
+		JLabel sportImage = new JLabel("");
+		sportImage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(2);	
 			}
 		});
-		lblNewLabel_4_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/스포츠레저.png")));
-		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1.setBounds(209, 87, 77, 80);
-		homePanel.add(lblNewLabel_4_1);
+		sportImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/스포츠레저.png")));
+		sportImage.setHorizontalAlignment(SwingConstants.CENTER);
+		sportImage.setBounds(209, 87, 77, 80);
+		homePanel.add(sportImage);
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("");
-		lblNewLabel_4_1_1.addMouseListener(new MouseAdapter() {
+		JLabel dailyImage = new JLabel("");
+		dailyImage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(3);	
 			}
 		});
-		lblNewLabel_4_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/생활.png")));
-		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1.setBounds(338, 87, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1);
+		dailyImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/생활.png")));
+		dailyImage.setHorizontalAlignment(SwingConstants.CENTER);
+		dailyImage.setBounds(338, 87, 77, 80);
+		homePanel.add(dailyImage);
 		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
+		JLabel furnitureImage = new JLabel("");
+		furnitureImage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(4);	
 			}
 		});
-		lblNewLabel_4_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/가구.png")));
-		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1.setBounds(80, 242, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1_1);
+		furnitureImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/가구.png")));
+		furnitureImage.setHorizontalAlignment(SwingConstants.CENTER);
+		furnitureImage.setBounds(80, 242, 77, 80);
+		homePanel.add(furnitureImage);
 		
-		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
+		JLabel digitalImage = new JLabel("");
+		digitalImage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(5);	
 			}
 		});
-		lblNewLabel_4_1_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/디지털.png")));
-		lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1_1.setBounds(209, 242, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1_1_1);
+		digitalImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/디지털.png")));
+		digitalImage.setHorizontalAlignment(SwingConstants.CENTER);
+		digitalImage.setBounds(209, 242, 77, 80);
+		homePanel.add(digitalImage);
 		
-		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1_1_1.addMouseListener(new MouseAdapter() {
+		JLabel foodImage = new JLabel("");
+		foodImage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tabbedPane.setSelectedIndex(6);	
 			}
 		});
-		lblNewLabel_4_1_1_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/식품.png")));
-		lblNewLabel_4_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1_1_1.setBounds(338, 242, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1_1_1_1);
+		foodImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/식품.png")));
+		foodImage.setHorizontalAlignment(SwingConstants.CENTER);
+		foodImage.setBounds(338, 242, 77, 80);
+		homePanel.add(foodImage);
 		
 		JPanel fashionPanel = new JPanel();
 		tabbedPane.addTab("패 션", null, fashionPanel, null);
@@ -1037,6 +1037,12 @@ public class ShoppingMallFrame extends JFrame {
 		shop_LoginPanel.add(login_Btn);
 		
 		JButton login_joinBtn = new JButton("회원가입");
+		login_joinBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		login_joinBtn.setBounds(262, 342, 97, 23);
 		shop_LoginPanel.add(login_joinBtn);
 		
