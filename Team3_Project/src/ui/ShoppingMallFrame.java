@@ -1,42 +1,40 @@
 package ui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JPasswordField;
-import javax.swing.JPopupMenu;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.BorderLayout;
-import javax.swing.JTable;
-
-import javax.swing.JComboBox;
-import java.awt.Toolkit;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Panel;
-import java.awt.Dimension;
-import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Rectangle;
-import java.awt.GridLayout;
-
-
 
 import cart.CartService;
 import order.OrderService;
@@ -44,25 +42,16 @@ import product.ProductService;
 import user.User;
 import user.UserService;
 
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.security.Provider.Service;
-
-
-
 public class ShoppingMallFrame extends JFrame {
 
-	
-	/************1. 서비스 객체변수 선언**************/
+	/************ 1. 서비스 객체변수 선언 **************/
 	private UserService userservice;
 	private CartService cartservice;
 	private ProductService productservice;
 	private OrderService orderservice;
-	
-	/************loginUser**************/
-	private User loginUser = null;
 
+	/************ loginUser **************/
+	private User loginUser = null;
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -1034,12 +1023,21 @@ public class ShoppingMallFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			try {
 				String id = login_IdTextField.getText();
-				String password = login_PasswordField.getText();
-				User loginUser = userservice.login(id, password);
-				if(loginUser!=null) {
-					loginProcess(loginUser);
-				}
-			}catch (Exception e1) {
+				String password = new String(login_PasswordField.getText());
+					User userloginUser = userservice.login(id, password);
+					if(userloginUser!=null) {
+						loginProcess(userloginUser);	
+						
+					}else {
+						//로그인 실패
+						JOptionPane.showMessageDialog(null, "아이디또는 비밀번호를 확인하세요");
+						login_IdTextField.setSelectionStart(0);
+						login_IdTextField.setSelectionEnd(id.length());
+						login_IdTextField.requestFocus();
+					}
+						
+				} 
+			catch (Exception e1) {
 				System.out.println("로그인에러-->"+e1.getMessage());
 			}
 
@@ -1186,7 +1184,7 @@ public class ShoppingMallFrame extends JFrame {
 		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
 		shopTabbedPane.setEnabledAt(3, false);
 		shop_InfoPanel.setLayout(null);
-		
+	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 		JLabel info_IdLabel = new JLabel("아이디");
 		info_IdLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		info_IdLabel.setBounds(109, 144, 57, 15);
@@ -1217,32 +1215,45 @@ public class ShoppingMallFrame extends JFrame {
 		info_GenderLabel.setBounds(109, 321, 57, 15);
 		shop_InfoPanel.add(info_GenderLabel);
 		
-		info_PhoneTextField = new JTextField();
+		info_PhoneTextField = new JTextField();//연락처 
 		info_PhoneTextField.setColumns(10);
 		info_PhoneTextField.setBounds(178, 283, 204, 21);
 		shop_InfoPanel.add(info_PhoneTextField);
 		
-		info_AddressTextField = new JTextField();
+		info_AddressTextField = new JTextField();//주소
 		info_AddressTextField.setColumns(10);
 		info_AddressTextField.setBounds(178, 248, 204, 21);
 		shop_InfoPanel.add(info_AddressTextField);
 		
-		info_NameTextField = new JTextField();
+		info_NameTextField = new JTextField();//이름
 		info_NameTextField.setColumns(10);
 		info_NameTextField.setBounds(178, 213, 204, 21);
 		shop_InfoPanel.add(info_NameTextField);
 		
-		info_IdTextField = new JTextField();
+		info_IdTextField = new JTextField();//아이디
 		info_IdTextField.setEditable(false);
 		info_IdTextField.setColumns(10);
 		info_IdTextField.setBounds(178, 141, 204, 21);
 		shop_InfoPanel.add(info_IdTextField);
 		
-		info_PasswordField = new JPasswordField();
-		info_PasswordField.setBounds(178, 178, 204, 21);
+		info_PasswordField = new JPasswordField();//비밀번호
+		info_PasswordField.setBounds(178, 182, 204, 21);
 		shop_InfoPanel.add(info_PasswordField);
 		
 		JButton info_Btn = new JButton("회원탈퇴");
+		info_Btn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						String id = loginUser.getUserId();
+						userservice.deleteUser(id);
+	
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, "회원 탈퇴 에러 : "+e1.getMessage());
+					}
+
+				}
+			});
+
 		info_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(287, 381, 95, 33);
@@ -1262,6 +1273,7 @@ public class ShoppingMallFrame extends JFrame {
 		JButton info_Cancle_Btn_1 = new JButton("수정");
 		info_Cancle_Btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				try {
 					String id = info_IdTextField.getText();
 					String password = new String(info_PasswordField.getPassword());
@@ -1278,6 +1290,7 @@ public class ShoppingMallFrame extends JFrame {
 				}catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "회원 수정 에러 : "+e1.getMessage());
 				}
+
 			}
 		});
 		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
@@ -1474,6 +1487,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemTotPrice_4_2_1.setBounds(382, 10, 91, 16);
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
+
 		JButton cart_CahngeBnt = new JButton("수  정");
 		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		cart_CahngeBnt.setBounds(62, 8, 97, 23);
@@ -1762,33 +1776,31 @@ public class ShoppingMallFrame extends JFrame {
 		order_BntPanel.add(order_Btn);
 	
 		userservice = new UserService();
+
 		cartservice = new CartService();
 
 	} // 생성자 끝
-	private void loginProcess(User loginUser)throws Exception{
+
+	private void loginProcess(User loginUser) throws Exception {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
 
 		shopTabbedPane.setEnabledAt(3, true);
 		shopTabbedPane.setSelectedIndex(0);
-		
 
 		shopTabbedPane.setSelectedIndex(0);
 	}
 
 	private void displayUserInfo(User loginUser) {
-		/****로그인한회원상세데이타보여주기*****/
+		/**** 로그인한회원상세데이타보여주기 *****/
 		info_IdTextField.setText(loginUser.getUserId());
 		info_AddressTextField.setText(loginUser.getAddress());
 		info_NameTextField.setText(loginUser.getName());
 		info_PasswordField.setText(loginUser.getPassword());
 		info_PhoneTextField.setText(loginUser.getPhone());
-		info_GenderComboBox.setSelectedItem(loginUser.getGender()+"");
-		
+		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
+
 	} // 생성자 끝
+
 }
-
-
-
-
