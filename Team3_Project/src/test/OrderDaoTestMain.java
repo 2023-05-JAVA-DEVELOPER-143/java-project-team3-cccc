@@ -1,11 +1,11 @@
 package test;
 
 import java.util.ArrayList;
+
 import order.Order;
 import order.OrderDao;
 import order.OrderItem;
 import product.Product;
-import product.ProductDao;
 
 public class OrderDaoTestMain {
 
