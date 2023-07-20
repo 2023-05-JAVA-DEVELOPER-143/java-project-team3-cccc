@@ -1130,6 +1130,7 @@ public class ShoppingMallFrame extends JFrame {
 					String gender = "";
 					if(join_GenderComboBox.getSelectedIndex()==0) {
 						join_GenderComboBox.requestFocus();
+						JOptionPane.showMessageDialog(null, "성별을 입력해주세요.");
 						return;
 					}else {
 						gender = (String)join_GenderComboBox.getSelectedItem();
