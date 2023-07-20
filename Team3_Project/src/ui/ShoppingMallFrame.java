@@ -39,6 +39,9 @@ import java.awt.Scrollbar;
 import javax.swing.JCheckBox;
 import javax.swing.border.LineBorder;
 
+import cart.CartService;
+import order.OrderService;
+import product.ProductService;
 import user.User;
 import user.UserService;
 
@@ -52,14 +55,14 @@ public class ShoppingMallFrame extends JFrame {
 
 	
 	/************1. 서비스 객체변수 선언**************/
-	private UserService userservice;
+	private UserService userService;
+	private ProductService productService;
+	private OrderService orderService;
+	private CartService cartService;
 	
 	/************loginUser**************/
-	private User loginUser;
-
-	
-	
-	
+	private User loginUser = null;
+	/**********************************/
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField join_PhoneTextField;
@@ -1144,13 +1147,17 @@ public class ShoppingMallFrame extends JFrame {
 			}
 		});
 		order_BntPanel.add(order_Btn);
-	
-		userservice = new UserService();
-
+		
+		/* 서비스 생성*/
+		userService = new UserService();
+		
 	} // 생성자 끝
 	
-	private void loginProcess(User loginUser) {
+	private void loginProcess(User loginUser)throws Exception{
+		this.loginUser = loginUser;
+		setTitle(loginUser.getName() + "님 로그인");
+		shopTabbedPane.setEnabledAt(1, false);
 		
 	}
 	
-}
+} 
