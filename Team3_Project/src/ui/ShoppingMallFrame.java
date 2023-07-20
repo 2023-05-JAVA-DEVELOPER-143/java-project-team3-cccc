@@ -156,31 +156,67 @@ public class ShoppingMallFrame extends JFrame {
 		homePanel.setLayout(null);
 		
 		JLabel fasionLabel = new JLabel("패  션");
+		fasionLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(1);	
+			}
+		});
 		fasionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		fasionLabel.setBounds(90, 177, 57, 15);
 		homePanel.add(fasionLabel);
 		
 		JLabel sportLabel = new JLabel("스포츠");
+		sportLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(2);	
+			}
+		});
 		sportLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		sportLabel.setBounds(219, 177, 57, 15);
 		homePanel.add(sportLabel);
 		
 		JLabel dailyLabel = new JLabel("생  활");
+		dailyLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(3);	
+			}
+		});
 		dailyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		dailyLabel.setBounds(348, 177, 57, 15);
 		homePanel.add(dailyLabel);
 		
 		JLabel furnitureLabel = new JLabel("가  구");
+		furnitureLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(4);	
+			}
+		});
 		furnitureLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		furnitureLabel.setBounds(90, 332, 57, 15);
 		homePanel.add(furnitureLabel);
 		
 		JLabel digitalLabel = new JLabel("디지털");
+		digitalLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(5);	
+			}
+		});
 		digitalLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		digitalLabel.setBounds(219, 332, 57, 15);
 		homePanel.add(digitalLabel);
 		
 		JLabel foodLabel = new JLabel("음  식");
+		foodLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(6);	
+			}
+		});
 		foodLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		foodLabel.setBounds(348, 332, 57, 15);
 		homePanel.add(foodLabel);
@@ -198,30 +234,60 @@ public class ShoppingMallFrame extends JFrame {
 		homePanel.add(fasionImage);
 		
 		JLabel sportImage = new JLabel("");
+		sportImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(2);	
+			}
+		});
 		sportImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/스포츠레저.png")));
 		sportImage.setHorizontalAlignment(SwingConstants.CENTER);
 		sportImage.setBounds(209, 87, 77, 80);
 		homePanel.add(sportImage);
 		
 		JLabel dailyImage = new JLabel("");
+		dailyImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(3);	
+			}
+		});
 		dailyImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/생활.png")));
 		dailyImage.setHorizontalAlignment(SwingConstants.CENTER);
 		dailyImage.setBounds(338, 87, 77, 80);
 		homePanel.add(dailyImage);
 		
 		JLabel furnitureImage = new JLabel("");
+		furnitureImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(4);	
+			}
+		});
 		furnitureImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/가구.png")));
 		furnitureImage.setHorizontalAlignment(SwingConstants.CENTER);
 		furnitureImage.setBounds(80, 242, 77, 80);
 		homePanel.add(furnitureImage);
 		
 		JLabel digitalImage = new JLabel("");
+		digitalImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(5);	
+			}
+		});
 		digitalImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/디지털.png")));
 		digitalImage.setHorizontalAlignment(SwingConstants.CENTER);
 		digitalImage.setBounds(209, 242, 77, 80);
 		homePanel.add(digitalImage);
 		
 		JLabel foodImage = new JLabel("");
+		foodImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(6);	
+			}
+		});
 		foodImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/식품.png")));
 		foodImage.setHorizontalAlignment(SwingConstants.CENTER);
 		foodImage.setBounds(338, 242, 77, 80);
