@@ -1,50 +1,41 @@
 package ui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Panel;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.BorderLayout;
-import javax.swing.JTable;
-
-import javax.swing.JComboBox;
-import java.awt.Toolkit;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Panel;
-import java.awt.Label;
-import javax.swing.JScrollBar;
-import java.awt.ScrollPane;
-import java.awt.FlowLayout;
-import java.awt.Dimension;
-import java.awt.Window.Type;
-import java.awt.Scrollbar;
-import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import user.User;
 import user.UserService;
-
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 
 public class ShoppingMallFrame extends JFrame {
@@ -429,7 +420,7 @@ public class ShoppingMallFrame extends JFrame {
 				try {
 				String id = login_IdTextField.getText();
 				String password = new String(login_PasswordField.getText());
-					User userloginUser = userService.login(id, password);
+					User userloginUser = userservice.login(id, password);
 					if(userloginUser!=null) {
 						loginProcess(userloginUser);	
 						
@@ -1147,16 +1138,14 @@ public class ShoppingMallFrame extends JFrame {
 	
 		userservice = new UserService();
 		
-<<<<<<< HEAD  
+
 		
 	}
 	void loginProcess(User loginUser)throws Exception{
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
+		shopTabbedPane.setSelectedIndex(0);
 		
 	}
-=======
 	} // 생성자 끝
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team3-cccc.git
-}
