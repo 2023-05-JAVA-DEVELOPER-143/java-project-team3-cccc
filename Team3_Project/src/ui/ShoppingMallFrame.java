@@ -1542,6 +1542,10 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemPanel3.add(cart_PsumLabel3);
 		
 		JPanel shop_OrderListPanel = new JPanel();
+		shop_OrderListPanel.addMouseListener(new MouseAdapter() {
+			
+			
+		});
 		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
 		
