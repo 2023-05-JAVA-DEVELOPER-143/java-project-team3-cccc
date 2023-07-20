@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -38,9 +39,16 @@ import java.awt.Scrollbar;
 import javax.swing.JCheckBox;
 import javax.swing.border.LineBorder;
 
+import user.User;
+import user.UserService;
+
 @SuppressWarnings("serial")
 public class ShoppingMallFrame extends JFrame {
-
+//usersercice 멤버필드 선언
+	UserService userService;
+	//로그인회원 멤버필드 선언
+	private User loginUser=null;
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField join_PhoneTextField;
@@ -331,6 +339,29 @@ public class ShoppingMallFrame extends JFrame {
 		shop_LoginPanel.add(login_PasswordField);
 		
 		JButton login_Btn = new JButton("로그인");
+		login_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				String id = login_IdTextField.getText();
+				String password = new String(login_PasswordField.getText());
+					User userloginUser = userService.login(id, password);
+					if(userloginUser!=null) {
+						loginProcess(userloginUser);	
+						
+					}else {
+						//로그인 실패
+						JOptionPane.showMessageDialog(null, "아이디또는 비밀번호를 확인하세요");
+						login_IdTextField.setSelectionStart(0);
+						login_IdTextField.setSelectionEnd(id.length());
+						login_IdTextField.requestFocus();
+					}
+						
+				} catch (Exception e1) {
+					System.out.println(e1.getStackTrace()); 
+				}
+				
+			}
+		});
 		login_Btn.setBounds(143, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		
@@ -1020,6 +1051,12 @@ public class ShoppingMallFrame extends JFrame {
 		order_BntPanel.add(order_Btn);
 	
 		
+		
+	}
+	void loginProcess(User loginUser)throws Exception{
+		this.loginUser = loginUser;
+		setTitle(loginUser.getName() + "님 로그인");
+		shopTabbedPane.setEnabledAt(1, false);
 		
 	}
 }
