@@ -85,15 +85,15 @@ public class CartDao {
 	}
 	
 	// 상품리스트에서 장바구니 클릭 update
-	public int updateProduct1up(Cart cart) throws Exception{
+	public int updateProduct1up(String userId , int p_no) throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int rowCount=0;
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_PRODUCT_1UP);
-			pstmt.setString(1, cart.getUserId());
-			pstmt.setInt(2, cart.getProduct().getP_no());
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, p_no);
 			rowCount = pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
