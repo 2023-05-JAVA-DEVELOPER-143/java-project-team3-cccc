@@ -287,6 +287,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.add(fashion_CartAddButton);
 		
 		JComboBox fashion_CartQtyComboBox = new JComboBox();
+		fashion_CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox.setOpaque(false);
 		fashion_CartQtyComboBox.setMaximumRowCount(10);
 		fashion_CartQtyComboBox.setBorder(null);
@@ -330,6 +331,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product2.add(fashion_CartAddButton2);
 		
 		JComboBox fashion_CartQtyComboBox2 = new JComboBox();
+		fashion_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox2.setOpaque(false);
 		fashion_CartQtyComboBox2.setMaximumRowCount(10);
 		fashion_CartQtyComboBox2.setBorder(null);
@@ -381,6 +383,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product1.add(sport_CartAddButton_1);
 		
 		JComboBox sport_CartQtyComboBox_1 = new JComboBox();
+		sport_CartQtyComboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		sport_CartQtyComboBox_1.setOpaque(false);
 		sport_CartQtyComboBox_1.setMaximumRowCount(10);
 		sport_CartQtyComboBox_1.setBorder(null);
@@ -424,6 +427,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product2.add(sport_CartAddButton2);
 		
 		JComboBox sport_CartQtyComboBox2 = new JComboBox();
+		sport_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		sport_CartQtyComboBox2.setOpaque(false);
 		sport_CartQtyComboBox2.setMaximumRowCount(10);
 		sport_CartQtyComboBox2.setBorder(null);
@@ -476,6 +480,7 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product1.add(daily_CartAddButton1);
 		
 		JComboBox daily_CartQtyComboBox1 = new JComboBox();
+		daily_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		daily_CartQtyComboBox1.setOpaque(false);
 		daily_CartQtyComboBox1.setMaximumRowCount(10);
 		daily_CartQtyComboBox1.setBorder(null);
@@ -520,6 +525,7 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product2.add(daily_CartAddButton2);
 		
 		JComboBox daily_CartQtyComboBox2 = new JComboBox();
+		daily_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		daily_CartQtyComboBox2.setOpaque(false);
 		daily_CartQtyComboBox2.setMaximumRowCount(10);
 		daily_CartQtyComboBox2.setBorder(null);
@@ -571,6 +577,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product1.add(furniture_CartAddButton1);
 		
 		JComboBox furniture_CartQtyComboBox1 = new JComboBox();
+		furniture_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		furniture_CartQtyComboBox1.setOpaque(false);
 		furniture_CartQtyComboBox1.setMaximumRowCount(10);
 		furniture_CartQtyComboBox1.setBorder(null);
@@ -614,6 +621,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product2.add(furniture_CartAddButton2);
 		
 		JComboBox furniture_CartQtyComboBox2 = new JComboBox();
+		furniture_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		furniture_CartQtyComboBox2.setOpaque(false);
 		furniture_CartQtyComboBox2.setMaximumRowCount(10);
 		furniture_CartQtyComboBox2.setBorder(null);
@@ -665,6 +673,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product1.add(digital_CartAddButton1);
 		
 		JComboBox digital_CartQtyComboBox1 = new JComboBox();
+		digital_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		digital_CartQtyComboBox1.setOpaque(false);
 		digital_CartQtyComboBox1.setMaximumRowCount(10);
 		digital_CartQtyComboBox1.setBorder(null);
@@ -708,6 +717,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product2.add(digital_CartAddButton2);
 		
 		JComboBox digital_CartQtyComboBox2 = new JComboBox();
+		digital_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		digital_CartQtyComboBox2.setOpaque(false);
 		digital_CartQtyComboBox2.setMaximumRowCount(10);
 		digital_CartQtyComboBox2.setBorder(null);
