@@ -74,10 +74,14 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel order_ContentPane;
 	private JScrollPane cart_ScrollPane;
 	private JPanel cart_ContentPanel;
-
 	private JComboBox join_GenderComboBox;
-
 	private JComboBox info_GenderComboBox;
+	private JComboBox info_GenderComboBox;
+	private JComboBox join_GenderComboBox;
+	private JLabel order_ItemNameLable_2_1;
+	private JComboBox fashion_CartQtyComboBox;
+	private JComboBox fashion_CartQtyComboBox2;
+
 
 	/**
 	 * Launch the application.
@@ -377,6 +381,15 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.add(fashion_DescLabel);
 		
 		JButton fashion_CartAddButton = new JButton("");
+		fashion_CartAddButton.setActionCommand("1");
+		fashion_CartAddButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println(fashion_CartAddButton.getActionCommand());
+				System.out.println(fashion_CartQtyComboBox.getSelectedItem());
+				
+			}
+		});
 		fashion_CartAddButton.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton.setOpaque(false);
 		fashion_CartAddButton.setForeground(Color.WHITE);
@@ -385,7 +398,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton.setBounds(136, 119, 31, 23);
 		fashion_Product1.add(fashion_CartAddButton);
 		
-		JComboBox fashion_CartQtyComboBox = new JComboBox();
+		fashion_CartQtyComboBox = new JComboBox();
 		fashion_CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox.setOpaque(false);
 		fashion_CartQtyComboBox.setMaximumRowCount(10);
@@ -422,6 +435,16 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product2.add(fashion_DescLabel2);
 		
 		JButton fashion_CartAddButton2 = new JButton("");
+		fashion_CartAddButton2.setActionCommand("2");
+		fashion_CartAddButton2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println(fashion_CartAddButton2.getActionCommand());
+				System.out.println(fashion_CartQtyComboBox2.getSelectedItem());
+				
+			}
+		});
 		fashion_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton2.setOpaque(false);
 		fashion_CartAddButton2.setForeground(Color.WHITE);
@@ -430,7 +453,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton2.setBounds(136, 119, 31, 23);
 		fashion_Product2.add(fashion_CartAddButton2);
 		
-		JComboBox fashion_CartQtyComboBox2 = new JComboBox();
+		fashion_CartQtyComboBox2 = new JComboBox();
 		fashion_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox2.setOpaque(false);
 		fashion_CartQtyComboBox2.setMaximumRowCount(10);
@@ -1143,6 +1166,7 @@ public class ShoppingMallFrame extends JFrame {
 					String gender = "";
 					if(join_GenderComboBox.getSelectedIndex()==0) {
 						join_GenderComboBox.requestFocus();
+						JOptionPane.showMessageDialog(null, "성별을 입력해주세요.");
 						return;
 					}else {
 						gender = (String)join_GenderComboBox.getSelectedItem();
@@ -1492,21 +1516,23 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
 
-		JButton cart_CahngeBnt = new JButton("수  정");
-		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_CahngeBnt.setBounds(62, 8, 97, 23);
-		cart_ListSumPanel.add(cart_CahngeBnt);
-		
-
-		JButton cart_DelBnt = new JButton("삭  제");
-		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_DelBnt.setBounds(188, 8, 97, 23);
-		cart_ListSumPanel.add(cart_DelBnt);
 		JButton btnNewButton_2 = new JButton("삭  제");
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		btnNewButton_2.setBounds(188, 8, 97, 23);
+		btnNewButton_2.setBounds(204, 7, 97, 23);
 		cart_ListSumPanel.add(btnNewButton_2);
+		
+
+		JButton cart_DelBnt = new JButton("구매");
+		cart_DelBnt.setBounds(0, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt);
+		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
+
+		JButton cart_CahngeBnt = new JButton("수  정");
+		cart_CahngeBnt.setBounds(92, 7, 97, 23);
+		cart_ListSumPanel.add(cart_CahngeBnt);
+		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 	
 		JPanel cart_ItemPanel2 = new JPanel();
 		cart_ItemPanel2.setLayout(null);
@@ -1524,7 +1550,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JLabel cart_ItemNameLabel2 = new JLabel("가  구");
 		cart_ItemNameLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemNameLabel2.setBounds(134, 29, 57, 15);
+		cart_ItemNameLabel2.setBounds(135, 29, 57, 15);
 		cart_ItemPanel2.add(cart_ItemNameLabel2);
 		
 		JLabel cart_ItemPriceLabel2 = new JLabel("300,000");
@@ -1640,7 +1666,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_ItemTotPrice_2.setBounds(361, 34, 69, 16);
 		order_ProductPanel1.add(order_ItemTotPrice_2);
 		
-		JLabel order_ItemNameLable_2_1 = new JLabel("2023/07/20");
+		order_ItemNameLable_2_1 = new JLabel("2023/07/20");
 		order_ItemNameLable_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		order_ItemNameLable_2_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		order_ItemNameLable_2_1.setBounds(103, 34, 81, 16);
