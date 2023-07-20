@@ -922,7 +922,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_DelBnt.setBounds(188, 8, 97, 23);
 		cart_ListSumPanel.add(cart_DelBnt);
 		JButton btnNewButton_2 = new JButton("삭  제");
-		
+
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		btnNewButton_2.setBounds(188, 8, 97, 23);
 		cart_ListSumPanel.add(btnNewButton_2);
