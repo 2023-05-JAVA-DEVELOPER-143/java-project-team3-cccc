@@ -1,46 +1,40 @@
 package ui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JPasswordField;
-import javax.swing.JPopupMenu;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.BorderLayout;
-import javax.swing.JTable;
-
-import javax.swing.JComboBox;
-import java.awt.Toolkit;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Panel;
-import java.awt.Dimension;
-import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
-
-import user.User;
-import user.UserService;
-
-import java.awt.Rectangle;
-import java.awt.GridLayout;
-
 
 
 import cart.CartService;
@@ -49,30 +43,16 @@ import product.ProductService;
 import user.User;
 import user.UserService;
 
-
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.security.Provider.Service;
-
-
-@SuppressWarnings("serial")
 public class ShoppingMallFrame extends JFrame {
-	
-	private UserService userService;
-	
+	/************ 1. 서비스 객체변수 선언 **************/
 
-	
-	/************1. 서비스 객체변수 선언**************/
 	private UserService userservice;
 	private CartService cartservice;
 	private ProductService productservice;
 	private OrderService orderservice;
-	
-	/************loginUser**************/
+
+	/************ loginUser **************/
 	private User loginUser = null;
-
-
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -153,6 +133,25 @@ public class ShoppingMallFrame extends JFrame {
 		menuBar.add(cartLabel);
 		
 		JLabel lblNewLabel_5 = new JLabel("장바구니");
+		lblNewLabel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			// 메뉴바 장바구니 이미지 클릭 시 장바구니로 이동
+			
+			public void mouseClicked(MouseEvent e) {
+			
+				if (loginUser == null) {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+					shopTabbedPane.setSelectedIndex(1);
+				}else {			
+			try {
+				shopTabbedPane.setSelectedIndex(5);
+			} catch (Exception e2) {
+				
+			}
+			}
+			}
+		});
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
@@ -161,7 +160,7 @@ public class ShoppingMallFrame extends JFrame {
 		loginLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				shopTabbedPane.setSelectedIndex(1);
 			}
 		});
 		loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -169,6 +168,12 @@ public class ShoppingMallFrame extends JFrame {
 		menuBar.add(loginLabel);
 		
 		JLabel joinLabel = new JLabel("  회원가입");
+		joinLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				shopTabbedPane.setSelectedIndex(2);
+			}
+		});
 		menuBar.add(joinLabel);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -197,72 +202,145 @@ public class ShoppingMallFrame extends JFrame {
 		tabbedPane.addTab("HOME", null, homePanel, null);
 		homePanel.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("패  션");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(90, 177, 57, 15);
-		homePanel.add(lblNewLabel_3);
+		JLabel fashionLabel = new JLabel("패  션");
+		fashionLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(1);	
+			}
+			
+		});
+		fashionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		fashionLabel.setBounds(90, 177, 57, 15);
+		homePanel.add(fashionLabel);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("스포츠");
-		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setBounds(219, 177, 57, 15);
-		homePanel.add(lblNewLabel_3_1);
+		JLabel sportLabel = new JLabel("스포츠");
+		sportLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(2);	
+			}
+		});
+		sportLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		sportLabel.setBounds(219, 177, 57, 15);
+		homePanel.add(sportLabel);
 		
-		JLabel lblNewLabel_3_1_1 = new JLabel("생  활");
-		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1.setBounds(348, 177, 57, 15);
-		homePanel.add(lblNewLabel_3_1_1);
+		JLabel dailyLabel = new JLabel("생  활");
+		dailyLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(3);	
+			}
+		});
+		dailyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		dailyLabel.setBounds(348, 177, 57, 15);
+		homePanel.add(dailyLabel);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("가  구");
-		lblNewLabel_3_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3.setBounds(90, 332, 57, 15);
-		homePanel.add(lblNewLabel_3_3);
+		JLabel furnitureLabel = new JLabel("가  구");
+		furnitureLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(4);	
+			}
+		});
+		furnitureLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		furnitureLabel.setBounds(90, 332, 57, 15);
+		homePanel.add(furnitureLabel);
 		
-		JLabel lblNewLabel_3_3_1 = new JLabel("디지털");
-		lblNewLabel_3_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3_1.setBounds(219, 332, 57, 15);
-		homePanel.add(lblNewLabel_3_3_1);
+		JLabel digitalLabel = new JLabel("디지털");
+		digitalLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(5);	
+			}
+		});
+		digitalLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		digitalLabel.setBounds(219, 332, 57, 15);
+		homePanel.add(digitalLabel);
 		
-		JLabel lblNewLabel_3_3_1_1 = new JLabel("음  식");
-		lblNewLabel_3_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_3_1_1.setBounds(348, 332, 57, 15);
-		homePanel.add(lblNewLabel_3_3_1_1);
+		JLabel foodLabel = new JLabel("음  식");
+		foodLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(6);	
+			}
+		});
+		foodLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		foodLabel.setBounds(348, 332, 57, 15);
+		homePanel.add(foodLabel);
 		
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/옷.png")));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(80, 87, 77, 80);
-		homePanel.add(lblNewLabel_4);
+		JLabel fashionImage = new JLabel("");
+		fashionImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(1);	
+			}
+		});
+		fashionImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/옷.png")));
+		fashionImage.setHorizontalAlignment(SwingConstants.CENTER);
+		fashionImage.setBounds(80, 87, 77, 80);
+		homePanel.add(fashionImage);
 		
-		JLabel lblNewLabel_4_1 = new JLabel("");
-		lblNewLabel_4_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/스포츠레저.png")));
-		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1.setBounds(209, 87, 77, 80);
-		homePanel.add(lblNewLabel_4_1);
+		JLabel sportImage = new JLabel("");
+		sportImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(2);	
+			}
+		});
+		sportImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/스포츠레저.png")));
+		sportImage.setHorizontalAlignment(SwingConstants.CENTER);
+		sportImage.setBounds(209, 87, 77, 80);
+		homePanel.add(sportImage);
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("");
-		lblNewLabel_4_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/생활.png")));
-		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1.setBounds(338, 87, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1);
+		JLabel dailyImage = new JLabel("");
+		dailyImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(3);	
+			}
+		});
+		dailyImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/생활.png")));
+		dailyImage.setHorizontalAlignment(SwingConstants.CENTER);
+		dailyImage.setBounds(338, 87, 77, 80);
+		homePanel.add(dailyImage);
 		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/가구.png")));
-		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1.setBounds(80, 242, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1_1);
+		JLabel furnitureImage = new JLabel("");
+		furnitureImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(4);	
+			}
+		});
+		furnitureImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/가구.png")));
+		furnitureImage.setHorizontalAlignment(SwingConstants.CENTER);
+		furnitureImage.setBounds(80, 242, 77, 80);
+		homePanel.add(furnitureImage);
 		
-		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/디지털.png")));
-		lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1_1.setBounds(209, 242, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1_1_1);
+		JLabel digitalImage = new JLabel("");
+		digitalImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(5);	
+			}
+		});
+		digitalImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/디지털.png")));
+		digitalImage.setHorizontalAlignment(SwingConstants.CENTER);
+		digitalImage.setBounds(209, 242, 77, 80);
+		homePanel.add(digitalImage);
 		
-		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_4_1_1_1_1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/식품.png")));
-		lblNewLabel_4_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1_1_1.setBounds(338, 242, 77, 80);
-		homePanel.add(lblNewLabel_4_1_1_1_1_1);
+		JLabel foodImage = new JLabel("");
+		foodImage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(6);	
+			}
+		});
+		foodImage.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/식품.png")));
+		foodImage.setHorizontalAlignment(SwingConstants.CENTER);
+		foodImage.setBounds(338, 242, 77, 80);
+		homePanel.add(foodImage);
 		
 		JPanel fashionPanel = new JPanel();
 		tabbedPane.addTab("패 션", null, fashionPanel, null);
@@ -299,6 +377,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.add(fashion_DescLabel);
 		
 		JButton fashion_CartAddButton = new JButton("");
+		fashion_CartAddButton.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton.setOpaque(false);
 		fashion_CartAddButton.setForeground(Color.WHITE);
 		fashion_CartAddButton.setBorder(null);
@@ -307,6 +386,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.add(fashion_CartAddButton);
 		
 		JComboBox fashion_CartQtyComboBox = new JComboBox();
+		fashion_CartQtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox.setOpaque(false);
 		fashion_CartQtyComboBox.setMaximumRowCount(10);
 		fashion_CartQtyComboBox.setBorder(null);
@@ -329,7 +409,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_ContentPanel.add(fashion_Product2);
 		
 		JLabel fashion_IconLabel2 = new JLabel("");
-		fashion_IconLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/fashion.pants.png")));
+		fashion_IconLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/fashion.Tshirt.png")));
 		fashion_IconLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		fashion_IconLabel2.setBounds(3, 1, 162, 116);
 		fashion_Product2.add(fashion_IconLabel2);
@@ -342,6 +422,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product2.add(fashion_DescLabel2);
 		
 		JButton fashion_CartAddButton2 = new JButton("");
+		fashion_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton2.setOpaque(false);
 		fashion_CartAddButton2.setForeground(Color.WHITE);
 		fashion_CartAddButton2.setBorder(null);
@@ -350,6 +431,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product2.add(fashion_CartAddButton2);
 		
 		JComboBox fashion_CartQtyComboBox2 = new JComboBox();
+		fashion_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		fashion_CartQtyComboBox2.setOpaque(false);
 		fashion_CartQtyComboBox2.setMaximumRowCount(10);
 		fashion_CartQtyComboBox2.setBorder(null);
@@ -393,6 +475,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product1.add(sport_DescLabel_1);
 		
 		JButton sport_CartAddButton_1 = new JButton("");
+		sport_CartAddButton_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton_1.setOpaque(false);
 		sport_CartAddButton_1.setForeground(Color.WHITE);
 		sport_CartAddButton_1.setBorder(null);
@@ -401,6 +484,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product1.add(sport_CartAddButton_1);
 		
 		JComboBox sport_CartQtyComboBox_1 = new JComboBox();
+		sport_CartQtyComboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		sport_CartQtyComboBox_1.setOpaque(false);
 		sport_CartQtyComboBox_1.setMaximumRowCount(10);
 		sport_CartQtyComboBox_1.setBorder(null);
@@ -423,19 +507,20 @@ public class ShoppingMallFrame extends JFrame {
 		sport_ContentPanel.add(sport_Product2);
 		
 		JLabel sport_IconLabel2 = new JLabel("");
-		sport_IconLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/sports.kettler.png")));
+		sport_IconLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/sports.basketball.png")));
 		sport_IconLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		sport_IconLabel2.setBounds(3, 1, 162, 116);
 		sport_Product2.add(sport_IconLabel2);
 		
-		JLabel sport_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 실내 자전거<br>\r\n\t\t\t가격: 500,000<br>\r\n\t\t\t설명: 건조기 기능이 있는 자전거\r\n\t\t\r\n </font></html>");
+		JLabel sport_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 농구공<br>\r\n\t\t\t가격: 50,000<br>\r\n\t\t\t설명: 농구고옹\r\n\t\t\r\n </font></html>");
 		sport_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
 		sport_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
 		sport_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		sport_DescLabel2.setBounds(3, 143, 210, 47);
+		sport_DescLabel2.setBounds(3, 143, 164, 47);
 		sport_Product2.add(sport_DescLabel2);
 		
 		JButton sport_CartAddButton2 = new JButton("");
+		sport_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton2.setOpaque(false);
 		sport_CartAddButton2.setForeground(Color.WHITE);
 		sport_CartAddButton2.setBorder(null);
@@ -444,6 +529,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product2.add(sport_CartAddButton2);
 		
 		JComboBox sport_CartQtyComboBox2 = new JComboBox();
+		sport_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		sport_CartQtyComboBox2.setOpaque(false);
 		sport_CartQtyComboBox2.setMaximumRowCount(10);
 		sport_CartQtyComboBox2.setBorder(null);
@@ -496,6 +582,7 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product1.add(daily_CartAddButton1);
 		
 		JComboBox daily_CartQtyComboBox1 = new JComboBox();
+		daily_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		daily_CartQtyComboBox1.setOpaque(false);
 		daily_CartQtyComboBox1.setMaximumRowCount(10);
 		daily_CartQtyComboBox1.setBorder(null);
@@ -540,6 +627,7 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product2.add(daily_CartAddButton2);
 		
 		JComboBox daily_CartQtyComboBox2 = new JComboBox();
+		daily_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		daily_CartQtyComboBox2.setOpaque(false);
 		daily_CartQtyComboBox2.setMaximumRowCount(10);
 		daily_CartQtyComboBox2.setBorder(null);
@@ -556,6 +644,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniturePanel.add(furniture_ContentPanel);
 		furniture_ContentPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
+
 		JPanel furniture_Product1 = new JPanel();
 		furniture_Product1.setLayout(null);
 		furniture_Product1.setSize(new Dimension(120, 120));
@@ -583,6 +672,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product1.add(furniture_DescLabel1);
 		
 		JButton furniture_CartAddButton1 = new JButton("");
+		furniture_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton1.setOpaque(false);
 		furniture_CartAddButton1.setForeground(Color.WHITE);
 		furniture_CartAddButton1.setBorder(null);
@@ -591,6 +681,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product1.add(furniture_CartAddButton1);
 		
 		JComboBox furniture_CartQtyComboBox1 = new JComboBox();
+		furniture_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		furniture_CartQtyComboBox1.setOpaque(false);
 		furniture_CartQtyComboBox1.setMaximumRowCount(10);
 		furniture_CartQtyComboBox1.setBorder(null);
@@ -626,6 +717,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product2.add(furniture_DescLabel2);
 		
 		JButton furniture_CartAddButton2 = new JButton("");
+		furniture_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton2.setOpaque(false);
 		furniture_CartAddButton2.setForeground(Color.WHITE);
 		furniture_CartAddButton2.setBorder(null);
@@ -634,6 +726,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product2.add(furniture_CartAddButton2);
 		
 		JComboBox furniture_CartQtyComboBox2 = new JComboBox();
+		furniture_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		furniture_CartQtyComboBox2.setOpaque(false);
 		furniture_CartQtyComboBox2.setMaximumRowCount(10);
 		furniture_CartQtyComboBox2.setBorder(null);
@@ -677,6 +770,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product1.add(digital_DescLabel1);
 		
 		JButton digital_CartAddButton1 = new JButton("");
+		digital_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton1.setOpaque(false);
 		digital_CartAddButton1.setForeground(Color.WHITE);
 		digital_CartAddButton1.setBorder(null);
@@ -685,6 +779,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product1.add(digital_CartAddButton1);
 		
 		JComboBox digital_CartQtyComboBox1 = new JComboBox();
+		digital_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		digital_CartQtyComboBox1.setOpaque(false);
 		digital_CartQtyComboBox1.setMaximumRowCount(10);
 		digital_CartQtyComboBox1.setBorder(null);
@@ -720,6 +815,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product2.add(digital_DescLabel2);
 		
 		JButton digital_CartAddButton2 = new JButton("");
+		digital_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton2.setOpaque(false);
 		digital_CartAddButton2.setForeground(Color.WHITE);
 		digital_CartAddButton2.setBorder(null);
@@ -728,6 +824,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product2.add(digital_CartAddButton2);
 		
 		JComboBox digital_CartQtyComboBox2 = new JComboBox();
+		digital_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		digital_CartQtyComboBox2.setOpaque(false);
 		digital_CartQtyComboBox2.setMaximumRowCount(10);
 		digital_CartQtyComboBox2.setBorder(null);
@@ -744,6 +841,7 @@ public class ShoppingMallFrame extends JFrame {
 		foodPanel.add(food_ContentPanel);
 		food_ContentPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
+
 		JPanel food_Product1 = new JPanel();
 		food_Product1.setLayout(null);
 		food_Product1.setSize(new Dimension(120, 120));
@@ -771,6 +869,7 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product1.add(food_DescLabel1);
 		
 		JButton food_CartAddButton1 = new JButton("");
+		food_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton1.setOpaque(false);
 		food_CartAddButton1.setForeground(Color.WHITE);
 		food_CartAddButton1.setBorder(null);
@@ -814,6 +913,7 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product2.add(food_DescLabel2);
 		
 		JButton food_CartAddButton2 = new JButton("");
+		food_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton2.setOpaque(false);
 		food_CartAddButton2.setForeground(Color.WHITE);
 		food_CartAddButton2.setBorder(null);
@@ -927,21 +1027,36 @@ public class ShoppingMallFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			try {
 				String id = login_IdTextField.getText();
-				String password = login_PasswordField.getText();
-				User loginUser = userservice.login(id, password);
-				if(loginUser!=null) {
-					loginProcess(loginUser);
-				}
-			}catch (Exception e1) {
+				String password = new String(login_PasswordField.getText());
+					User userloginUser = userservice.login(id, password);
+					if(userloginUser!=null) {
+						loginProcess(userloginUser);	
+						
+					}else {
+						//로그인 실패
+						JOptionPane.showMessageDialog(null, "아이디또는 비밀번호를 확인하세요");
+						login_IdTextField.setSelectionStart(0);
+						login_IdTextField.setSelectionEnd(id.length());
+						login_IdTextField.requestFocus();
+					}
+						
+				} 
+			catch (Exception e1) {
 				System.out.println("로그인에러-->"+e1.getMessage());
 			}
-				
+
 			}
 		});
 		login_Btn.setBounds(143, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		
 		JButton login_joinBtn = new JButton("회원가입");
+		login_joinBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				shopTabbedPane.setSelectedIndex(2);
+			}
+		});
 		login_joinBtn.setBounds(262, 342, 97, 23);
 		shop_LoginPanel.add(login_joinBtn);
 		
@@ -1020,31 +1135,24 @@ public class ShoppingMallFrame extends JFrame {
 		join_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String userId = join_IdTextField.getText();
+					String id = join_IdTextField.getText();
 					String password = new String(join_PasswordField.getPassword());
 					String name = join_NameTextFiled.getText();
 					String address = join_AddressTextField.getText();
 					String phone = join_PhoneTextField.getText();
+					String gender = "";
+					if(join_GenderComboBox.getSelectedIndex()==0) {
+						join_GenderComboBox.requestFocus();
+						return;
+					}else {
+						gender = (String)join_GenderComboBox.getSelectedItem();
+					}
+					userservice.create(new User(id, password, name, address, phone, gender));
+				} catch (Exception e2) {
 					
-					String gender = null;
-					if (join_GenderComboBox != null) {
-					    gender = (String) join_GenderComboBox.getSelectedItem();
-					}
-
-					if (gender == null || gender.isEmpty()) {
-					   
-					}
-
-				
-			            User user = new User(userId, password, name, address, phone, gender);
-
-			            shopTabbedPane.setSelectedIndex(0);
-			            userService.create(user);
-			        } catch (Exception e1) {
-			            e1.printStackTrace();
-			        }
-			    }
-			});
+				}
+			}
+		});
 		join_Btn.setBackground(new Color(255, 255, 255));
 		join_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		join_Btn.setBounds(142, 405, 115, 33);
@@ -1080,7 +1188,7 @@ public class ShoppingMallFrame extends JFrame {
 		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
 		shopTabbedPane.setEnabledAt(3, false);
 		shop_InfoPanel.setLayout(null);
-		
+	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 		JLabel info_IdLabel = new JLabel("아이디");
 		info_IdLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		info_IdLabel.setBounds(109, 144, 57, 15);
@@ -1111,32 +1219,45 @@ public class ShoppingMallFrame extends JFrame {
 		info_GenderLabel.setBounds(109, 321, 57, 15);
 		shop_InfoPanel.add(info_GenderLabel);
 		
-		info_PhoneTextField = new JTextField();
+		info_PhoneTextField = new JTextField();//연락처 
 		info_PhoneTextField.setColumns(10);
 		info_PhoneTextField.setBounds(178, 283, 204, 21);
 		shop_InfoPanel.add(info_PhoneTextField);
 		
-		info_AddressTextField = new JTextField();
+		info_AddressTextField = new JTextField();//주소
 		info_AddressTextField.setColumns(10);
 		info_AddressTextField.setBounds(178, 248, 204, 21);
 		shop_InfoPanel.add(info_AddressTextField);
 		
-		info_NameTextField = new JTextField();
+		info_NameTextField = new JTextField();//이름
 		info_NameTextField.setColumns(10);
 		info_NameTextField.setBounds(178, 213, 204, 21);
 		shop_InfoPanel.add(info_NameTextField);
 		
-		info_IdTextField = new JTextField();
+		info_IdTextField = new JTextField();//아이디
 		info_IdTextField.setEditable(false);
 		info_IdTextField.setColumns(10);
 		info_IdTextField.setBounds(178, 141, 204, 21);
 		shop_InfoPanel.add(info_IdTextField);
 		
-		info_PasswordField = new JPasswordField();
-		info_PasswordField.setBounds(178, 178, 204, 21);
+		info_PasswordField = new JPasswordField();//비밀번호
+		info_PasswordField.setBounds(178, 182, 204, 21);
 		shop_InfoPanel.add(info_PasswordField);
 		
 		JButton info_Btn = new JButton("회원탈퇴");
+		info_Btn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						String id = loginUser.getUserId();
+						userservice.deleteUser(id);
+	
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, "회원 탈퇴 에러 : "+e1.getMessage());
+					}
+
+				}
+			});
+
 		info_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(287, 381, 95, 33);
@@ -1156,6 +1277,7 @@ public class ShoppingMallFrame extends JFrame {
 		JButton info_Cancle_Btn_1 = new JButton("수정");
 		info_Cancle_Btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				try {
 					String id = info_IdTextField.getText();
 					String password = new String(info_PasswordField.getPassword());
@@ -1172,6 +1294,7 @@ public class ShoppingMallFrame extends JFrame {
 				}catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "회원 수정 에러 : "+e1.getMessage());
 				}
+
 			}
 		});
 		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
@@ -1368,6 +1491,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemTotPrice_4_2_1.setBounds(382, 10, 91, 16);
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
+
 		JButton cart_CahngeBnt = new JButton("수  정");
 		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		cart_CahngeBnt.setBounds(62, 8, 97, 23);
@@ -1656,33 +1780,31 @@ public class ShoppingMallFrame extends JFrame {
 		order_BntPanel.add(order_Btn);
 	
 		userservice = new UserService();
+
 		cartservice = new CartService();
 
 	} // 생성자 끝
-	private void loginProcess(User loginUser)throws Exception{
+
+	private void loginProcess(User loginUser) throws Exception {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
 
 		shopTabbedPane.setEnabledAt(3, true);
 		shopTabbedPane.setSelectedIndex(0);
-		
 
 		shopTabbedPane.setSelectedIndex(0);
 	}
 
 	private void displayUserInfo(User loginUser) {
-		/****로그인한회원상세데이타보여주기*****/
+		/**** 로그인한회원상세데이타보여주기 *****/
 		info_IdTextField.setText(loginUser.getUserId());
 		info_AddressTextField.setText(loginUser.getAddress());
 		info_NameTextField.setText(loginUser.getName());
 		info_PasswordField.setText(loginUser.getPassword());
 		info_PhoneTextField.setText(loginUser.getPhone());
-		info_GenderComboBox.setSelectedItem(loginUser.getGender()+"");
-		
+		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
+
 	} // 생성자 끝
+
 }
-
-
-
-
