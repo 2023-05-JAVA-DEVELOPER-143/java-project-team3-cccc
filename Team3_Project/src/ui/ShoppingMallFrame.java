@@ -1146,11 +1146,9 @@ public class ShoppingMallFrame extends JFrame {
 		order_BntPanel.add(order_Btn);
 	
 		userservice = new UserService();
-		
 
-		
 	}
-	void loginProcess(User loginUser)throws Exception{
+	private void loginProcess(User loginUser)throws Exception{
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
