@@ -41,6 +41,7 @@ import order.OrderService;
 import product.ProductService;
 import user.User;
 import user.UserService;
+import javax.swing.table.DefaultTableModel;
 
 public class ShoppingMallFrame extends JFrame {
 
@@ -79,6 +80,7 @@ public class ShoppingMallFrame extends JFrame {
 
 	private JComboBox fashion_CartQtyComboBox;
 	private JComboBox fashion_CartQtyComboBox2;
+	private JTable table_1;
 
 
 	/**
@@ -1395,94 +1397,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemPanel.setLayout(null);
 		cart_ItemPanel.setPreferredSize(new Dimension(390, 780));
 		cart_ItemPanel.setBorder(null);
-		cart_ContentPanel.add(cart_ItemPanel);	
-	
-		JPanel cart_ItemPanel1 = new JPanel();
-		cart_ItemPanel1.setLayout(null);
-		cart_ItemPanel1.setBounds(0, 60, 485, 80);
-		cart_ItemPanel1.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		cart_ItemPanel.add(cart_ItemPanel1);
-	
-
-		
-		JLabel cart_Item_Icon1 = new JLabel("");
-		cart_Item_Icon1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/Food1.png")));
-		cart_Item_Icon1.setBounds(49, 0, 64, 72);
-		cart_ItemPanel1.add(cart_Item_Icon1);
-		
-		JComboBox cart_ItemComboBox1 = new JComboBox();
-		cart_ItemComboBox1.setBounds(219, 25, 44, 23);
-		cart_ItemPanel1.add(cart_ItemComboBox1);
-		
-		JLabel cart_ItemNameLabel1 = new JLabel("음 식");
-		cart_ItemNameLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemNameLabel1.setBounds(134, 29, 57, 15);
-		cart_ItemPanel1.add(cart_ItemNameLabel1);
-		
-		JLabel cart_ItemPriceLabel1 = new JLabel("300,000");
-		cart_ItemPriceLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemPriceLabel1.setBounds(297, 29, 57, 15);
-		cart_ItemPanel1.add(cart_ItemPriceLabel1);
-		
-		JCheckBox cart_ItemCheckBox1 = new JCheckBox("");
-		cart_ItemCheckBox1.setBounds(20, 25, 21, 23);
-		cart_ItemPanel1.add(cart_ItemCheckBox1);
-		
-		JLabel cart_PpHangleLabel1 = new JLabel("원");
-		cart_PpHangleLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PpHangleLabel1.setFont(new Font("굴림", Font.PLAIN, 13));
-		cart_PpHangleLabel1.setBounds(351, 29, 21, 15);
-		cart_ItemPanel1.add(cart_PpHangleLabel1);
-		
-		JLabel cart_PsHangleLabel1 = new JLabel("원");
-		cart_PsHangleLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PsHangleLabel1.setFont(new Font("굴림", Font.PLAIN, 13));
-		cart_PsHangleLabel1.setBounds(452, 29, 21, 15);
-		cart_ItemPanel1.add(cart_PsHangleLabel1);
-		
-		JLabel cart_PsumLabel1 = new JLabel("300,000");
-		cart_PsumLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PsumLabel1.setBounds(398, 29, 57, 15);
-		cart_ItemPanel1.add(cart_PsumLabel1);
-		
-		Panel cart_ListTiltlePanel = new Panel();
-		cart_ListTiltlePanel.setLocation(0, 10);
-		cart_ListTiltlePanel.setSize(485, 40);
-		cart_ListTiltlePanel.setLayout(null);
-		cart_ItemPanel.add(cart_ListTiltlePanel);
-		
-		JLabel cart_ListNameLable = new JLabel("상품명");
-		cart_ListNameLable.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ListNameLable.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListNameLable.setBounds(138, 12, 44, 16);
-		cart_ListTiltlePanel.add(cart_ListNameLable);
-		
-		JLabel cart_ListNoLabel = new JLabel("수량");
-		cart_ListNoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ListNoLabel.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListNoLabel.setBounds(218, 12, 44, 16);
-		cart_ListTiltlePanel.add(cart_ListNoLabel);
-		
-		JLabel cart_ListPriceLabel = new JLabel("가격");
-		cart_ListPriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ListPriceLabel.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListPriceLabel.setBounds(316, 12, 33, 15);
-		cart_ListTiltlePanel.add(cart_ListPriceLabel);
-		
-		JLabel cart_ListTotPriceLabel = new JLabel("주문금액");
-		cart_ListTotPriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ListTotPriceLabel.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListTotPriceLabel.setBounds(393, 12, 69, 16);
-		cart_ListTiltlePanel.add(cart_ListTotPriceLabel);
-		
-		JCheckBox cart_ListAllCheckBox = new JCheckBox("");
-		cart_ListAllCheckBox.setBounds(20, 8, 21, 23);
-		cart_ListTiltlePanel.add(cart_ListAllCheckBox);
-		
-		JLabel cart_ListAllLabel = new JLabel("전체선택");
-		cart_ListAllLabel.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListAllLabel.setBounds(49, 12, 57, 15);
-		cart_ListTiltlePanel.add(cart_ListAllLabel);
+		cart_ContentPanel.add(cart_ItemPanel);
 		
 		Panel cart_ListSumPanel = new Panel();
 		cart_ListSumPanel.setLayout(null);
@@ -1519,96 +1434,23 @@ public class ShoppingMallFrame extends JFrame {
 		cart_CahngeBnt.setBounds(92, 7, 97, 23);
 		cart_ListSumPanel.add(cart_CahngeBnt);
 		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-	
-		JPanel cart_ItemPanel2 = new JPanel();
-		cart_ItemPanel2.setLayout(null);
-		cart_ItemPanel2.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		cart_ItemPanel2.setBounds(0, 150, 485, 80);
-		cart_ItemPanel.add(cart_ItemPanel2);
 		
-		JLabel cart_Item_Icon2 = new JLabel("");
-		cart_Item_Icon2.setBounds(49, 0, 64, 72);
-		cart_ItemPanel2.add(cart_Item_Icon2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(36, 23, 428, 161);
+		cart_ItemPanel.add(scrollPane);
 		
-		JComboBox cart_ItemComboBox2 = new JComboBox();
-		cart_ItemComboBox2.setBounds(219, 25, 44, 23);
-		cart_ItemPanel2.add(cart_ItemComboBox2);
-		
-		JLabel cart_ItemNameLabel2 = new JLabel("가  구");
-		cart_ItemNameLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemNameLabel2.setBounds(135, 29, 57, 15);
-		cart_ItemPanel2.add(cart_ItemNameLabel2);
-		
-		JLabel cart_ItemPriceLabel2 = new JLabel("300,000");
-		cart_ItemPriceLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemPriceLabel2.setBounds(297, 29, 57, 15);
-		cart_ItemPanel2.add(cart_ItemPriceLabel2);
-		
-		JCheckBox cart_ItemCheckBox2 = new JCheckBox("");
-		cart_ItemCheckBox2.setBounds(20, 25, 21, 23);
-		cart_ItemPanel2.add(cart_ItemCheckBox2);
-		
-		JLabel cart_PpHangleLabel2 = new JLabel("원");
-		cart_PpHangleLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PpHangleLabel2.setFont(new Font("굴림", Font.PLAIN, 13));
-		cart_PpHangleLabel2.setBounds(351, 29, 21, 15);
-		cart_ItemPanel2.add(cart_PpHangleLabel2);
-		
-		JLabel cart_PsHangleLabel2 = new JLabel("원");
-		cart_PsHangleLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PsHangleLabel2.setFont(new Font("굴림", Font.PLAIN, 13));
-		cart_PsHangleLabel2.setBounds(452, 29, 21, 15);
-		cart_ItemPanel2.add(cart_PsHangleLabel2);
-		
-		JLabel cart_PsumLabel2 = new JLabel("300,000");
-		cart_PsumLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PsumLabel2.setBounds(398, 29, 57, 15);
-		cart_ItemPanel2.add(cart_PsumLabel2);
-		
-		JPanel cart_ItemPanel3 = new JPanel();
-		cart_ItemPanel3.setLayout(null);
-		cart_ItemPanel3.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		cart_ItemPanel3.setBounds(0, 240, 485, 80);
-		cart_ItemPanel.add(cart_ItemPanel3);
-		
-		JLabel cart_Item_Icon3 = new JLabel("");
-		cart_Item_Icon3.setBounds(49, 0, 64, 72);
-		cart_ItemPanel3.add(cart_Item_Icon3);
-		
-		JComboBox cart_ItemComboBox3 = new JComboBox();
-		cart_ItemComboBox3.setBounds(219, 25, 44, 23);
-		cart_ItemPanel3.add(cart_ItemComboBox3);
-		
-		JLabel cart_ItemNameLabel3 = new JLabel("디지털");
-		cart_ItemNameLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemNameLabel3.setBounds(134, 29, 57, 15);
-		cart_ItemPanel3.add(cart_ItemNameLabel3);
-		
-		JLabel cart_ItemPriceLabel3 = new JLabel("300,000");
-		cart_ItemPriceLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemPriceLabel3.setBounds(297, 29, 57, 15);
-		cart_ItemPanel3.add(cart_ItemPriceLabel3);
-		
-		JCheckBox cart_ItemCheckBox3 = new JCheckBox("");
-		cart_ItemCheckBox3.setBounds(20, 25, 21, 23);
-		cart_ItemPanel3.add(cart_ItemCheckBox3);
-		
-		JLabel cart_PpHangleLabel3 = new JLabel("원");
-		cart_PpHangleLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PpHangleLabel3.setFont(new Font("굴림", Font.PLAIN, 13));
-		cart_PpHangleLabel3.setBounds(351, 29, 21, 15);
-		cart_ItemPanel3.add(cart_PpHangleLabel3);
-		
-		JLabel cart_PsHangleLabel3 = new JLabel("원");
-		cart_PsHangleLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PsHangleLabel3.setFont(new Font("굴림", Font.PLAIN, 13));
-		cart_PsHangleLabel3.setBounds(452, 29, 21, 15);
-		cart_ItemPanel3.add(cart_PsHangleLabel3);
-		
-		JLabel cart_PsumLabel3 = new JLabel("300,000");
-		cart_PsumLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_PsumLabel3.setBounds(398, 29, 57, 15);
-		cart_ItemPanel3.add(cart_PsumLabel3);
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"\uC0C1\uD488\uBA85", "\uC218\uB7C9", "\uAC00\uACA9"
+			}
+		));
+		scrollPane.setViewportView(table_1);
 		
 		JPanel shop_OrderListPanel = new JPanel();
 		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
@@ -1818,5 +1660,4 @@ public class ShoppingMallFrame extends JFrame {
 		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
 
 	} // 생성자 끝
-
 }
