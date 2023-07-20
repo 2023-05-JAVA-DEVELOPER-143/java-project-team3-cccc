@@ -1502,15 +1502,6 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
 
-		JButton cart_CahngeBnt = new JButton("수  정");
-		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_CahngeBnt.setBounds(105, 7, 97, 23);
-		cart_ListSumPanel.add(cart_CahngeBnt);
-
-		cart_CahngeBnt.setBounds(62, 8, 97, 23);
-		cart_ListSumPanel.add(cart_CahngeBnt);
-		
-
 		JButton btnNewButton_2 = new JButton("삭  제");
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
@@ -1522,6 +1513,12 @@ public class ShoppingMallFrame extends JFrame {
 		cart_DelBnt.setBounds(0, 7, 97, 23);
 		cart_ListSumPanel.add(cart_DelBnt);
 		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
+
+		JButton cart_CahngeBnt = new JButton("수  정");
+		cart_CahngeBnt.setBounds(92, 7, 97, 23);
+		cart_ListSumPanel.add(cart_CahngeBnt);
+		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 	
 		JPanel cart_ItemPanel2 = new JPanel();
 		cart_ItemPanel2.setLayout(null);
