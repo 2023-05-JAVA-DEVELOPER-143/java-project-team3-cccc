@@ -45,7 +45,16 @@ public class OrderService {
 	/*
 	 * 결제하기
 	 */
+<<<<<<< HEAD
 	
 
+=======
+	public int OrderCash(Order order) throws Exception{
+		int rowCount = orderDao.insert(order);
+		cartDao.deleteByUserId(order.getUserId());
+		return rowCount;
+	}
+	
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team3-cccc.git
 	
 }

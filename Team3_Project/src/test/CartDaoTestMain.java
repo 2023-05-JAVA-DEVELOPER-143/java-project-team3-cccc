@@ -12,8 +12,13 @@ public class CartDaoTestMain {
 		CartDao cartDao = new CartDao();//  Dao  객체 생성
 
 		// userid cart 내의 제품 존재여부 countByProductNo (Test완료)
+<<<<<<< HEAD
 		
 		int a = cartDao.countByProductNo( "dddd",1 );
+=======
+		
+		int a = cartDao.countByProductNo( "dddd",8 );
+>>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team3-cccc.git
 		System.out.println(a);
 	
 		// insert(Test완료) 
