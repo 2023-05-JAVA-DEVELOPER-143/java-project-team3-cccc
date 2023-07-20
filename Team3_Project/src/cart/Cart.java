@@ -20,7 +20,7 @@ public class Cart {
 		this.cart_no = cart_no;
 		this.userId = userId;
 		this.product = product;
-		this.cart_qty = cart_qty;
+		this.cart_qty = cart_qty;	
 	}
 
 	
