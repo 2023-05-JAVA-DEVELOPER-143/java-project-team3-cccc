@@ -4,7 +4,7 @@ public class CartSQL {
 //select count(*) as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
 	public static final String CART_COUNT_PRODUCT_BY_USERID =
 			"select count(*) as p_count from cart c join userinfo u on c.userid=u.userid where u.userid=? and c.p_no=?";
-	
+
 // insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval, 'guard1',1,2);
 	public static final String CART_INSERT 
 		= "insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval, ?,?,?)";

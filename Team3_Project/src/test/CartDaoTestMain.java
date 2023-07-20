@@ -5,10 +5,17 @@ import cart.CartDao;
 public class CartDaoTestMain {  
 	
 	public static void main(String[] args) throws Exception {
-		// 상품창에서 갯수 추가 update  테스트 완료
-		CartDao cartDao = new CartDao();	
-		int a = cartDao.updateByProductNo("dddd", 1, 145);
+		CartDao cartDao = new CartDao();//  Dao  객체 생성
+		
+		// userid cart 내의 제품 존재여부
+		
+		int a = cartDao.countByProductNo( "dddd",1 );
 		System.out.println(a);
+		
+		// 상품창에서 갯수 추가 update  테스트 완료
+			
+		int b = cartDao.updateByProductNo("dddd", 1, 145);
+		System.out.println(b);
 		
 		
 		/*

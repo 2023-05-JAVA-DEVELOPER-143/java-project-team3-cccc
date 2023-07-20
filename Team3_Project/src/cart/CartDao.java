@@ -2,6 +2,7 @@ package cart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import common.DataSource;
@@ -14,9 +15,29 @@ public class CartDao {
 		this.dataSource = new DataSource();
 	}
 	
-	// userid cart 내의 제품 존재여부
-	public int countByProductNo(String userid, int p_no) {
-		return 0;
+	// userid cart 내의 제품 존재여부 (Test완료)
+	public int countByProductNo(String userid, int p_no) throws Exception{
+		int count=0;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_COUNT_PRODUCT_BY_USERID);
+			pstmt.setString(1, userid);
+			pstmt.setInt(2, p_no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count=rs.getInt(1);
+			}
+			
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return count;
 	}
 	
 	//cart insert
@@ -41,7 +62,7 @@ public class CartDao {
 	}
 	
 
-	//상품창에서 갯수 추가 update 
+	//상품창에서 갯수 추가 update (Test완료)
 	public int updateByProductNo(String userId, int p_no, int cart_qty) throws Exception {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -89,13 +110,41 @@ public class CartDao {
 	public List<Cart> findByUserId(String userId)  {
 		return null;
 	}
+	
+	
 	//cart PK delete
-	public int deleteByCartNo(int cart_no)  {
-		return 0;
+	public int deleteByCartNo(int cart_no) throws Exception {  
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int deleteRowCount=0;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_NO);
+			pstmt.setInt(1, cart_no);
+			deleteRowCount = pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return deleteRowCount;
 	}
 	//cart userId delete
-	public int deleteByUserId(String userId)  {
-		return 0;
+	public int deleteByUserId(String userId) throws Exception {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int deleteRowCount=0;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_DELETE_BY_USERID);
+			pstmt.setString(1, userId);
+			deleteRowCount = pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return deleteRowCount;
 	}
 	//Cart no로 Cart search
 	public Cart findByCartNo(int Cart_no) {
