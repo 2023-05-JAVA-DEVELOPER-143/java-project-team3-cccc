@@ -37,6 +37,10 @@ import java.awt.Window.Type;
 import java.awt.Scrollbar;
 import javax.swing.JCheckBox;
 import javax.swing.border.LineBorder;
+
+import user.User;
+import user.UserService;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -44,7 +48,10 @@ import java.awt.event.MouseEvent;
 public class ShoppingMallFrame extends JFrame {
 	
 	/************1. 서비스 객체변수 선언**************/
-
+	private UserService userservice;
+	
+	/************loginUser**************/
+	private User loginUser;
 	
 	private JPanel contentPane;
 	private JTextField textField;
@@ -87,7 +94,7 @@ public class ShoppingMallFrame extends JFrame {
 	 * Create the frame.
 	 */
 	@SuppressWarnings("unchecked")
-	public ShoppingMallFrame() {
+	public ShoppingMallFrame() throws Exception{
 		setResizable(false);
 		setAutoRequestFocus(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ShoppingMallFrame.class.getResource("/ui/image/로고1.png")));
@@ -581,6 +588,11 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_PasswordField);
 		
 		JButton info_Btn = new JButton("회원탈퇴");
+		info_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		info_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(107, 381, 95, 33);
@@ -1096,7 +1108,7 @@ public class ShoppingMallFrame extends JFrame {
 		});
 		order_BntPanel.add(order_Btn);
 	
+		userservice = new UserService();
 		
-		
-	}
+	} // 생성자 끝
 }
