@@ -1,34 +1,31 @@
 package ui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Color;
 import java.awt.BorderLayout;
-import javax.swing.JTable;
-
-import javax.swing.JComboBox;
-import java.awt.Toolkit;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Panel;
-import java.awt.Label;
-import javax.swing.JScrollBar;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class ShoppingMallFrame extends JFrame {
@@ -495,6 +492,11 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_PasswordField);
 		
 		JButton info_Btn = new JButton("회원탈퇴");
+		info_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		info_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(80, 381, 95, 33);
