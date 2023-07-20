@@ -555,6 +555,11 @@ public class ShoppingMallFrame extends JFrame {
 		shop_LoginPanel.add(login_PasswordField);
 		
 		JButton login_Btn = new JButton("로그인");
+		login_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		login_Btn.setBounds(143, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		
