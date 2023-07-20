@@ -39,6 +39,7 @@ import java.awt.Scrollbar;
 import javax.swing.JCheckBox;
 import javax.swing.border.LineBorder;
 
+import cart.CartService;
 import user.User;
 import user.UserService;
 
@@ -53,6 +54,7 @@ public class ShoppingMallFrame extends JFrame {
 	
 	/************1. 서비스 객체변수 선언**************/
 	private UserService userservice;
+	private CartService cartservice;
 	
 	/************loginUser**************/
 	private User loginUser;
@@ -839,6 +841,13 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ListSumPanel.add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("삭  제");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxNewCheckBox_2.isSelected()) {
+					
+				}
+			}
+		});
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		btnNewButton_2.setBounds(188, 8, 97, 23);
 		cart_ListSumPanel.add(btnNewButton_2);
@@ -1146,14 +1155,16 @@ public class ShoppingMallFrame extends JFrame {
 		order_BntPanel.add(order_Btn);
 	
 		userservice = new UserService();
+		cartservice = new CartService();
 
-	}
+	} // 생성자 끝
 	private void loginProcess(User loginUser)throws Exception{
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
 		shopTabbedPane.setSelectedIndex(0);
 		
-	}
-	} // 생성자 끝
+		}
+	
+	} 
 
