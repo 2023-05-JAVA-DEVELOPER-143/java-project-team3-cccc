@@ -429,7 +429,7 @@ public class ShoppingMallFrame extends JFrame {
 				try {
 				String id = login_IdTextField.getText();
 				String password = new String(login_PasswordField.getText());
-					User userloginUser = userService.login(id, password);
+					User userloginUser = userservice.login(id, password);
 					if(userloginUser!=null) {
 						loginProcess(userloginUser);	
 						
@@ -442,7 +442,7 @@ public class ShoppingMallFrame extends JFrame {
 					}
 						
 				} catch (Exception e1) {
-					System.out.println(e1.getStackTrace()); 
+					e1.getStackTrace();
 				}
 				
 			}
@@ -1146,17 +1146,11 @@ public class ShoppingMallFrame extends JFrame {
 		order_BntPanel.add(order_Btn);
 	
 		userservice = new UserService();
-		
-<<<<<<< HEAD
-		
-	}
-	void loginProcess(User loginUser)throws Exception{
-		this.loginUser = loginUser;
-		setTitle(loginUser.getName() + "님 로그인");
-		shopTabbedPane.setEnabledAt(1, false);
-		
-	}
-=======
+
 	} // 생성자 끝
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team3-cccc.git
+	
+	private void loginProcess(User loginUser) {
+		
+	}
+	
 }
