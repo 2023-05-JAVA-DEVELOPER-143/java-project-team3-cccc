@@ -555,7 +555,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
 		shop_InfoPanel.setLayout(null);
-		
+	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 		JLabel info_IdLabel = new JLabel("아이디");
 		info_IdLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		info_IdLabel.setBounds(109, 144, 57, 15);
@@ -586,38 +586,41 @@ public class ShoppingMallFrame extends JFrame {
 		info_GenderLabel.setBounds(109, 321, 57, 15);
 		shop_InfoPanel.add(info_GenderLabel);
 		
-		info_PhoneTextField = new JTextField();
+		info_PhoneTextField = new JTextField();//연락처 
 		info_PhoneTextField.setColumns(10);
 		info_PhoneTextField.setBounds(178, 283, 204, 21);
 		shop_InfoPanel.add(info_PhoneTextField);
 		
-		info_AddressTextField = new JTextField();
+		info_AddressTextField = new JTextField();//주소
 		info_AddressTextField.setColumns(10);
 		info_AddressTextField.setBounds(178, 248, 204, 21);
 		shop_InfoPanel.add(info_AddressTextField);
 		
-		info_NameTextField = new JTextField();
+		info_NameTextField = new JTextField();//이름
 		info_NameTextField.setColumns(10);
 		info_NameTextField.setBounds(178, 213, 204, 21);
 		shop_InfoPanel.add(info_NameTextField);
 		
-		info_IdTextField = new JTextField();
+		info_IdTextField = new JTextField();//아이디
 		info_IdTextField.setEditable(false);
 		info_IdTextField.setEnabled(false);
 		info_IdTextField.setColumns(10);
 		info_IdTextField.setBounds(178, 141, 204, 21);
 		shop_InfoPanel.add(info_IdTextField);
 		
-		info_PasswordField = new JPasswordField();
-		info_PasswordField.setBounds(178, 178, 204, 21);
+		info_PasswordField = new JPasswordField();//비밀번호
+		info_PasswordField.setBounds(178, 182, 204, 21);
 		shop_InfoPanel.add(info_PasswordField);
 		
 		JButton info_Btn = new JButton("회원탈퇴");
 		info_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+					
+				}
 			}
-		});
+		);
+		
 		info_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(107, 381, 95, 33);
@@ -635,6 +638,10 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_GenderComboBox);
 		
 		JButton info_Cancle_Btn_1 = new JButton("수정");
+		info_Cancle_Btn_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
 		info_Cancle_Btn_1.setBackground(new Color(255, 255, 102));
 		info_Cancle_Btn_1.setBounds(214, 381, 85, 33);
@@ -825,6 +832,10 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ListSumPanel.add(order_ItemTotPrice_4_2_1);
 		
 		JButton btnNewButton = new JButton("수  정");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		btnNewButton.setBounds(62, 8, 97, 23);
 		cart_ListSumPanel.add(btnNewButton);
