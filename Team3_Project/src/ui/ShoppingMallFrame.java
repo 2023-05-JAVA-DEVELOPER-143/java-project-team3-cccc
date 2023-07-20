@@ -732,6 +732,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_NameTextField);
 		
 		info_IdTextField = new JTextField();
+		info_IdTextField.setEditable(false);
 		info_IdTextField.setColumns(10);
 		info_IdTextField.setBounds(178, 141, 204, 21);
 		shop_InfoPanel.add(info_IdTextField);
