@@ -1,6 +1,7 @@
 package order;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,14 +20,19 @@ public class Order {
 
 	
 	public Order(int o_no, String o_desc, Date o_date, int o_price, String userId,
-			List<order.OrderItem> orderItemList) {
+			List<OrderItem> orderItemList) {
 		super();
 		this.o_no = o_no;
 		this.o_desc = o_desc;
 		this.o_date = o_date;
 		this.o_price = o_price;
 		this.userId = userId;
-		this.orderItemList = orderItemList;
+		if(orderItemList == null) {
+			this.orderItemList = new ArrayList<OrderItem>();
+		}else {
+			this.orderItemList = orderItemList;
+		}
+		
 	}
 
 

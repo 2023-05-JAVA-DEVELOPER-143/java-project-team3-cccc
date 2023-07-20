@@ -5,9 +5,7 @@ import product.Product;
 public class Cart {
 
 	private int cart_no;
-	
 	private String userId; //FK -userInfo
-	
 	private Product product; //FK
 	private int cart_qty;
 	
@@ -20,7 +18,7 @@ public class Cart {
 		this.cart_no = cart_no;
 		this.userId = userId;
 		this.product = product;
-		this.cart_qty = cart_qty;
+		this.cart_qty = cart_qty;	
 	}
 
 	
