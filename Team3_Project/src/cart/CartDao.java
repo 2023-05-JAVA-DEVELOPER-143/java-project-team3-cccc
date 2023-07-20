@@ -108,7 +108,8 @@ public class CartDao {
 		return rowCount;
 	}
 	
-	//cart List-find //userId를 이용해서 사용자 카트 안의 모든 제품 찾기
+
+	//cart List-find //userId를 이용해서 사용자 카트 안의 모든 제품 찾기(Test완료)
 	public List<Cart> findByUserId(String userId) throws Exception  {
 		List<Cart> cartList=new ArrayList<Cart>();
 		Connection con=null;
@@ -138,7 +139,9 @@ public class CartDao {
 		return cartList;
 	}
 	
-	//cart PK delete
+
+	
+	//cart PK delete // Test완료
 	public int deleteByCartNo(int cart_no) throws Exception {  
 		Connection con=null;
 		PreparedStatement pstmt=null;
