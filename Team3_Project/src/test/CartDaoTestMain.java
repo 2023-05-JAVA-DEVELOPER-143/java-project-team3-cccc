@@ -29,7 +29,12 @@ public class CartDaoTestMain {
 		int b = cartDao.updateByProductNo("dddd", 1, 145);
 		System.out.println(b);
 		
+
+		b  = cartDao.updateProduct1up("aaa",1);
+		
+
 		//본인 카트에서 갯수 추가 update(아직)
+
 		
 		
 		//cart List-find findByUserId(Test완료)

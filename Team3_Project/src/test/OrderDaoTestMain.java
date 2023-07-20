@@ -3,6 +3,7 @@ package test;
 import java.util.ArrayList;
 import order.Order;
 import order.OrderDao;
+import order.OrderItem;
 import product.Product;
 import product.ProductDao;
 
@@ -14,7 +15,7 @@ public class OrderDaoTestMain {
 		OrderDao orderDao = new OrderDao();
 		ProductDao productDao=new ProductDao();
 		Product product=productDao.SelectByPK(1);
-		ArrayList<order.OrderItem> jumunList=new ArrayList<order.OrderItem>();		
+		ArrayList<OrderItem> jumunList=new ArrayList<OrderItem>();
 		Order Jumun1= new Order(0, "테스트", null, 1200 ,"aaa", jumunList);
 		orderDao.insert(Jumun1);
 		System.out.println(orderDao.insert(Jumun1));

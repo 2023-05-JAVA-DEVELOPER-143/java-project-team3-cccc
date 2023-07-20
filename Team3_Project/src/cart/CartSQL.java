@@ -9,6 +9,13 @@ public class CartSQL {
 	public static final String CART_INSERT 
 		= "insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval, ?,?,?)";
 	
+	public static final String CART_PRODUCT_UP_QTYSET 
+	= "update cart set cart_qty=? where userId =? and p_no=?";
+	
+	public static final String CART_PRODUCT_1UP 
+	= "update cart set cart_qty=cart_qty+1 where userId=? and p_no=?";
+	
+	
 //select * from cart c join product p on c.p_no=p.p_no where userId='guard1';	
 	public static final String CART_FIND_ALL_PRODUCT_BY_USERID 
 		= "select * from cart c join product p on c.p_no=p.p_no where userId=?";
@@ -16,14 +23,6 @@ public class CartSQL {
 //select count(*) as p_count from cart where userId ='guard1'and p_no =1;	
 	public static final String CART_FIND_PRODUCT_USERID 
 		= "select * from cart c join product p on c.p_no=p.p_no where userId=? and p_no=?";
-	
-//update cart set cart_qty=cart_qty+1 where userId = 'guard1' and p_no=1;
-	public static final String CART_PRODUCT_1UP 
-		= "update cart set cart_qty=cart_qty+? where userId = ? and p_no=?";
-	
-//update cart set cart_qty=3 where userId = 'guard1' and p_no=1;
-	public static final String CART_PRODUCT_UP_QTYSET 
-		= "update cart set cart_qty=? where userId =? and p_no=?";
 	
 //delete from cart where cart_no=1;	
 	public static final String CART_DELETE_BY_NO 
