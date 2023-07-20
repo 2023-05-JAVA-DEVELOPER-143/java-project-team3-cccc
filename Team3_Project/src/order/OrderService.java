@@ -28,15 +28,12 @@ public class OrderService {
 		return orderDao.deleteByUserid(userid);
 	}
 	
-	
 	/*
 	 * 주문목록
 	 */
 	public List<Order> OrderList(String userid) throws Exception{
 		return orderDao.findOrderbyUserId(userid);
 	}
-	
-	
 	
 	/*
 	 * 주문상세보기
