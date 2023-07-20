@@ -432,7 +432,7 @@ public class ShoppingMallFrame extends JFrame {
 				try {
 				String id = login_IdTextField.getText();
 				String password = new String(login_PasswordField.getText());
-					User userloginUser = userservice.login(id, password);
+					User userloginUser = userService.login(id, password);
 					if(userloginUser!=null) {
 						loginProcess(userloginUser);	
 						
