@@ -1658,7 +1658,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_ItemTotPrice_4.setBounds(361, 10, 69, 16);
 		order_ListTiltlePanel.add(order_ItemTotPrice_4);
 		
-		JCheckBox chckbxNewCheckBox_2_2_1 = new JCheckBox("");
+		JCheckBox chckbxNewCheckBox_2_2_1 =  new JCheckBox("");
 		chckbxNewCheckBox_2_2_1.setBackground(new Color(255, 255, 255));
 		chckbxNewCheckBox_2_2_1.setBounds(8, 7, 21, 23);
 		order_ListTiltlePanel.add(chckbxNewCheckBox_2_2_1);
@@ -1760,6 +1760,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		order_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		order_BntPanel.add(order_Btn);
