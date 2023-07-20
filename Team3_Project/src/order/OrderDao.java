@@ -33,7 +33,7 @@ public class OrderDao {
 			pstmt1.setString(3, order.getUserId());
 			pstmt1.executeUpdate();
 			
-			pstmt2 = con.prepareStatement(OrderSQL.ORDER_INSERT);
+			pstmt2 = con.prepareStatement(OrderSQL.ORDERITEM_INSERT);
 			for(OrderItem orderItem:order.getOrderItemList()) {
 				pstmt2.setInt(1, orderItem.getOi_qty());
 				pstmt2.setInt(2, orderItem.getOi_no());

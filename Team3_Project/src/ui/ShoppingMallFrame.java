@@ -86,6 +86,7 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel cart_ContentPanel;
 	private JComboBox info_GenderComboBox;
 	private JComboBox join_GenderComboBox;
+	private JLabel order_ItemNameLable_2_1;
 
 	/**
 	 * Launch the application.
@@ -1466,19 +1467,19 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JButton cart_CahngeBnt = new JButton("수  정");
 		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_CahngeBnt.setBounds(62, 8, 97, 23);
+		cart_CahngeBnt.setBounds(105, 7, 97, 23);
 		cart_ListSumPanel.add(cart_CahngeBnt);
-		
-
-		JButton cart_DelBnt = new JButton("삭  제");
-		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_DelBnt.setBounds(188, 8, 97, 23);
-		cart_ListSumPanel.add(cart_DelBnt);
 		JButton btnNewButton_2 = new JButton("삭  제");
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		btnNewButton_2.setBounds(188, 8, 97, 23);
+		btnNewButton_2.setBounds(204, 7, 97, 23);
 		cart_ListSumPanel.add(btnNewButton_2);
+		
+
+		JButton cart_DelBnt = new JButton("구매");
+		cart_DelBnt.setBounds(0, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt);
+		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 	
 		JPanel cart_ItemPanel2 = new JPanel();
 		cart_ItemPanel2.setLayout(null);
@@ -1496,7 +1497,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JLabel cart_ItemNameLabel2 = new JLabel("가  구");
 		cart_ItemNameLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemNameLabel2.setBounds(134, 29, 57, 15);
+		cart_ItemNameLabel2.setBounds(135, 29, 57, 15);
 		cart_ItemPanel2.add(cart_ItemNameLabel2);
 		
 		JLabel cart_ItemPriceLabel2 = new JLabel("300,000");
@@ -1612,7 +1613,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_ItemTotPrice_2.setBounds(361, 34, 69, 16);
 		order_ProductPanel1.add(order_ItemTotPrice_2);
 		
-		JLabel order_ItemNameLable_2_1 = new JLabel("2023/07/20");
+		order_ItemNameLable_2_1 = new JLabel("2023/07/20");
 		order_ItemNameLable_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		order_ItemNameLable_2_1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		order_ItemNameLable_2_1.setBounds(103, 34, 81, 16);
