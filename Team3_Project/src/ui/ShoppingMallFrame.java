@@ -1154,6 +1154,7 @@ public class ShoppingMallFrame extends JFrame {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
+		shopTabbedPane.setSelectedIndex(0);
 		
 	}
 	} // 생성자 끝

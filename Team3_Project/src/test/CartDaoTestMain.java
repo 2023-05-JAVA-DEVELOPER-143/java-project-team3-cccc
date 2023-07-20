@@ -13,7 +13,7 @@ public class CartDaoTestMain {
 
 		// userid cart 내의 제품 존재여부 countByProductNo (Test완료)
 		
-		int a = cartDao.countByProductNo( "dddd",1 );
+		int a = cartDao.countByProductNo( "dddd",8 );
 		System.out.println(a);
 	
 		// insert(Test완료) 
