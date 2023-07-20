@@ -1235,9 +1235,7 @@ public class ShoppingMallFrame extends JFrame {
 					try {
 						String id = loginUser.getUserId();
 						userservice.deleteUser(id);
-						
-						//회원정보 변경
-						
+	
 					}catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, "회원 탈퇴 에러 : "+e1.getMessage());
 					}
