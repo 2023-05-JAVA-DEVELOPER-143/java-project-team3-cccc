@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.List;
 
 import common.DataSource;
+import user.User;
 
 public class CartDao {  
 	
@@ -86,15 +87,15 @@ public class CartDao {
 	//  이해 못한 부분있어서 남깁니다
 	
 	//본인 카트에서 갯수 추가 update
-	public int updateProduct1up(int cart_no, int cart_qty)  {
+	public int updateProduct1up(Cart cart) throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int rowCount=0;
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_PRODUCT_1UP);
-			pstmt.setInt(1, cart_qty);
-			pstmt.setString(2,userId);
+			pstmt.setInt(1, cart.getCart_qty());
+			pstmt.setString(2, cart.getUserId());
 			pstmt.setInt(3, cart.getProduct().getP_no());
 			rowCount = pstmt.executeUpdate();
 		}finally {
