@@ -47,6 +47,7 @@ import user.UserService;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.security.Provider.Service;
 
 
 
@@ -555,6 +556,21 @@ public class ShoppingMallFrame extends JFrame {
 		shop_LoginPanel.add(login_PasswordField);
 		
 		JButton login_Btn = new JButton("로그인");
+		login_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			try {
+				String id = login_IdTextField.getText();
+				String password = login_PasswordField.getText();
+				User loginUser = userservice.login(id, password);
+				if(loginUser!=null) {
+					loginProcess(loginUser);
+				}
+			}catch (Exception e1) {
+				System.out.println("로그인에러-->"+e1.getMessage());
+			}
+				
+			}
+		});
 		login_Btn.setBounds(143, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		
