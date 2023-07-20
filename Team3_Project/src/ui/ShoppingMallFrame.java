@@ -140,8 +140,28 @@ public class ShoppingMallFrame extends JFrame {
 		menuBar.add(cartLabel);
 		
 		JLabel lblNewLabel_5 = new JLabel("장바구니");
+		lblNewLabel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			// 메뉴바 장바구니 이미지 클릭 시 장바구니로 이동
+			
+			public void mouseClicked(MouseEvent e) {
+			
+				if (loginUser == null) {
+					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+					shopTabbedPane.setSelectedIndex(1);
+				}else {			
+			try {
+				shopTabbedPane.setSelectedIndex(5);
+			} catch (Exception e2) {
+				
+			}
+			}
+			}
+		});
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
+		
 		
 		JLabel loginLabel = new JLabel("  로그인");
 		loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
