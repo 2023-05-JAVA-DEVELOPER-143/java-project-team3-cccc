@@ -18,9 +18,11 @@ public class CartDaoTestMain {
 		
 		// insert(Test완료) 
 		Product product ;
-		Cart cart = new Cart(0, "aaa", new Product(1, "컴퓨터", 800000, null, "23년도 최신형 컴퓨터"), 2);
+		Cart cart = new Cart(0, "dddd", new Product(8, "소파", 900000, null, "돌소파"), 2);
 		int c = cartDao.insert(cart);
 		System.out.println(c);
+		
+		
 		
 		// 상품창에서 갯수 추가 updateByProductNo (Test 완료)
 			
@@ -37,7 +39,11 @@ public class CartDaoTestMain {
 		//cart PK delete   deleteByCartNo(Test완료)
 		System.out.println(cartDao.deleteByCartNo(34));
 		
+		//cart userId delete(Test완료)
+		System.out.println(cartDao.deleteByUserId("5124"));
+
 	}
+	
 
 	
 
