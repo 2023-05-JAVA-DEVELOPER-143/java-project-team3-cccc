@@ -84,7 +84,7 @@ public class CartDao {
 	}
 	
 	//  이해 못한 부분있어서 남깁니다
-	/*
+	
 	//본인 카트에서 갯수 추가 update
 	public int updateProduct1up(int cart_no, int cart_qty)  {
 		Connection con=null;
@@ -104,7 +104,7 @@ public class CartDao {
 		}
 		return rowCount;
 
-	}*/
+	}
 	
 
 	//cart List-find
