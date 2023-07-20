@@ -14,7 +14,7 @@ public class OrderSQL {
 	
 	// 선택삭제_주문번호로 주문삭제
 	public final static String ORDER_DELETE_BY_O_NO ="delete from orders where o_no=?";
-
+	
 	// 유저아이디로 주문 검색
 	public final static String ORDER_SELECT_BY_USERID = "select * from orders where userid=?";
 		
