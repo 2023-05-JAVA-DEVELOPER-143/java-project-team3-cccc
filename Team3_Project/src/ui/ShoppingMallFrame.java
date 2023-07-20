@@ -40,7 +40,10 @@ import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class ShoppingMallFrame extends JFrame {
+	
+	/************1. 서비스 객체변수 선언**************/
 
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField join_PhoneTextField;
@@ -410,6 +413,12 @@ public class ShoppingMallFrame extends JFrame {
 		shop_JoinPanel.add(join_PasswordField);
 		
 		JButton join_Btn = new JButton("회원가입");
+		join_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		join_Btn.setBackground(new Color(255, 255, 255));
 		join_Btn.setFont(new Font("굴림", Font.BOLD, 15));
 		join_Btn.setBounds(142, 405, 115, 33);
