@@ -136,6 +136,7 @@ public class ShoppingMallFrame extends JFrame {
 		subPanel.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel homePanel = new JPanel();
+		homePanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("HOME", null, homePanel, null);
 		homePanel.setLayout(null);
 		
@@ -206,21 +207,27 @@ public class ShoppingMallFrame extends JFrame {
 		homePanel.add(lblNewLabel_4_1_1_1_1_1);
 		
 		JPanel fashionPanel = new JPanel();
+		fashionPanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("패 션", null, fashionPanel, null);
 		
 		JPanel sportPanel = new JPanel();
+		sportPanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("스포츠", null, sportPanel, null);
 		
 		JPanel dailyPane = new JPanel();
+		dailyPane.setBackground(Color.WHITE);
 		tabbedPane.addTab("생 활", null, dailyPane, null);
 		
 		JPanel furniturePanel = new JPanel();
+		furniturePanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("가 구", null, furniturePanel, null);
 		
 		JPanel digitalPanel = new JPanel();
+		digitalPanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("디지털", null, digitalPanel, null);
 		
 		JPanel foodPanel = new JPanel();
+		foodPanel.setBackground(Color.WHITE);
 		tabbedPane.addTab("음 식", null, foodPanel, null);
 		foodPanel.setLayout(null);
 		
@@ -294,6 +301,7 @@ public class ShoppingMallFrame extends JFrame {
 		foodPanel_1.add(lblNewLabel_3_1_1_1_1_1_1);
 		
 		JPanel shop_LoginPanel = new JPanel();
+		shop_LoginPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("로그인", null, shop_LoginPanel, null);
 		shop_LoginPanel.setLayout(null);
 		
@@ -336,6 +344,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_LoginPanel.add(login_Icon);
 		
 		JPanel shop_JoinPanel = new JPanel();
+		shop_JoinPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("회원가입", null, shop_JoinPanel, null);
 		shop_JoinPanel.setLayout(null);
 		
@@ -395,7 +404,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JButton join_Btn = new JButton("회원가입");
 		join_Btn.setBackground(new Color(255, 255, 255));
-		join_Btn.setFont(new Font("굴림", Font.BOLD, 15));
+		join_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		join_Btn.setBounds(103, 404, 115, 33);
 		shop_JoinPanel.add(join_Btn);
 		
@@ -404,7 +413,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_JoinPanel.add(join_jungbok_Btn);
 		
 		JButton join_Cancle_Btn = new JButton("취소");
-		join_Cancle_Btn.setFont(new Font("굴림", Font.BOLD, 15));
+		join_Cancle_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		join_Cancle_Btn.setBackground(new Color(255, 255, 255));
 		join_Cancle_Btn.setBounds(232, 404, 115, 33);
 		shop_JoinPanel.add(join_Cancle_Btn);
@@ -412,7 +421,7 @@ public class ShoppingMallFrame extends JFrame {
 		JLabel join_Icon = new JLabel("");
 		join_Icon.setHorizontalAlignment(SwingConstants.CENTER);
 		join_Icon.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/가입.png")));
-		join_Icon.setBounds(65, 31, 92, 103);
+		join_Icon.setBounds(80, 40, 90, 90);
 		shop_JoinPanel.add(join_Icon);
 		
 		JComboBox join_GenderComboBox = new JComboBox();
@@ -421,11 +430,13 @@ public class ShoppingMallFrame extends JFrame {
 		shop_JoinPanel.add(join_GenderComboBox);
 		
 		JLabel join_Label = new JLabel("회 원 가 입");
+		join_Label.setHorizontalAlignment(SwingConstants.CENTER);
 		join_Label.setFont(new Font("나눔고딕 ExtraBold", Font.BOLD, 35));
 		join_Label.setBounds(169, 56, 183, 60);
 		shop_JoinPanel.add(join_Label);
 		
 		JPanel shop_InfoPanel = new JPanel();
+		shop_InfoPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
 		shop_InfoPanel.setLayout(null);
 		
@@ -484,7 +495,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_PasswordField);
 		
 		JButton info_Btn = new JButton("회원탈퇴");
-		info_Btn.setFont(new Font("굴림", Font.BOLD, 15));
+		info_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		info_Btn.setBackground(Color.WHITE);
 		info_Btn.setBounds(80, 381, 95, 33);
 		shop_InfoPanel.add(info_Btn);
@@ -494,7 +505,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_jungbok_Btn);
 		
 		JButton info_Cancle_Btn = new JButton("취소");
-		info_Cancle_Btn.setFont(new Font("굴림", Font.BOLD, 15));
+		info_Cancle_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		info_Cancle_Btn.setBackground(Color.WHITE);
 		info_Cancle_Btn.setBounds(284, 381, 71, 33);
 		shop_InfoPanel.add(info_Cancle_Btn);
@@ -505,7 +516,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_GenderComboBox);
 		
 		JButton info_Cancle_Btn_1 = new JButton("수정");
-		info_Cancle_Btn_1.setFont(new Font("굴림", Font.BOLD, 15));
+		info_Cancle_Btn_1.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		info_Cancle_Btn_1.setBackground(new Color(255, 255, 102));
 		info_Cancle_Btn_1.setBounds(187, 381, 85, 33);
 		shop_InfoPanel.add(info_Cancle_Btn_1);
@@ -516,14 +527,17 @@ public class ShoppingMallFrame extends JFrame {
 		shop_InfoPanel.add(info_Icon);
 		
 		JLabel lblNewLabel = new JLabel("내 정 보");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("나눔고딕 ExtraBold", Font.BOLD, 35));
 		lblNewLabel.setBounds(197, 54, 129, 39);
 		shop_InfoPanel.add(lblNewLabel);
 		
 		JPanel shop_AdminPanel = new JPanel();
+		shop_AdminPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("관리창", null, shop_AdminPanel, null);
 		
 		JPanel shop_CartPanel = new JPanel();
+		shop_CartPanel.setBackground(Color.WHITE);
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
 		
@@ -555,10 +569,12 @@ public class ShoppingMallFrame extends JFrame {
 		shop_CartPanel.add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel cart_panel = new JPanel();
+		cart_panel.setBackground(Color.WHITE);
 		scrollPane.setViewportView(cart_panel);
 		cart_panel.setLayout(null);
 		
 		JLabel cart_CartLabel = new JLabel(" 장바구니");
+		cart_CartLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		cart_CartLabel.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		cart_CartLabel.setBounds(12, 20, 102, 18);
 		cart_CartLabel.setFont(new Font("굴림", Font.BOLD, 15));
