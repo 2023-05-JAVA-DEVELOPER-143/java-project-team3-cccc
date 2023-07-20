@@ -10,6 +10,10 @@ public class OrderService {
 	private ProductDao productDao;
 	private CartDao cartDao;
 	
+	public OrderService() throws Exception{
+		orderDao = new OrderDao();
+	}
+	
 	/*
 	 * 주문1개삭제
 	 */
