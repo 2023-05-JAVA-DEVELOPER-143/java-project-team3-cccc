@@ -82,6 +82,7 @@ public class ShoppingMallFrame extends JFrame {
 	private JPanel order_ContentPane;
 	private JScrollPane cart_ScrollPane;
 	private JPanel cart_ContentPanel;
+	private JComboBox info_GenderComboBox;
 
 	/**
 	 * Launch the application.
@@ -737,7 +738,7 @@ public class ShoppingMallFrame extends JFrame {
 		info_Cancle_Btn.setBounds(311, 381, 71, 33);
 		shop_InfoPanel.add(info_Cancle_Btn);
 		
-		JComboBox info_GenderComboBox = new JComboBox();
+		info_GenderComboBox = new JComboBox();
 		info_GenderComboBox.setModel(new DefaultComboBoxModel(new String[] {"성별", "남성", "여성"}));
 		info_GenderComboBox.setBounds(178, 317, 92, 23);
 		shop_InfoPanel.add(info_GenderComboBox);
@@ -1234,8 +1235,22 @@ public class ShoppingMallFrame extends JFrame {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
+
+		shopTabbedPane.setEnabledAt(3, true);
+		shopTabbedPane.setSelectedIndex(0);
+		
+
 		shopTabbedPane.setSelectedIndex(0);
 	}
 
-
-		}
+	private void displayUserInfo(User loginUser) {
+		/****로그인한회원상세데이타보여주기*****/
+		info_IdTextField.setText(loginUser.getUserId());
+		info_AddressTextField.setText(loginUser.getAddress());
+		info_NameTextField.setText(loginUser.getName());
+		info_PasswordField.setText(loginUser.getPassword());
+		info_PhoneTextField.setText(loginUser.getPhone());
+		info_GenderComboBox.setSelectedItem(loginUser.getGender()+"");
+		
+	} // 생성자 끝
+}
