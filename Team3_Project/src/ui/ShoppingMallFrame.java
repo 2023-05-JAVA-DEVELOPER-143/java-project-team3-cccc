@@ -331,12 +331,11 @@ public class ShoppingMallFrame extends JFrame {
 		sport_ContentPanel.add(sport_Product1);
 		
 		JLabel sport_IconLabel1_1 = new JLabel("");
-		sport_IconLabel1_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/sports.basketball.png")));
 		sport_IconLabel1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		sport_IconLabel1_1.setBounds(3, 1, 162, 116);
 		sport_Product1.add(sport_IconLabel1_1);
 		
-		JLabel sport_DescLabel_1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 스포츠<br>\r\n\t\t\t<p>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t<p>\r\n\t\t\t설명: 스포오츠\r\n\t\t\r\n </font></html>");
+		JLabel sport_DescLabel_1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 옷<br>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t설명: 튼튼하네\r\n\t\t\r\n </font></html>");
 		sport_DescLabel_1.setVerticalAlignment(SwingConstants.TOP);
 		sport_DescLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		sport_DescLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -374,17 +373,16 @@ public class ShoppingMallFrame extends JFrame {
 		sport_ContentPanel.add(sport_Product2);
 		
 		JLabel sport_IconLabel2 = new JLabel("");
-		sport_IconLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/sports.basketball.png")));
 		sport_IconLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		sport_IconLabel2.setBounds(3, 1, 162, 116);
 		sport_Product2.add(sport_IconLabel2);
 		
-		JLabel sport_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 스포츠<br>\r\n\t\t\t<p>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t<p>\r\n\t\t\t설명: 스포오츠\r\n\t\t\r\n </font></html>");
-		sport_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		sport_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		sport_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		sport_DescLabel2.setBounds(3, 143, 164, 47);
-		sport_Product2.add(sport_DescLabel2);
+		JLabel sport_DescLabel2_1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 옷<br>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t설명: 튼튼하네\r\n\t\t\r\n </font></html>");
+		sport_DescLabel2_1.setVerticalAlignment(SwingConstants.TOP);
+		sport_DescLabel2_1.setHorizontalTextPosition(SwingConstants.CENTER);
+		sport_DescLabel2_1.setHorizontalAlignment(SwingConstants.LEFT);
+		sport_DescLabel2_1.setBounds(3, 143, 164, 47);
+		sport_Product2.add(sport_DescLabel2_1);
 		
 		JButton sport_CartAddButton2_1 = new JButton("");
 		sport_CartAddButton2_1.setOpaque(false);
@@ -394,14 +392,14 @@ public class ShoppingMallFrame extends JFrame {
 		sport_CartAddButton2_1.setBounds(136, 119, 31, 23);
 		sport_Product2.add(sport_CartAddButton2_1);
 		
-		JComboBox sport_CartQtyComboBox2 = new JComboBox();
-		sport_CartQtyComboBox2.setOpaque(false);
-		sport_CartQtyComboBox2.setMaximumRowCount(10);
-		sport_CartQtyComboBox2.setBorder(null);
-		sport_CartQtyComboBox2.setBackground(Color.WHITE);
-		sport_CartQtyComboBox2.setAutoscrolls(true);
-		sport_CartQtyComboBox2.setBounds(99, 119, 33, 23);
-		sport_Product2.add(sport_CartQtyComboBox2);
+		JComboBox sport_CartQtyComboBox2_1 = new JComboBox();
+		sport_CartQtyComboBox2_1.setOpaque(false);
+		sport_CartQtyComboBox2_1.setMaximumRowCount(10);
+		sport_CartQtyComboBox2_1.setBorder(null);
+		sport_CartQtyComboBox2_1.setBackground(Color.WHITE);
+		sport_CartQtyComboBox2_1.setAutoscrolls(true);
+		sport_CartQtyComboBox2_1.setBounds(99, 119, 33, 23);
+		sport_Product2.add(sport_CartQtyComboBox2_1);
 		
 		JPanel dailyPane = new JPanel();
 		tabbedPane.addTab("생 활", null, dailyPane, null);
@@ -410,90 +408,6 @@ public class ShoppingMallFrame extends JFrame {
 		JPanel daily_ContentPanel = new JPanel();
 		dailyPane.add(daily_ContentPanel);
 		daily_ContentPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		
-		JPanel daily_Product1 = new JPanel();
-		daily_Product1.setLayout(null);
-		daily_Product1.setSize(new Dimension(120, 120));
-		daily_Product1.setPreferredSize(new Dimension(170, 190));
-		daily_Product1.setMinimumSize(new Dimension(150, 150));
-		daily_Product1.setMaximumSize(new Dimension(200, 200));
-		daily_Product1.setBounds(new Rectangle(0, 0, 120, 120));
-		daily_Product1.setBorder(null);
-		daily_Product1.setBackground(Color.WHITE);
-		daily_Product1.setAlignmentY(1.0f);
-		daily_Product1.setAlignmentX(1.0f);
-		daily_ContentPanel.add(daily_Product1);
-		
-		JLabel daily_IconLabel1_1_1 = new JLabel("");
-		daily_IconLabel1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		daily_IconLabel1_1_1.setBounds(3, 1, 162, 116);
-		daily_Product1.add(daily_IconLabel1_1_1);
-		
-		JLabel sport_DescLabel_1_1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 스포츠<br>\r\n\t\t\t<p>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t<p>\r\n\t\t\t설명: 스포오츠\r\n\t\t\r\n </font></html>");
-		sport_DescLabel_1_1.setVerticalAlignment(SwingConstants.TOP);
-		sport_DescLabel_1_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		sport_DescLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		sport_DescLabel_1_1.setBounds(3, 143, 164, 47);
-		daily_Product1.add(sport_DescLabel_1_1);
-		
-		JButton sport_CartAddButton_1_1 = new JButton("");
-		sport_CartAddButton_1_1.setOpaque(false);
-		sport_CartAddButton_1_1.setForeground(Color.WHITE);
-		sport_CartAddButton_1_1.setBorder(null);
-		sport_CartAddButton_1_1.setBackground(Color.WHITE);
-		sport_CartAddButton_1_1.setBounds(136, 119, 31, 23);
-		daily_Product1.add(sport_CartAddButton_1_1);
-		
-		JComboBox sport_CartQtyComboBox_1_1 = new JComboBox();
-		sport_CartQtyComboBox_1_1.setOpaque(false);
-		sport_CartQtyComboBox_1_1.setMaximumRowCount(10);
-		sport_CartQtyComboBox_1_1.setBorder(null);
-		sport_CartQtyComboBox_1_1.setBackground(Color.WHITE);
-		sport_CartQtyComboBox_1_1.setAutoscrolls(true);
-		sport_CartQtyComboBox_1_1.setBounds(99, 119, 33, 23);
-		daily_Product1.add(sport_CartQtyComboBox_1_1);
-		
-		JPanel sport_Product2_1 = new JPanel();
-		sport_Product2_1.setLayout(null);
-		sport_Product2_1.setSize(new Dimension(120, 120));
-		sport_Product2_1.setPreferredSize(new Dimension(170, 190));
-		sport_Product2_1.setMinimumSize(new Dimension(150, 150));
-		sport_Product2_1.setMaximumSize(new Dimension(200, 200));
-		sport_Product2_1.setBounds(new Rectangle(0, 0, 120, 120));
-		sport_Product2_1.setBorder(null);
-		sport_Product2_1.setBackground(Color.WHITE);
-		sport_Product2_1.setAlignmentY(1.0f);
-		sport_Product2_1.setAlignmentX(1.0f);
-		daily_ContentPanel.add(sport_Product2_1);
-		
-		JLabel sport_IconLabel2_1 = new JLabel("");
-		sport_IconLabel2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		sport_IconLabel2_1.setBounds(3, 1, 162, 116);
-		sport_Product2_1.add(sport_IconLabel2_1);
-		
-		JLabel sport_DescLabel2_1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 스포츠<br>\r\n\t\t\t<p>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t<p>\r\n\t\t\t설명: 스포오츠\r\n\t\t\r\n </font></html>");
-		sport_DescLabel2_1.setVerticalAlignment(SwingConstants.TOP);
-		sport_DescLabel2_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		sport_DescLabel2_1.setHorizontalAlignment(SwingConstants.LEFT);
-		sport_DescLabel2_1.setBounds(3, 143, 164, 47);
-		sport_Product2_1.add(sport_DescLabel2_1);
-		
-		JButton sport_CartAddButton2_1_1 = new JButton("");
-		sport_CartAddButton2_1_1.setOpaque(false);
-		sport_CartAddButton2_1_1.setForeground(Color.WHITE);
-		sport_CartAddButton2_1_1.setBorder(null);
-		sport_CartAddButton2_1_1.setBackground(Color.WHITE);
-		sport_CartAddButton2_1_1.setBounds(136, 119, 31, 23);
-		sport_Product2_1.add(sport_CartAddButton2_1_1);
-		
-		JComboBox sport_CartQtyComboBox2_1 = new JComboBox();
-		sport_CartQtyComboBox2_1.setOpaque(false);
-		sport_CartQtyComboBox2_1.setMaximumRowCount(10);
-		sport_CartQtyComboBox2_1.setBorder(null);
-		sport_CartQtyComboBox2_1.setBackground(Color.WHITE);
-		sport_CartQtyComboBox2_1.setAutoscrolls(true);
-		sport_CartQtyComboBox2_1.setBounds(99, 119, 33, 23);
-		sport_Product2_1.add(sport_CartQtyComboBox2_1);
 		
 		JPanel furniturePanel = new JPanel();
 		tabbedPane.addTab("가 구", null, furniturePanel, null);
