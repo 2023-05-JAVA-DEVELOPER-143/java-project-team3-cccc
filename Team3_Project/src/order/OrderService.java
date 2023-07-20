@@ -50,11 +50,13 @@ public class OrderService {
 	/*
 	 * 결제하기
 	 */
+
 	public int OrderCash(Order order) throws Exception{
 		int rowCount = orderDao.insert(order);
 		cartDao.deleteByUserId(order.getUserId());
 		return rowCount;
 	}
-	
-	
-}
+
+		
+	}
+

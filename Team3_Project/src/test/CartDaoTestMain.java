@@ -12,8 +12,10 @@ public class CartDaoTestMain {
 		CartDao cartDao = new CartDao();//  Dao  객체 생성
 
 		// userid cart 내의 제품 존재여부 countByProductNo (Test완료)
+
 		
-		int a = cartDao.countByProductNo( "dddd",8 );
+		int a = cartDao.countByProductNo( "dddd",1 );
+
 		System.out.println(a);
 	
 		// insert(Test완료) 
@@ -27,7 +29,6 @@ public class CartDaoTestMain {
 			
 		int b = cartDao.updateByProductNo("dddd", 8, 13);
 		System.out.println(b);
-	
 
 		//카테고리 상품창에서 장바구니 눌러서 개수 1개 추가 update(Test완료)
 
@@ -51,6 +52,7 @@ public class CartDaoTestMain {
 		
 		//car_no로 Cart 찾기(Test완료)
 		System.out.println(cartDao.findByCartNo(40));
+
 		
 	}
 	
