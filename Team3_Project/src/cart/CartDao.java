@@ -16,6 +16,9 @@ public class CartDao {
 	
 	// userid cart 내의 제품 존재여부
 	public int countByProductNo(String userid, int p_no) {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(userid);
+		
 		return 0;
 	}
 	
@@ -40,7 +43,6 @@ public class CartDao {
 		return insertRowCount;
 	}
 	
-
 	//상품창에서 갯수 추가 update 
 	public int updateByProductNo(String userId, int p_no, int cart_qty) throws Exception {
 		Connection con=null;
