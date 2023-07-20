@@ -172,10 +172,69 @@ public class CartDao {
 		}
 		return deleteRowCount;
 	}
-	//Cart no로 Cart search(
-	public Cart findByCartNo(int cart_no) throws Exception {
-		return null;
+	
+	//userId와 p_no로 Cart테이블에서 Cart데이터 찾기(Test완료)
+	public Cart findByUserIdPNo(String user_id, int p_no) throws Exception {
+		Cart cart=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_FIND_PRODUCT_USERID_PRODUCTNO );
+			pstmt.setString(1,user_id);
+			pstmt.setInt(2,p_no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				cart=new Cart(rs.getInt("cart_no"),
+							 rs.getString("userId"),
+							 new Product(rs.getInt("p_no"),
+									 	rs.getString("p_name"),
+									 	rs.getInt("p_price"),
+									 	rs.getString("p_image"),
+									 	rs.getString("p_desc")
+									 	),
+								rs.getInt("cart_qty")
+						 );
+			}
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return cart;
 	}
 	
+	
+	//Cart no로 Cart search(Test완료)
+	public Cart findByCartNo(int cart_no) throws Exception {
+		Cart cart=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(CartSQL.CART_FIND_CART_NO);
+			pstmt.setInt(1,cart_no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				cart=new Cart(rs.getInt("cart_no"),
+							 rs.getString("userId"),
+							 new Product(rs.getInt("p_no"),
+									 	rs.getString("p_name"),
+									 	rs.getInt("p_price"),
+									 	rs.getString("p_image"),
+									 	rs.getString("p_desc")
+									 	),
+								rs.getInt("cart_qty")
+						 );
+			}
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return cart;
+	}
 	
 }
