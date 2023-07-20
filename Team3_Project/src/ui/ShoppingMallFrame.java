@@ -463,6 +463,7 @@ public class ShoppingMallFrame extends JFrame {
 				if(loginUser!=null) {
 					System.out.println(fashion_CartAddButton2.getActionCommand());
 					System.out.println(fashion_CartQtyComboBox2.getSelectedItem());
+				
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
