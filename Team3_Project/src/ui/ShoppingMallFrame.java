@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -42,6 +44,8 @@ import product.ProductService;
 import user.User;
 import user.UserService;
 import javax.swing.table.DefaultTableModel;
+
+import com.itwill.member.Member;
 
 public class ShoppingMallFrame extends JFrame {
 
@@ -80,7 +84,7 @@ public class ShoppingMallFrame extends JFrame {
 
 	private JComboBox fashion_CartQtyComboBox;
 	private JComboBox fashion_CartQtyComboBox2;
-	private JTable table_1;
+	private JTable cartTable;
 
 
 	/**
@@ -1439,8 +1443,8 @@ public class ShoppingMallFrame extends JFrame {
 		scrollPane.setBounds(36, 23, 428, 161);
 		cart_ItemPanel.add(scrollPane);
 		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
+		cartTable = new JTable();
+		cartTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
 				{null, null, null},
@@ -1450,7 +1454,7 @@ public class ShoppingMallFrame extends JFrame {
 				"\uC0C1\uD488\uBA85", "\uC218\uB7C9", "\uAC00\uACA9"
 			}
 		));
-		scrollPane.setViewportView(table_1);
+		scrollPane.setViewportView(cartTable);
 		
 		JPanel shop_OrderListPanel = new JPanel();
 		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
@@ -1659,5 +1663,6 @@ public class ShoppingMallFrame extends JFrame {
 		info_PhoneTextField.setText(loginUser.getPhone());
 		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
 
-	} // 생성자 끝
+	} 
+	
 }
