@@ -58,6 +58,8 @@ public class ShoppingMallFrame extends JFrame {
 	private User loginUser;
 
 	
+	
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField join_PhoneTextField;
