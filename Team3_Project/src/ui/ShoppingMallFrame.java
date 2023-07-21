@@ -174,13 +174,16 @@ public class ShoppingMallFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (loginUser == null) {
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
 					shopTabbedPane.setSelectedIndex(1);				
 
 				}else {		
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.");
 					loginUser = null;
 					loginLabel.setText("  로그인");
+					setTitle("TEAM_SAMJO");
+					shopTabbedPane.setEnabledAt(1, true);
+
+					shopTabbedPane.setEnabledAt(3, false);
 					}
 			}
 		});
