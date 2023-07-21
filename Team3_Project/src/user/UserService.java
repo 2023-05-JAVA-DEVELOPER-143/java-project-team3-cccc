@@ -37,5 +37,15 @@ public class UserService {
 	      return userDao.delete(userId);
 	   }
 	
+	   public boolean duplicatecheck (String userId)throws Exception{
+		   boolean check =false;
+		  int loginuser= userDao.countByUserId(userId);
+		  if(loginuser<1) {
+			  check = true;
+		  }else {
+			  //중복
+		  }
+		   return check;
+	   }
 	   
 }
