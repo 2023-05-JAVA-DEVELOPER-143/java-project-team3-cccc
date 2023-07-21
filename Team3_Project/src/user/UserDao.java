@@ -100,6 +100,7 @@ public class UserDao {
 		ResultSet rs=pstmt.executeQuery();
 		rs.next();
 		int userCount = rs.getInt(1);
+		
 		return userCount;
 	}
 	
