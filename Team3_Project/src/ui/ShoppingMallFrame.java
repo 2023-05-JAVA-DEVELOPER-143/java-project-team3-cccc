@@ -591,13 +591,6 @@ public class ShoppingMallFrame extends JFrame {
 		sport_IconLabel1_1.setBounds(3, 1, 162, 116);
 		sport_Product1.add(sport_IconLabel1_1);
 		
-		JLabel sport_DescLabel_1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 농구공<br>\r\n\t\t\t가격: 50,000<br>\r\n\t\t\t설명: 농구고옹\r\n\t\t\r\n </font></html>");
-		sport_DescLabel_1.setVerticalAlignment(SwingConstants.TOP);
-		sport_DescLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		sport_DescLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		sport_DescLabel_1.setBounds(3, 143, 164, 47);
-		sport_Product1.add(sport_DescLabel_1);
-		
 		JButton sport_CartAddButton_1 = new JButton("");
 		sport_CartAddButton_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton_1.setOpaque(false);
@@ -616,6 +609,30 @@ public class ShoppingMallFrame extends JFrame {
 		sport_CartQtyComboBox_1.setAutoscrolls(true);
 		sport_CartQtyComboBox_1.setBounds(99, 119, 33, 23);
 		sport_Product1.add(sport_CartQtyComboBox_1);
+		
+		JLabel sport_ProductTitleLabel1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		sport_ProductTitleLabel1.setVerticalAlignment(SwingConstants.TOP);
+		sport_ProductTitleLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
+		sport_ProductTitleLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		sport_ProductTitleLabel1.setBounds(23, 152, 33, 84);
+		sport_Product1.add(sport_ProductTitleLabel1);
+		
+		JLabel sport_ProductPriceLabel = new JLabel((String) null);
+		sport_ProductPriceLabel.setBounds(60, 184, 105, 15);
+		sport_Product1.add(sport_ProductPriceLabel);
+		
+		JLabel sport_ProductDescLabel1 = new JLabel((String) null);
+		sport_ProductDescLabel1.setBounds(60, 214, 162, 15);
+		sport_Product1.add(sport_ProductDescLabel1);
+		
+		JLabel sport_ProductNameLabel1 = new JLabel((String) null);
+		sport_ProductNameLabel1.setBounds(60, 154, 105, 15);
+		sport_Product1.add(sport_ProductNameLabel1);
+		
+		sport_ProductNameLabel1.setText(productName(11));
+		sport_ProductPriceLabel.setText(productPrice(11));
+		sport_ProductDescLabel1.setText(productDesc(11));
+		
 		
 		JPanel sport_Product2 = new JPanel();
 		sport_Product2.setLayout(null);
@@ -636,13 +653,6 @@ public class ShoppingMallFrame extends JFrame {
 		sport_IconLabel2.setBounds(3, 1, 162, 116);
 		sport_Product2.add(sport_IconLabel2);
 		
-		JLabel sport_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 실내 싸이클<br>\r\n\t\t\t가격: 250,000<br>\r\n\t\t\t설명: 실내에서 자전거 타기\r\n\t\t\r\n </font></html>");
-		sport_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		sport_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		sport_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		sport_DescLabel2.setBounds(3, 143, 164, 47);
-		sport_Product2.add(sport_DescLabel2);
-		
 		JButton sport_CartAddButton2 = new JButton("");
 		sport_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton2.setOpaque(false);
@@ -661,6 +671,31 @@ public class ShoppingMallFrame extends JFrame {
 		sport_CartQtyComboBox2.setAutoscrolls(true);
 		sport_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		sport_Product2.add(sport_CartQtyComboBox2);
+		
+		JLabel sport_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		sport_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
+		sport_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+		sport_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+		sport_Product2.add(sport_ProductTitleLabel2);
+		sport_ProductTitleLabel2.setBounds(23, 152, 33, 84);
+		
+		JLabel sport_ProductPriceLabel2 = new JLabel((String) null);
+		sport_ProductPriceLabel2.setBounds(60, 184, 105, 15);
+		sport_Product2.add(sport_ProductPriceLabel2);
+		
+		JLabel sport_ProductDescLabel2 = new JLabel((String) null);
+		sport_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		sport_Product2.add(sport_ProductDescLabel2);
+		
+		JLabel sport_ProductNameLabel2 = new JLabel((String) null);
+		sport_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		sport_Product2.add(sport_ProductNameLabel2);
+		
+		sport_ProductNameLabel2.setText(productName(12));
+		sport_ProductPriceLabel2.setText(productPrice(12));
+		sport_ProductDescLabel2.setText(productDesc(12));
+		
+		
 		
 		JPanel dailyPane = new JPanel();
 		tabbedPane.addTab("생 활", null, dailyPane, null);
@@ -689,13 +724,6 @@ public class ShoppingMallFrame extends JFrame {
 		daily_IconLabel1.setBounds(3, 1, 162, 116);
 		daily_Product1.add(daily_IconLabel1);
 		
-		JLabel daily_DescLabel1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 휴지<br>\r\n\t\t\t가격: 50,000<br>\r\n\t\t\t설명: 잘풀리는 휴지\r\n\t\t\r\n </font></html>");
-		daily_DescLabel1.setVerticalAlignment(SwingConstants.TOP);
-		daily_DescLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
-		daily_DescLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		daily_DescLabel1.setBounds(3, 143, 164, 47);
-		daily_Product1.add(daily_DescLabel1);
-		
 		JButton daily_CartAddButton1 = new JButton("");
 		daily_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		daily_CartAddButton1.setOpaque(false);
@@ -714,6 +742,32 @@ public class ShoppingMallFrame extends JFrame {
 		daily_CartQtyComboBox1.setAutoscrolls(true);
 		daily_CartQtyComboBox1.setBounds(99, 119, 33, 23);
 		daily_Product1.add(daily_CartQtyComboBox1);
+		
+		
+
+		JLabel daily_ProductTitleLabel1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		daily_ProductTitleLabel1.setVerticalAlignment(SwingConstants.TOP);
+		daily_ProductTitleLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
+		daily_ProductTitleLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		daily_ProductTitleLabel1.setBounds(23, 152, 33, 84);
+		daily_Product1.add(daily_ProductTitleLabel1);
+		
+		JLabel daily_ProductPriceLabel = new JLabel((String) null);
+		daily_ProductPriceLabel.setBounds(60, 184, 105, 15);
+		daily_Product1.add(daily_ProductPriceLabel);
+		
+		JLabel daily_ProductDescLabel1 = new JLabel((String) null);
+		daily_ProductDescLabel1.setBounds(60, 214, 162, 15);
+		daily_Product1.add(daily_ProductDescLabel1);
+		
+		JLabel daily_ProductNameLabel1 = new JLabel((String) null);
+		daily_ProductNameLabel1.setBounds(60, 154, 105, 15);
+		daily_Product1.add(daily_ProductNameLabel1);
+		
+		daily_ProductNameLabel1.setText(productName(10));
+		daily_ProductPriceLabel.setText(productPrice(10));
+		daily_ProductDescLabel1.setText(productDesc(10));
+		
 		
 		JPanel daily_Product2 = new JPanel();
 		daily_Product2.setLayout(null);
@@ -734,13 +788,6 @@ public class ShoppingMallFrame extends JFrame {
 		daily_conLabel2.setBounds(3, 1, 162, 116);
 		daily_Product2.add(daily_conLabel2);
 		
-		JLabel daily_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 건조기<br>\r\n\t\t\t가격: 50,000<br>\r\n\t\t\t설명: 잘말리는 건조기\r\n\t\t\r\n </font></html>");
-		daily_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		daily_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		daily_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		daily_DescLabel2.setBounds(3, 143, 164, 47);
-		daily_Product2.add(daily_DescLabel2);
-		
 		JButton daily_CartAddButton2 = new JButton("");
 		daily_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		daily_CartAddButton2.setOpaque(false);
@@ -759,6 +806,32 @@ public class ShoppingMallFrame extends JFrame {
 		daily_CartQtyComboBox2.setAutoscrolls(true);
 		daily_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		daily_Product2.add(daily_CartQtyComboBox2);
+		
+
+		JLabel daily_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		daily_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
+		daily_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+		daily_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+		daily_ProductTitleLabel2.setBounds(23, 152, 33, 84);
+		daily_Product2.add(daily_ProductTitleLabel2);
+		
+		JLabel daily_ProductPriceLabel2 = new JLabel((String) null);
+		daily_ProductPriceLabel2.setBounds(60, 184, 105, 15);
+		daily_Product2.add(daily_ProductPriceLabel2);
+		
+		JLabel daily_ProductDescLabel2 = new JLabel((String) null);
+		daily_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		daily_Product2.add(daily_ProductDescLabel2);
+		
+		JLabel daily_ProductNameLabel2 = new JLabel((String) null);
+		daily_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		daily_Product2.add(daily_ProductNameLabel2);
+		
+		daily_ProductNameLabel2.setText(productName(9));
+		daily_ProductPriceLabel2.setText(productPrice(9));
+		daily_ProductDescLabel2.setText(productDesc(9));
+		
+		
 		
 		JPanel furniturePanel = new JPanel();
 		tabbedPane.addTab("가 구", null, furniturePanel, null);
@@ -788,14 +861,11 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_IconLabel1.setBounds(3, 1, 162, 116);
 		furniture_Product1.add(furniture_IconLabel1);
 		
-		JLabel furniture_DescLabel1 = new JLabel("<html>\r\n\t<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 의자<br>\r\n\t\t\t가격: 30,000<br>\r\n\t\t\t설명: 의자왕\r\n\t\t\r\n </font></html>");
-		furniture_DescLabel1.setVerticalAlignment(SwingConstants.TOP);
-		furniture_DescLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
-		furniture_DescLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		furniture_DescLabel1.setBounds(3, 143, 164, 47);
-		furniture_Product1.add(furniture_DescLabel1);
-		
 		JButton furniture_CartAddButton1 = new JButton("");
+		furniture_CartAddButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		furniture_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton1.setOpaque(false);
 		furniture_CartAddButton1.setForeground(Color.WHITE);
@@ -813,6 +883,33 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_CartQtyComboBox1.setAutoscrolls(true);
 		furniture_CartQtyComboBox1.setBounds(99, 119, 33, 23);
 		furniture_Product1.add(furniture_CartQtyComboBox1);
+		
+		
+		JLabel furniture_ProductTitleLabel1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		furniture_ProductTitleLabel1.setVerticalAlignment(SwingConstants.TOP);
+		furniture_ProductTitleLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
+		furniture_ProductTitleLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		furniture_ProductTitleLabel1.setBounds(23, 152, 33, 84);
+		furniture_Product1.add(furniture_ProductTitleLabel1);
+		
+		JLabel furniture_ProductPriceLabel = new JLabel((String) null);
+		furniture_ProductPriceLabel.setBounds(60, 184, 105, 15);
+		furniture_Product1.add(furniture_ProductPriceLabel);
+		
+		JLabel furniture_ProductDescLabel1 = new JLabel((String) null);
+		furniture_ProductDescLabel1.setBounds(60, 214, 162, 15);
+		furniture_Product1.add(furniture_ProductDescLabel1);
+		
+		JLabel furniture_ProductNameLabel1 = new JLabel((String) null);
+		furniture_ProductNameLabel1.setBounds(60, 154, 105, 15);
+		furniture_Product1.add(furniture_ProductNameLabel1);
+		
+		furniture_ProductNameLabel1.setText(productName(7));
+		furniture_ProductPriceLabel.setText(productPrice(7));
+		furniture_ProductDescLabel1.setText(productDesc(7));
+		
+		
+		
 		
 		JPanel furniture_Product2 = new JPanel();
 		furniture_Product2.setLayout(null);
@@ -833,13 +930,6 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_onLabel2.setBounds(3, 1, 162, 116);
 		furniture_Product2.add(furniture_onLabel2);
 		
-		JLabel furniture_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 소파<br>\r\n\t\t\t가격: 400,000<br>\r\n\t\t\t설명: 소파입니다\r\n\t\t\r\n </font></html>");
-		furniture_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		furniture_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		furniture_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		furniture_DescLabel2.setBounds(3, 143, 164, 47);
-		furniture_Product2.add(furniture_DescLabel2);
-		
 		JButton furniture_CartAddButton2 = new JButton("");
 		furniture_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton2.setOpaque(false);
@@ -858,6 +948,35 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_CartQtyComboBox2.setAutoscrolls(true);
 		furniture_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		furniture_Product2.add(furniture_CartQtyComboBox2);
+		
+
+		
+		JLabel furniture_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		furniture_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
+		furniture_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+		furniture_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+		furniture_ProductTitleLabel2.setBounds(23, 152, 33, 84);
+		furniture_Product2.add(furniture_ProductTitleLabel2);
+		
+		JLabel furniture_ProductPriceLabe2 = new JLabel((String) null);
+		furniture_ProductPriceLabe2.setBounds(60, 184, 105, 15);
+		furniture_Product2.add(furniture_ProductPriceLabe2);
+		
+		JLabel furniture_ProductDescLabel2 = new JLabel((String) null);
+		furniture_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		furniture_Product2.add(furniture_ProductDescLabel2);
+		
+		JLabel furniture_ProductNameLabel2 = new JLabel((String) null);
+		furniture_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		furniture_Product2.add(furniture_ProductNameLabel2);
+		
+		furniture_ProductNameLabel2.setText(productName(8));
+		furniture_ProductPriceLabe2.setText(productPrice(8));
+		furniture_ProductDescLabel2.setText(productDesc(8));
+		
+		
+		
+		
 		
 		JPanel digitalPanel = new JPanel();
 		tabbedPane.addTab("디지털", null, digitalPanel, null);
@@ -886,13 +1005,6 @@ public class ShoppingMallFrame extends JFrame {
 		digital_IconLabel1.setBounds(3, 1, 162, 116);
 		digital_Product1.add(digital_IconLabel1);
 		
-		JLabel digital_DescLabel1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 테블릿 PC<br>\r\n\t\t\t가격: 1,200,000<br>\r\n\t\t\t설명: 가전은 삼성\r\n\t\t\r\n </font></html>");
-		digital_DescLabel1.setVerticalAlignment(SwingConstants.TOP);
-		digital_DescLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
-		digital_DescLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		digital_DescLabel1.setBounds(3, 143, 164, 47);
-		digital_Product1.add(digital_DescLabel1);
-		
 		JButton digital_CartAddButton1 = new JButton("");
 		digital_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton1.setOpaque(false);
@@ -911,6 +1023,33 @@ public class ShoppingMallFrame extends JFrame {
 		digital_CartQtyComboBox1.setAutoscrolls(true);
 		digital_CartQtyComboBox1.setBounds(99, 119, 33, 23);
 		digital_Product1.add(digital_CartQtyComboBox1);
+		
+
+		JLabel digital_ProductTitleLabel1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		digital_ProductTitleLabel1.setVerticalAlignment(SwingConstants.TOP);
+		digital_ProductTitleLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
+		digital_ProductTitleLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		digital_ProductTitleLabel1.setBounds(23, 152, 33, 84);
+		digital_Product1.add(digital_ProductTitleLabel1);
+		
+		JLabel digital_ProductPriceLabe1 = new JLabel((String) null);
+		digital_ProductPriceLabe1.setBounds(60, 184, 105, 15);
+		digital_Product1.add(digital_ProductPriceLabe1);
+		
+		JLabel digital_ProductDescLabel1 = new JLabel((String) null);
+		digital_ProductDescLabel1.setBounds(60, 214, 162, 15);
+		digital_Product1.add(digital_ProductDescLabel1);
+		
+		JLabel digital_ProductNameLabel = new JLabel((String) null);
+		digital_ProductNameLabel.setBounds(60, 154, 105, 15);
+		digital_Product1.add(digital_ProductNameLabel);
+		
+		digital_ProductNameLabel.setText(productName(1));
+		digital_ProductPriceLabe1.setText(productPrice(1));
+		digital_ProductDescLabel1.setText(productDesc(1));
+		
+		
+		
 		
 		JPanel digital_Product2 = new JPanel();
 		digital_Product2.setLayout(null);
@@ -931,13 +1070,6 @@ public class ShoppingMallFrame extends JFrame {
 		digital_onLabel2.setBounds(3, 1, 162, 116);
 		digital_Product2.add(digital_onLabel2);
 		
-		JLabel digital_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 아이팟<br>\r\n\t\t\t가격: 500,000<br>\r\n\t\t\t설명: 애플 is 뭔들\r\n\t\t\r\n </font></html>");
-		digital_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		digital_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		digital_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		digital_DescLabel2.setBounds(3, 143, 164, 47);
-		digital_Product2.add(digital_DescLabel2);
-		
 		JButton digital_CartAddButton2 = new JButton("");
 		digital_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton2.setOpaque(false);
@@ -956,6 +1088,35 @@ public class ShoppingMallFrame extends JFrame {
 		digital_CartQtyComboBox2.setAutoscrolls(true);
 		digital_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		digital_Product2.add(digital_CartQtyComboBox2);
+		
+
+		JLabel digital_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		digital_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
+		digital_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+		digital_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+		digital_ProductTitleLabel2.setBounds(23, 152, 33, 84);
+		digital_Product1.add(digital_ProductTitleLabel2);
+		
+		JLabel digital_ProductPriceLabe2 = new JLabel((String) null);
+		digital_ProductPriceLabe2.setBounds(60, 184, 105, 15);
+		digital_Product2.add(digital_ProductPriceLabe2);
+		
+		JLabel digital_ProductDescLabel2 = new JLabel((String) null);
+		digital_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		digital_Product2.add(digital_ProductDescLabel2);
+		
+		JLabel digital_ProductNameLabel2 = new JLabel((String) null);
+		digital_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		digital_Product2.add(digital_ProductNameLabel2);
+		
+		digital_ProductNameLabel2.setText(productName(1));
+		digital_ProductPriceLabe2.setText(productPrice(1));
+		digital_ProductDescLabel2.setText(productDesc(1));
+		
+		
+		
+		
+		
 		
 		JPanel foodPanel = new JPanel();
 		tabbedPane.addTab("음 식", null, foodPanel, null);
@@ -985,13 +1146,6 @@ public class ShoppingMallFrame extends JFrame {
 		food_IconLabel1.setBounds(3, 1, 162, 116);
 		food_Product1.add(food_IconLabel1);
 		
-		JLabel food_DescLabel1 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 피자 PC<br>\r\n\t\t\t가격: 20,000<br>\r\n\t\t\t설명: 그냥피자\r\n\t\t\r\n </font></html>");
-		food_DescLabel1.setVerticalAlignment(SwingConstants.TOP);
-		food_DescLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
-		food_DescLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		food_DescLabel1.setBounds(3, 143, 164, 47);
-		food_Product1.add(food_DescLabel1);
-		
 		JButton food_CartAddButton1 = new JButton("");
 		food_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton1.setOpaque(false);
@@ -1009,6 +1163,33 @@ public class ShoppingMallFrame extends JFrame {
 		food_CartQtyComboBox1.setAutoscrolls(true);
 		food_CartQtyComboBox1.setBounds(99, 119, 33, 23);
 		food_Product1.add(food_CartQtyComboBox1);
+		
+
+
+		JLabel food_ProductTitleLabel1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		food_ProductTitleLabel1.setVerticalAlignment(SwingConstants.TOP);
+		food_ProductTitleLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
+		food_ProductTitleLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		food_ProductTitleLabel1.setBounds(23, 152, 33, 84);
+		food_Product1.add(food_ProductTitleLabel1);
+		
+		JLabel food_ProductPriceLabel1 = new JLabel((String) null);
+		food_ProductPriceLabel1.setBounds(60, 184, 105, 15);
+		food_Product1.add(food_ProductPriceLabel1);
+		
+		JLabel food_ProductDescLabel1 = new JLabel((String) null);
+		food_ProductDescLabel1.setBounds(60, 214, 162, 15);
+		food_Product1.add(food_ProductDescLabel1);
+		
+		JLabel food_ProductNameLabel = new JLabel((String) null);
+		food_ProductNameLabel.setBounds(60, 154, 105, 15);
+		food_Product1.add(food_ProductNameLabel);
+		
+		food_ProductNameLabel.setText(productName(6));
+		food_ProductPriceLabel1.setText(productPrice(6));
+		food_ProductDescLabel1.setText(productDesc(6));
+		
+		
 		
 		JPanel food_Product2 = new JPanel();
 		food_Product2.setLayout(null);
@@ -1029,13 +1210,6 @@ public class ShoppingMallFrame extends JFrame {
 		food_onLabel2.setBounds(3, 1, 162, 116);
 		food_Product2.add(food_onLabel2);
 		
-		JLabel food_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 햇반<br>\r\n\t\t\t가격: 12,000<br>\r\n\t\t\t설명: 햇반\r\n\t\t\r\n </font></html>");
-		food_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		food_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		food_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		food_DescLabel2.setBounds(3, 143, 164, 47);
-		food_Product2.add(food_DescLabel2);
-		
 		JButton food_CartAddButton2 = new JButton("");
 		food_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton2.setOpaque(false);
@@ -1053,6 +1227,33 @@ public class ShoppingMallFrame extends JFrame {
 		digital_CartQtyComboBox2_1.setAutoscrolls(true);
 		digital_CartQtyComboBox2_1.setBounds(99, 119, 33, 23);
 		food_Product2.add(digital_CartQtyComboBox2_1);
+		
+
+		JLabel food_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		food_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
+		food_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+		food_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+		food_ProductTitleLabel2.setBounds(23, 152, 33, 84);
+		food_Product2.add(food_ProductTitleLabel2);
+		
+		JLabel food_ProductPriceLabel2 = new JLabel((String) null);
+		food_ProductPriceLabel2.setBounds(60, 184, 105, 15);
+		food_Product2.add(food_ProductPriceLabel2);
+		
+		JLabel food_ProductDescLabel2 = new JLabel((String) null);
+		food_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		food_Product2.add(food_ProductDescLabel2);
+		
+		JLabel food_ProductNameLabel2 = new JLabel((String) null);
+		food_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		food_Product2.add(food_ProductNameLabel2);
+		
+		food_ProductNameLabel2.setText(productName(6));
+		food_ProductPriceLabel2.setText(productPrice(6));
+		food_ProductDescLabel2.setText(productDesc(6));
+		
+		
+		
 		
 		JPanel foodPanel_1 = new JPanel();
 		foodPanel_1.setLayout(null);
