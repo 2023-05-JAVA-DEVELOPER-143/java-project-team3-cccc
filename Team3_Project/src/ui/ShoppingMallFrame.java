@@ -196,10 +196,10 @@ public class ShoppingMallFrame extends JFrame {
 					loginUser = null;
 					loginLabel.setText("  로그인");
 					shopTabbedPane.setEnabledAt(1, true);
+					shopTabbedPane.setEnabledAt(2, true);
+					shopTabbedPane.setEnabledAt(3, false);
 
 					setTitle("TEAM_SAMJO");
-					shopTabbedPane.setEnabledAt(1, true);
-					shopTabbedPane.setEnabledAt(3, false);
 					}
 			}
 		});
@@ -211,7 +211,11 @@ public class ShoppingMallFrame extends JFrame {
 		joinLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				shopTabbedPane.setSelectedIndex(2);
+				if(loginUser==null) {
+					shopTabbedPane.setSelectedIndex(2);
+				}else {
+					joinLabel.setEnabled(rootPaneCheckingEnabled);
+				}
 			}
 		});
 		menuBar.add(joinLabel);
@@ -1676,6 +1680,7 @@ public class ShoppingMallFrame extends JFrame {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
+		shopTabbedPane.setEnabledAt(2, false);
 
 		shopTabbedPane.setEnabledAt(3, true);
 		shopTabbedPane.setSelectedIndex(0);
