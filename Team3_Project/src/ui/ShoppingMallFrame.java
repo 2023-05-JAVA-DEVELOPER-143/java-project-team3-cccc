@@ -1481,6 +1481,23 @@ public class ShoppingMallFrame extends JFrame {
 		shop_JoinPanel.add(join_Btn);
 		
 		JButton join_jungbok_Btn = new JButton("중복체크");
+		join_jungbok_Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					String checkUserId = join_IdTextField.getSelectedText();
+					boolean isduplicate = userservice.duplicatecheck(checkUserId);
+					if(!isduplicate) {
+						JOptionPane.showMessageDialog(null,"사용가능한 아이디입니다.");
+					}else {
+						JOptionPane.showMessageDialog(null,"사용 불가능한 아이디입니다.");
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		join_jungbok_Btn.setBounds(301, 156, 92, 23);
 		shop_JoinPanel.add(join_jungbok_Btn);
 		
