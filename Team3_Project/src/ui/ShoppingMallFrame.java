@@ -184,8 +184,10 @@ public class ShoppingMallFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (loginUser == null) {
+
 					// 로그인 확인 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
+
 					shopTabbedPane.setSelectedIndex(1);				
 
 				}else {		
@@ -194,6 +196,10 @@ public class ShoppingMallFrame extends JFrame {
 					loginUser = null;
 					loginLabel.setText("  로그인");
 					shopTabbedPane.setEnabledAt(1, true);
+
+					setTitle("TEAM_SAMJO");
+					shopTabbedPane.setEnabledAt(1, true);
+					shopTabbedPane.setEnabledAt(3, false);
 					}
 			}
 		});
@@ -1491,22 +1497,45 @@ public class ShoppingMallFrame extends JFrame {
 		
 		Panel cart_ListSumPanel = new Panel();
 		cart_ListSumPanel.setLayout(null);
-		cart_ListSumPanel.setBounds(0, 366, 485, 37);
+		cart_ListSumPanel.setBounds(0, 358, 485, 45);
 		cart_ItemPanel.add(cart_ListSumPanel);
 		
-		JLabel cart_itemPrice_4_2_1 = new JLabel("합  계 :");
-		cart_itemPrice_4_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		JButton cart_itemPrice_4_2_1 = new JButton("합 계");
+		cart_itemPrice_4_2_1.setForeground(Color.GREEN);
 		cart_itemPrice_4_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_itemPrice_4_2_1.setBounds(324, 11, 57, 15);
+		cart_itemPrice_4_2_1.setBounds(309, 8, 73, 20);
 		cart_ListSumPanel.add(cart_itemPrice_4_2_1);
 		
-		JLabel cart_ItemTotPrice_4_2_1 = new JLabel("600,000");
+		JLabel cart_ItemTotPrice_4_2_1 = new JLabel("");
 		cart_ItemTotPrice_4_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		cart_ItemTotPrice_4_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ItemTotPrice_4_2_1.setBounds(382, 10, 91, 16);
+		cart_ItemTotPrice_4_2_1.setBounds(394, 12, 91, 16);
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
-
+		cart_itemPrice_4_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {			
+					try {
+						/****************userId로 회원의 카트목록 다 보기*****************/
+						List<Cart> CartList= cartservice.getCartItemByUserId(loginUser.getUserId());//회원전체리스트	
+//						Vector tableVector=new Vector(); // 컬럼의 테이블 내용 추가하려고
+						int totalPrice = 0;
+						for(Cart cart:CartList) {
+							Vector rowVector=new Vector(); // 자동으로 늘어나는 배열이라고 생각
+							Product product =cart.getProduct(); // 제품 가격을 표시하기 위한 Product객체 생성
+							int cartQty = cart.getCart_qty(); // 카트 한개의 제품 갯수
+							int pPrice = product.getP_price(); // 카트하나의 제품가격
+							totalPrice += cartQty * pPrice; // 카트 하나의 총 합
+			  
+						}
+						//이제 JLabel에 totalPrice변수를 넣으면 된다.
+						cart_ItemTotPrice_4_2_1.setText(String.valueOf(totalPrice));
+						
+					} catch(Exception e1) {
+						System.out.println("카트 상품 총합 보기에러-->"+e1.getMessage());
+					}
+				
+			}
+		});
 
 		JButton btnNewButton_2 = new JButton("삭  제");
 
