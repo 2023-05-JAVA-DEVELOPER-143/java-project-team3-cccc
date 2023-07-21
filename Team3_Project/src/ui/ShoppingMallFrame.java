@@ -457,17 +457,21 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartQtyComboBox.setBounds(99, 119, 33, 23);
 		fashion_Product1.add(fashion_CartQtyComboBox);
 		
-		fashion_ProductPriceLabel = new JLabel("New label");
+		fashion_ProductPriceLabel = new JLabel("");
 		fashion_ProductPriceLabel.setBounds(60, 184, 105, 15);
 		fashion_Product1.add(fashion_ProductPriceLabel);
 		
 		fashion_ProductDescLabel = new JLabel("New label");
-		fashion_ProductDescLabel.setBounds(60, 214, 105, 15);
+		fashion_ProductDescLabel.setBounds(60, 214, 162, 15);
 		fashion_Product1.add(fashion_ProductDescLabel);
 		
-		fashion_ProductNameLabel = new JLabel("New label");
+		fashion_ProductNameLabel = new JLabel("");
 		fashion_ProductNameLabel.setBounds(60, 154, 105, 15);
 		fashion_Product1.add(fashion_ProductNameLabel);
+	
+		fashion_ProductNameLabel.setText(productName(4));
+		fashion_ProductPriceLabel.setText(productPrice(4));
+		fashion_ProductDescLabel.setText(productDesc(4));
 		
 		JPanel fashion_Product2 = new JPanel();
 		fashion_Product2.setLayout(null);
@@ -487,13 +491,6 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_IconLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		fashion_IconLabel2.setBounds(3, 1, 162, 116);
 		fashion_Product2.add(fashion_IconLabel2);
-		
-		JLabel fashion_DescLabel2 = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 바지<br>\r\n\t\t\t가격: 120,000<br>\r\n\t\t\t설명: 편하다\r\n\t\t\r\n </font></html>");
-		fashion_DescLabel2.setVerticalAlignment(SwingConstants.TOP);
-		fashion_DescLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		fashion_DescLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		fashion_DescLabel2.setBounds(3, 143, 164, 47);
-		fashion_Product2.add(fashion_DescLabel2);
 		
 		JButton fashion_CartAddButton2 = new JButton("");
 		fashion_CartAddButton2.setActionCommand("2");
@@ -526,6 +523,31 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton2.setBackground(Color.WHITE);
 		fashion_CartAddButton2.setBounds(136, 119, 31, 23);
 		fashion_Product2.add(fashion_CartAddButton2);
+		JLabel fashion_ProductTitleLabel_1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		fashion_ProductTitleLabel_1.setVerticalAlignment(SwingConstants.TOP);
+		fashion_ProductTitleLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
+		fashion_ProductTitleLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		fashion_ProductTitleLabel_1.setBounds(23, 152, 33, 84);
+		fashion_Product2.add(fashion_ProductTitleLabel_1);
+		
+		JLabel fashion_ProductPriceLabel2 = new JLabel("");
+		fashion_ProductPriceLabel2.setBounds(60, 184, 105, 15);
+		fashion_Product2.add(fashion_ProductPriceLabel2);
+		fashion_ProductPriceLabel2.setText(productPrice(3));
+		
+		
+		JLabel fashion_ProductDescLabel2 = new JLabel("");
+		fashion_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		fashion_Product2.add(fashion_ProductDescLabel2);
+		fashion_ProductDescLabel2.setText(productDesc(3));
+		
+		JLabel fashion_ProductNameLabel2 = new JLabel("");
+		fashion_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		fashion_Product2.add(fashion_ProductNameLabel2);
+		fashion_ProductNameLabel2.setText(productName(3));
+		
+		
+		
 		
 		fashion_CartQtyComboBox2 = new JComboBox();
 		fashion_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
@@ -1666,11 +1688,28 @@ public class ShoppingMallFrame extends JFrame {
 	} // 생성자 끝
 
 	
-	private void toString(Product selectByPK) {
-		// TODO Auto-generated method stub
-		
+	private String productName(int no) throws Exception {
+		ProductService productService = new ProductService(); 
+		String name = productService.productName(no);	
+		return name;	
 	}
-
+	
+	@SuppressWarnings("unused")
+	private String productPrice(int no) throws Exception {
+		ProductService productService = new ProductService(); 
+		int price = productService.productPrice(no);			
+		return Integer.toString(price);	
+	}
+	
+	@SuppressWarnings("unused")
+	private String productDesc(int no) throws Exception {
+		ProductService productService = new ProductService(); 
+		String name = productService.productDesc(no);	
+		return name;	
+	}
+	
+	
+	
 	// user-> 회원 로그인
 	private void loginProcess(User loginUser) throws Exception {
 		this.loginUser = loginUser;
@@ -1723,6 +1762,7 @@ public class ShoppingMallFrame extends JFrame {
 	}		
 			
 	
+
 	// user-> 로그인 회원 상세보기
 	private void displayUserInfo(User loginUser) {
 		/**** 로그인한회원상세데이타보여주기 *****/
