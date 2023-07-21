@@ -13,6 +13,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -38,6 +42,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import cart.Cart;
+import cart.CartDao;
+import cart.CartSQL;
 import cart.CartService;
 import order.Order;
 import order.OrderService;
@@ -1550,6 +1556,7 @@ public class ShoppingMallFrame extends JFrame {
 		order_scrollPane.setBounds(12, 10, 461, 241);
 		order_ItemPanel.add(order_scrollPane);
 		
+		// Cart_주문목록 테이블
 		order_Table = new JTable();
 		order_Table.setModel(new DefaultTableModel(
 
@@ -1558,11 +1565,12 @@ public class ShoppingMallFrame extends JFrame {
 				{null, null, null},
 				{null, null, null},
 			},
+			// 컬럼 이름
 			new String[] {
 				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uAC00\uACA9"
 			}
 			));
-
+	
 		order_scrollPane.setViewportView(order_Table);
 
 		
@@ -1585,6 +1593,8 @@ public class ShoppingMallFrame extends JFrame {
 
 	} // 생성자 끝
 
+	
+	// user-> 회원 로그인
 	private void loginProcess(User loginUser) throws Exception {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
@@ -1603,7 +1613,7 @@ public class ShoppingMallFrame extends JFrame {
 			
 			
 	
-
+	// user-> 로그인 회원 상세보기
 	private void displayUserInfo(User loginUser) {
 		/**** 로그인한회원상세데이타보여주기 *****/
 		info_IdTextField.setText(loginUser.getUserId());
@@ -1612,5 +1622,26 @@ public class ShoppingMallFrame extends JFrame {
 		info_PasswordField.setText(loginUser.getPassword());
 		info_PhoneTextField.setText(loginUser.getPhone());
 		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
-	} 
+		
+	}
+		
+	
+		
+	// cart -> userId를 이용해서 사용자 카트 안의 모든 제품 찾기	
+		
+		public void findByUserId(User loginUser) throws Exception  {		
+		CartDao cartDao = null;
+		cartDao.findByUserId(loginUser.getUserId());
+		String[] cartCulom= {"주문번호","주문날짜","주문가격"};
+		Object[][] cartItem = new Object[3][1];	
+		// cartModel = new DefaultTableModel(cartCulom, cartItem);
+
+			
+			List cartList = null;
+			
+		}
+		
+
+		
+	 
 }
