@@ -1468,6 +1468,8 @@ public class ShoppingMallFrame extends JFrame {
 						gender = (String)join_GenderComboBox.getSelectedItem();
 					}
 					userservice.create(new User(id, password, name, address, phone, gender));
+					JOptionPane.showMessageDialog(null, "회원가입이 되었습니다.");
+					shopTabbedPane.setSelectedIndex(1);
 				} catch (Exception e2) {
 					
 				}
@@ -1609,6 +1611,8 @@ public class ShoppingMallFrame extends JFrame {
 					User updateUser = new User(id, password, name, address, phoneNumber, gender);
 					userservice.loginUpdate(updateUser);
 					
+					
+					
 					//회원정보 변경
 					
 				}catch (Exception e1) {
@@ -1634,10 +1638,14 @@ public class ShoppingMallFrame extends JFrame {
 		
 
 		JButton info_User_Btn = new JButton("회원정보");
+		info_User_Btn.addMouseListener(new MouseAdapter() {
+			
+		});
 		info_User_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				 
 				displayUserInfo(loginUser);
+				
 				
 			}
 		});
@@ -1764,26 +1772,25 @@ public class ShoppingMallFrame extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        try {
+		            // 테이블에서 선택된 행의 인덱스 가져오기
+		            int selectedRow = cartTable.getSelectedRow();
+		            
 		            // 로그인한 사용자의 카트 정보 가져오기
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
+		            // 테이블에서 선택한 행에 해당하는 카트 정보 가져오기
+		            Cart selectedCart = cartList.get(selectedRow);
+		            // 상품 삭제
+		            cartservice.cartDeleteByCartNo(selectedCart.getCart_no());
 
+		            // 카트 정보 업데이트
+		            displayCartListUserId();
 
-		            // 첫 번째 카트 정보 가져오기 (여러 개의 카트가 있다면 원하는 로직으로 선택)
-		            Cart userCart = cartList.get(0);
-
-		            int cartno = userCart.getCart_no();
-		            cartservice.cartDeleteByCartNo(cartno);
-
-		            // 버튼 비활성화 후, 카트 정보 업데이트
-		            btnNewButton_2.setEnabled(false);
-		            displayCartListUserId(); // 카트 정보 업데이트
-		            // 삭제 후에 버튼 다시 활성화
-		            btnNewButton_2.setEnabled(true);
 		        } catch (Exception e1) {
-		            System.out.println("상품삭제에러-->" + e1.getMessage());
+		            System.out.println("삭제할 상품을 선택해 주세요." + e1.getMessage());
 		        }
 		    }
 		});
+
 
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
@@ -1858,11 +1865,8 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemPanel.add(scrollPane);
 		
 		cartTable = new JTable();
-		cartTable.setEnabled(false);
 		cartTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
 				{null, null, null},
 			},
 			new String[] {
@@ -2033,6 +2037,7 @@ public class ShoppingMallFrame extends JFrame {
 		info_PasswordField.setText(loginUser.getPassword());
 		info_PhoneTextField.setText(loginUser.getPhone());
 		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
+		
 		
 	}
 
