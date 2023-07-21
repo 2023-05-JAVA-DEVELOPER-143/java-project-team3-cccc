@@ -14,6 +14,7 @@ public class ProductServiceTest {
 		System.out.println(productService.productDesc(2));
 		System.out.println(productService.productName(2));
 		System.out.println(productService.productPrice(2));
+		System.out.println(productService.productFindName("바지"));
 	
 		
 		

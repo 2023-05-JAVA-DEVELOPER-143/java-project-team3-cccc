@@ -39,6 +39,22 @@ public class ProductDao {
 		return product;
 	}
 	
+	public Product SelectByname_Name(String p_name) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_Name_Name);
+		pstmt.setString(1, p_name);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product= new Product(rs.getString("p_name"),
+								 null
+								);		
+			} 
+		return product;
+	}
+	
+	
+	// 상품번호로 상품이름 검색
 	public Product SelectByPK_Name(int p_no) throws Exception{
 		Product product=null;
 		Connection con=dataSource.getConnection();
@@ -52,6 +68,7 @@ public class ProductDao {
 			} 
 		return product;
 	}
+	// 상품번호로 상품가격 검색
 	public Product SelectByPK_Price(int p_no) throws Exception{
 		Product product=null;
 		Connection con=dataSource.getConnection();
@@ -63,6 +80,8 @@ public class ProductDao {
 		} 
 		return product;
 	}
+
+	// 상품번호로 상품세부정보 검색
 	public Product SelectByPK_Desc(int p_no) throws Exception{
 		Product product=null;
 		Connection con=dataSource.getConnection();
