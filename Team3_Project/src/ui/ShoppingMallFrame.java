@@ -68,6 +68,7 @@ public class ShoppingMallFrame extends JFrame {
 
 	/************ loginUser **************/
 	private User loginUser = null;
+	private Cart loginCart = null;
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -196,10 +197,10 @@ public class ShoppingMallFrame extends JFrame {
 					loginUser = null;
 					loginLabel.setText("  로그인");
 					shopTabbedPane.setEnabledAt(1, true);
+					shopTabbedPane.setEnabledAt(2, true);
+					shopTabbedPane.setEnabledAt(3, false);
 
 					setTitle("TEAM_SAMJO");
-					shopTabbedPane.setEnabledAt(1, true);
-					shopTabbedPane.setEnabledAt(3, false);
 					}
 			}
 		});
@@ -211,7 +212,11 @@ public class ShoppingMallFrame extends JFrame {
 		joinLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				shopTabbedPane.setSelectedIndex(2);
+				if(loginUser==null) {
+					shopTabbedPane.setSelectedIndex(2);
+				}else {
+					joinLabel.setEnabled(rootPaneCheckingEnabled);
+				}
 			}
 		});
 		menuBar.add(joinLabel);
@@ -1559,7 +1564,32 @@ public class ShoppingMallFrame extends JFrame {
 			}
 		});
 
+
 		JButton btnNewButton_2 = new JButton("삭  제");
+		btnNewButton_2.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        try {
+		            // 로그인한 사용자의 카트 정보 가져오기
+		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
+
+
+		            // 첫 번째 카트 정보 가져오기 (여러 개의 카트가 있다면 원하는 로직으로 선택)
+		            Cart userCart = cartList.get(0);
+
+		            int cartno = userCart.getCart_no();
+		            cartservice.cartDeleteByCartNo(cartno);
+
+		            // 버튼 비활성화 후, 카트 정보 업데이트
+		            btnNewButton_2.setEnabled(false);
+		            displayCartListUserId(); // 카트 정보 업데이트
+		            // 삭제 후에 버튼 다시 활성화
+		            btnNewButton_2.setEnabled(true);
+		        } catch (Exception e1) {
+		            System.out.println("상품삭제에러-->" + e1.getMessage());
+		        }
+		    }
+		});
+
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		btnNewButton_2.setBounds(210, 7, 97, 23);
@@ -1588,6 +1618,10 @@ public class ShoppingMallFrame extends JFrame {
 		
 
 		JButton cart_CahngeBnt = new JButton("수  정");
+		cart_CahngeBnt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		cart_CahngeBnt.setBounds(105, 7, 97, 23);
 
 		cart_ListSumPanel.add(cart_CahngeBnt);
@@ -1715,6 +1749,7 @@ public class ShoppingMallFrame extends JFrame {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
 		shopTabbedPane.setEnabledAt(1, false);
+		shopTabbedPane.setEnabledAt(2, false);
 
 		shopTabbedPane.setEnabledAt(3, true);
 		shopTabbedPane.setSelectedIndex(0);
