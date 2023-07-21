@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DateFormat;
 import java.util.List;
 import java.util.Vector;
 
@@ -44,7 +45,6 @@ import cart.Cart;
 import cart.CartDao;
 import cart.CartService;
 import order.Order;
-import order.OrderItem;
 import order.OrderService;
 import product.Product;
 import product.ProductService;
@@ -2024,6 +2024,44 @@ public class ShoppingMallFrame extends JFrame {
 		JButton order_List_Btn = new JButton("주 문 목 록");
 		order_List_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					/****************userId로 회원의 카트목록 다 보기*****************/
+//					List<Cart> CartList= cartservice.getCartItemByUserId(loginUser.getUserId());//회원전체리스트
+					
+					List<Order> OrderList = orderservice.OrderList(loginUser.getUserId());
+					
+					Vector columVector=new Vector(); // 컬럼이름 추가하려고
+					columVector.add("주문번호");
+					columVector.add("주문날짜");
+					columVector.add("주문가격");
+					
+					Vector tableVector=new Vector(); //테이블 값들이 들어갈 곳
+					for(Order order:OrderList) {
+						Vector rowVector=new Vector(); // 컬럼의 테이블 내용 옮겨담을곳
+//						Order order2 = new Order();
+						
+						int orderNo =order.getO_no(); // 주문번호 들어갈것
+						DateFormat dateFormat = DateFormat.getInstance();
+						String date = dateFormat.format( order.getO_date());//주문날짜 들어갈것
+						int orderPrice = order.getO_price();//주문가격 들어갈것
+						
+						rowVector.add(orderNo);
+						rowVector.add(date);
+						rowVector.add(orderPrice);
+						
+						tableVector.add(rowVector);  
+					}
+					DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
+					//DefaultTableModel: JTable에 데이터를 제공하는 기본 테이블 모델 객체
+					/*JTable*/	order_Table.setModel(tableModel);
+					//cartTable:  JTable 객체로, 회원 정보를 표시할 테이블
+					/*JButton*/
+					/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
+					  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
+					
+				} catch(Exception e1) {
+					System.out.println("주문목록보기에러-->"+e1.getMessage());
+				}
 				
 				
 			}
