@@ -988,6 +988,35 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		furniture_Product2.add(furniture_CartQtyComboBox2);
 		
+
+		JLabel furniture_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		furniture_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
+		furniture_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+		furniture_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
+		furniture_ProductTitleLabel2.setBounds(23, 152, 33, 84);
+		furniture_Product2.add(furniture_ProductTitleLabel2);
+		
+		JLabel furniture_ProductPriceLabe2 = new JLabel((String) null);
+		furniture_ProductPriceLabe2.setBounds(60, 184, 105, 15);
+		furniture_Product2.add(furniture_ProductPriceLabe2);
+		
+		JLabel furniture_ProductDescLabel2 = new JLabel((String) null);
+		furniture_ProductDescLabel2.setBounds(60, 214, 162, 15);
+		furniture_Product2.add(furniture_ProductDescLabel2);
+		
+		JLabel furniture_ProductNameLabel2 = new JLabel((String) null);
+		furniture_ProductNameLabel2.setBounds(60, 154, 105, 15);
+		furniture_Product2.add(furniture_ProductNameLabel2);
+		
+		furniture_ProductNameLabel2.setText(productName(8));
+		furniture_ProductPriceLabe2.setText(productPrice(8));
+		furniture_ProductDescLabel2.setText(productDesc(8));
+		
+		
+		
+		
+		
+
 		JPanel digitalPanel = new JPanel();
 		tabbedPane.addTab("디지털", null, digitalPanel, null);
 		digitalPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -1893,12 +1922,13 @@ public class ShoppingMallFrame extends JFrame {
 
 		
 		cart_DelBnt_1.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 		        try {
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
-		            int totalPrice = 0;
+		            OrderService orderService = new OrderService();
 		            CartService cartService = new CartService();
-
+		            
+		            int totalPrice = 0;
 		            for (Cart cart : cartList) {
 		                Product product = cart.getProduct();
 		                int cartQty = cart.getCart_qty();
@@ -1911,19 +1941,23 @@ public class ShoppingMallFrame extends JFrame {
 		            String name = product.getP_name();
 		            String desc = name + " 외 여러가지";
 
-		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null);
+		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null); // 되는거
+		            orderService.OrderCash(order1);//반은되고 반은 안된다
 		            cartService.cartDeleteByUserId(loginUser.getUserId());
 
-		            // 주문 정보(order1)를 사용하여 원하는 동작 수행
-		            // ...
 
 		        } catch (Exception e1) {
 		            System.out.println("주문하기 에러났다-->" + e1.getMessage());
 		        }
 		    }
 		});
-		cart_CahngeBnt.setBounds(105, 7, 97, 23);
+		cart_DelBnt_1.setBounds(5, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt_1);
+		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
 
+		
+		cart_CahngeBnt.setBounds(105, 7, 97, 23);
 		cart_ListSumPanel.add(cart_CahngeBnt);
 		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
