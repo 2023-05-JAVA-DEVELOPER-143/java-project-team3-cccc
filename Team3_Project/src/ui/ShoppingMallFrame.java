@@ -1477,6 +1477,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
 
+
 		JButton btnNewButton_2 = new JButton("삭  제");
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
