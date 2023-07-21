@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -36,7 +35,6 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
 import javax.swing.table.DefaultTableModel;
 
 import cart.Cart;
@@ -46,10 +44,7 @@ import order.OrderService;
 import product.Product;
 import product.ProductService;
 import user.User;
-
 import user.UserService;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JFormattedTextField;
 
 public class ShoppingMallFrame extends JFrame {
 
@@ -404,8 +399,8 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartAddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)  {
 				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(fashion_CartAddButton.getActionCommand());
-					Integer addCart_Qty = Integer.valueOf((String)fashion_CartQtyComboBox.getSelectedItem());
+					Integer addCart_No = Integer.valueOf(fashion_CartAddButton.getActionCommand());//1 
+					Integer addCart_Qty = Integer.valueOf((String)fashion_CartQtyComboBox.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
 									new Product(4, "티셔츠",500000 , "ui/image/fashion_Tshirt.png", "티셔츠다"), addCart_Qty));
@@ -421,6 +416,7 @@ public class ShoppingMallFrame extends JFrame {
 				
 			}
 		});
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/                       
 		fashion_CartAddButton.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton.setOpaque(false);
 		fashion_CartAddButton.setForeground(Color.WHITE);
@@ -471,9 +467,17 @@ public class ShoppingMallFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(loginUser!=null) {
-					System.out.println(fashion_CartAddButton2.getActionCommand());
-					System.out.println(fashion_CartQtyComboBox2.getSelectedItem());
+					Integer addCart_no = Integer.valueOf(fashion_CartAddButton2.getActionCommand());
+					Integer addCart_Qty = Integer.valueOf((String)fashion_CartQtyComboBox2.getSelectedItem());
 				
+					try {
+						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
+								new Product(3, "바지", 60000, "", "여름용 시원한 바지"), addCart_Qty));
+						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+					
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
