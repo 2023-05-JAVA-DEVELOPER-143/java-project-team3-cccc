@@ -2037,23 +2037,13 @@ public class ShoppingMallFrame extends JFrame {
 
 		cart_DelBnt_1 = new JButton("구  매");
 		cart_DelBnt_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		cart_DelBnt_1.setBounds(5, 7, 97, 23);
-		cart_ListSumPanel.add(cart_DelBnt_1);
-		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		
-
-		JButton cart_CahngeBnt = new JButton("수  정");
-		cart_DelBnt_1.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        try {
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
-		            int totalPrice = 0;
+		            OrderService orderService = new OrderService();
 		            CartService cartService = new CartService();
-
+		            
+		            int totalPrice = 0;
 		            for (Cart cart : cartList) {
 		                Product product = cart.getProduct();
 		                int cartQty = cart.getCart_qty();
@@ -2066,17 +2056,23 @@ public class ShoppingMallFrame extends JFrame {
 		            String name = product.getP_name();
 		            String desc = name + " 외 여러가지";
 
-		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null);
+		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null); // 되는거
+		            orderService.OrderCash(order1);//반은되고 반은 안된다
 		            cartService.cartDeleteByUserId(loginUser.getUserId());
 
-		            // 주문 정보(order1)를 사용하여 원하는 동작 수행
-		            // ...
 
 		        } catch (Exception e1) {
 		            System.out.println("주문하기 에러났다-->" + e1.getMessage());
 		        }
 		    }
 		});
+		cart_DelBnt_1.setBounds(5, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt_1);
+		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
+
+		JButton cart_CahngeBnt = new JButton("수  정");
+
 		cart_CahngeBnt.setBounds(105, 7, 97, 23);
 
 		cart_ListSumPanel.add(cart_CahngeBnt);
