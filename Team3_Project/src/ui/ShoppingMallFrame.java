@@ -49,7 +49,6 @@ import cart.CartDao;
 import cart.CartSQL;
 import cart.CartService;
 import order.Order;
-import order.OrderItem;
 import order.OrderService;
 import product.Product;
 import product.ProductDao;
@@ -96,17 +95,6 @@ public class ShoppingMallFrame extends JFrame {
 
 	private JComboBox fashion_CartQtyComboBox;
 	private JComboBox fashion_CartQtyComboBox2;
-	private JComboBox sport_CartQtyComboBox_1;
-	private JComboBox sport_CartQtyComboBox2;
-	private JComboBox daily_CartQtyComboBox1;
-	private JComboBox daily_CartQtyComboBox2;
-	private JComboBox furniture_CartQtyComboBox1;
-	private JComboBox furniture_CartQtyComboBox2;
-	private JComboBox digital_CartQtyComboBox1;
-	private JComboBox digital_CartQtyComboBox2;
-	private JComboBox food_CartQtyComboBox1 ;
-	private JComboBox food_CartQtyComboBox2;
-	
 	private JTable cartTable;
 	private JTable order_Table;
 	private JLabel loginLabel;
@@ -604,26 +592,6 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product1.add(sport_IconLabel1_1);
 		
 		JButton sport_CartAddButton_1 = new JButton("");
-		sport_CartAddButton_1.setActionCommand("3");
-		sport_CartAddButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(sport_CartAddButton_1.getActionCommand());//3
-					Integer addCart_Qty = Integer.valueOf((String)sport_CartQtyComboBox_1.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(11, "농구공",500000 , "ui/image/sports_basketball.png", "NBA농구공"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		sport_CartAddButton_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton_1.setOpaque(false);
 		sport_CartAddButton_1.setForeground(Color.WHITE);
@@ -632,7 +600,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_CartAddButton_1.setBounds(136, 119, 31, 23);
 		sport_Product1.add(sport_CartAddButton_1);
 		
-		sport_CartQtyComboBox_1 = new JComboBox();
+		JComboBox sport_CartQtyComboBox_1 = new JComboBox();
 		sport_CartQtyComboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		sport_CartQtyComboBox_1.setOpaque(false);
 		sport_CartQtyComboBox_1.setMaximumRowCount(10);
@@ -686,26 +654,6 @@ public class ShoppingMallFrame extends JFrame {
 		sport_Product2.add(sport_IconLabel2);
 		
 		JButton sport_CartAddButton2 = new JButton("");
-		sport_CartAddButton2.setActionCommand("4");
-		sport_CartAddButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(sport_CartAddButton2.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)sport_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(12, "케틀벨",15000 , "ui/image/sports_kettler.png", "근손실방지케틀러"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		sport_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		sport_CartAddButton2.setOpaque(false);
 		sport_CartAddButton2.setForeground(Color.WHITE);
@@ -714,7 +662,7 @@ public class ShoppingMallFrame extends JFrame {
 		sport_CartAddButton2.setBounds(136, 119, 31, 23);
 		sport_Product2.add(sport_CartAddButton2);
 		
-		sport_CartQtyComboBox2 = new JComboBox();
+		JComboBox sport_CartQtyComboBox2 = new JComboBox();
 		sport_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		sport_CartQtyComboBox2.setOpaque(false);
 		sport_CartQtyComboBox2.setMaximumRowCount(10);
@@ -777,26 +725,6 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product1.add(daily_IconLabel1);
 		
 		JButton daily_CartAddButton1 = new JButton("");
-		daily_CartAddButton1.setActionCommand("5");
-		daily_CartAddButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(daily_CartAddButton1.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)daily_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(10, "휴지",8000 , "ui/image/life_tissue.png", "고상한 휴지"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		daily_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		daily_CartAddButton1.setOpaque(false);
 		daily_CartAddButton1.setForeground(Color.WHITE);
@@ -805,7 +733,7 @@ public class ShoppingMallFrame extends JFrame {
 		daily_CartAddButton1.setBounds(136, 119, 31, 23);
 		daily_Product1.add(daily_CartAddButton1);
 		
-		daily_CartQtyComboBox1 = new JComboBox();
+		JComboBox daily_CartQtyComboBox1 = new JComboBox();
 		daily_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		daily_CartQtyComboBox1.setOpaque(false);
 		daily_CartQtyComboBox1.setMaximumRowCount(10);
@@ -861,26 +789,6 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product2.add(daily_conLabel2);
 		
 		JButton daily_CartAddButton2 = new JButton("");
-		daily_CartAddButton2.setActionCommand("6");
-		daily_CartAddButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(daily_CartAddButton2.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)daily_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(9, "식기건조대",50000 , "ui/image/life_dry.png", "식기건조대다"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		daily_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		daily_CartAddButton2.setOpaque(false);
 		daily_CartAddButton2.setForeground(Color.WHITE);
@@ -888,8 +796,8 @@ public class ShoppingMallFrame extends JFrame {
 		daily_CartAddButton2.setBackground(Color.WHITE);
 		daily_CartAddButton2.setBounds(136, 119, 31, 23);
 		daily_Product2.add(daily_CartAddButton2);
-
-		daily_CartQtyComboBox2 = new JComboBox();
+		
+		JComboBox daily_CartQtyComboBox2 = new JComboBox();
 		daily_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		daily_CartQtyComboBox2.setOpaque(false);
 		daily_CartQtyComboBox2.setMaximumRowCount(10);
@@ -899,7 +807,6 @@ public class ShoppingMallFrame extends JFrame {
 		daily_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		daily_Product2.add(daily_CartQtyComboBox2);
 		
-<<<<<<< HEAD
 
 		JLabel daily_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
 		daily_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
@@ -925,8 +832,6 @@ public class ShoppingMallFrame extends JFrame {
 		daily_ProductDescLabel2.setText(productDesc(9));
 		
 		
-=======
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team3-cccc.git
 		
 		JPanel furniturePanel = new JPanel();
 		tabbedPane.addTab("가 구", null, furniturePanel, null);
@@ -957,29 +862,8 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product1.add(furniture_IconLabel1);
 		
 		JButton furniture_CartAddButton1 = new JButton("");
-<<<<<<< HEAD
 		furniture_CartAddButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-=======
-		furniture_CartAddButton1.setActionCommand("7");
-		furniture_CartAddButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(furniture_CartAddButton1.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)furniture_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(7, "의자",150000 , "ui/image/furniture_chair.png", "식탁용 의자"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
->>>>>>> branch 'master' of https://github.com/2023-05-JAVA-DEVELOPER-143/java-project-team3-cccc.git
 			}
 		});
 		furniture_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
@@ -989,8 +873,8 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_CartAddButton1.setBackground(Color.WHITE);
 		furniture_CartAddButton1.setBounds(136, 119, 31, 23);
 		furniture_Product1.add(furniture_CartAddButton1);
-
-		furniture_CartQtyComboBox1 = new JComboBox();
+		
+		JComboBox furniture_CartQtyComboBox1 = new JComboBox();
 		furniture_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		furniture_CartQtyComboBox1.setOpaque(false);
 		furniture_CartQtyComboBox1.setMaximumRowCount(10);
@@ -1047,26 +931,6 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_Product2.add(furniture_onLabel2);
 		
 		JButton furniture_CartAddButton2 = new JButton("");
-		furniture_CartAddButton2.setActionCommand("8");
-		furniture_CartAddButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(furniture_CartAddButton2.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)furniture_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(8, "소파",900000 , "ui/image/furniture_sofa.png", "돌소파"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		furniture_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		furniture_CartAddButton2.setOpaque(false);
 		furniture_CartAddButton2.setForeground(Color.WHITE);
@@ -1075,7 +939,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_CartAddButton2.setBounds(136, 119, 31, 23);
 		furniture_Product2.add(furniture_CartAddButton2);
 		
-		furniture_CartQtyComboBox2 = new JComboBox();
+		JComboBox furniture_CartQtyComboBox2 = new JComboBox();
 		furniture_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		furniture_CartQtyComboBox2.setOpaque(false);
 		furniture_CartQtyComboBox2.setMaximumRowCount(10);
@@ -1142,26 +1006,6 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product1.add(digital_IconLabel1);
 		
 		JButton digital_CartAddButton1 = new JButton("");
-		digital_CartAddButton1.setActionCommand("9");
-		digital_CartAddButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(fashion_CartAddButton.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)digital_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(1, "컴퓨터",800000 , "ui/image/digital_computer.png", "23년도 최신형 컴퓨터"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		digital_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton1.setOpaque(false);
 		digital_CartAddButton1.setForeground(Color.WHITE);
@@ -1170,7 +1014,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_CartAddButton1.setBounds(136, 119, 31, 23);
 		digital_Product1.add(digital_CartAddButton1);
 		
-		digital_CartQtyComboBox1 = new JComboBox();
+		JComboBox digital_CartQtyComboBox1 = new JComboBox();
 		digital_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		digital_CartQtyComboBox1.setOpaque(false);
 		digital_CartQtyComboBox1.setMaximumRowCount(10);
@@ -1227,26 +1071,6 @@ public class ShoppingMallFrame extends JFrame {
 		digital_Product2.add(digital_onLabel2);
 		
 		JButton digital_CartAddButton2 = new JButton("");
-		digital_CartAddButton2.setActionCommand("10");
-		digital_CartAddButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(digital_CartAddButton2.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)digital_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(2, "티비",750000 , "ui/image/digital_television.png", "23년도 최신형 티비"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		digital_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		digital_CartAddButton2.setOpaque(false);
 		digital_CartAddButton2.setForeground(Color.WHITE);
@@ -1255,7 +1079,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_CartAddButton2.setBounds(136, 119, 31, 23);
 		digital_Product2.add(digital_CartAddButton2);
 		
-		digital_CartQtyComboBox2 = new JComboBox();
+		JComboBox digital_CartQtyComboBox2 = new JComboBox();
 		digital_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		digital_CartQtyComboBox2.setOpaque(false);
 		digital_CartQtyComboBox2.setMaximumRowCount(10);
@@ -1271,7 +1095,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
 		digital_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
 		digital_ProductTitleLabel2.setBounds(23, 152, 33, 84);
-		digital_Product1.add(digital_ProductTitleLabel2);
+		digital_Product2.add(digital_ProductTitleLabel2);
 		
 		JLabel digital_ProductPriceLabe2 = new JLabel((String) null);
 		digital_ProductPriceLabe2.setBounds(60, 184, 105, 15);
@@ -1321,58 +1145,16 @@ public class ShoppingMallFrame extends JFrame {
 		food_IconLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		food_IconLabel1.setBounds(3, 1, 162, 116);
 		food_Product1.add(food_IconLabel1);
+		JLabel food_ProductTitleLabel = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		food_ProductTitleLabel.setVerticalAlignment(SwingConstants.TOP);
+		food_ProductTitleLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		food_ProductTitleLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		food_ProductTitleLabel.setBounds(23, 152, 33, 84);
+		food_Product1.add(food_ProductTitleLabel);
 		
-		JButton food_CartAddButton1 = new JButton("");
-		food_CartAddButton1.setActionCommand("11");
-		food_CartAddButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(food_CartAddButton1.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)food_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(6, "피자",23000, "ui/image/food_pizza.png", "치즈듬뿍 피자"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
-		food_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
-		food_CartAddButton1.setOpaque(false);
-		food_CartAddButton1.setForeground(Color.WHITE);
-		food_CartAddButton1.setBorder(null);
-		food_CartAddButton1.setBackground(Color.WHITE);
-		food_CartAddButton1.setBounds(136, 119, 31, 23);
-		food_Product1.add(food_CartAddButton1);
-		
-		food_CartQtyComboBox1 = new JComboBox();
-		food_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-		food_CartQtyComboBox1.setOpaque(false);
-		food_CartQtyComboBox1.setMaximumRowCount(10);
-		food_CartQtyComboBox1.setBorder(null);
-		food_CartQtyComboBox1.setBackground(Color.WHITE);
-		food_CartQtyComboBox1.setAutoscrolls(true);
-		food_CartQtyComboBox1.setBounds(99, 119, 33, 23);
-		food_Product1.add(food_CartQtyComboBox1);
-		
-
-
-		JLabel food_ProductTitleLabel1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
-		food_ProductTitleLabel1.setVerticalAlignment(SwingConstants.TOP);
-		food_ProductTitleLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
-		food_ProductTitleLabel1.setHorizontalAlignment(SwingConstants.LEFT);
-		food_ProductTitleLabel1.setBounds(23, 152, 33, 84);
-		food_Product1.add(food_ProductTitleLabel1);
-		
-		JLabel food_ProductPriceLabel1 = new JLabel((String) null);
-		food_ProductPriceLabel1.setBounds(60, 184, 105, 15);
-		food_Product1.add(food_ProductPriceLabel1);
+		JLabel food_ProductPriceLabe1 = new JLabel((String) null);
+		food_ProductPriceLabe1.setBounds(60, 184, 105, 15);
+		food_Product1.add(food_ProductPriceLabe1);
 		
 		JLabel food_ProductDescLabel1 = new JLabel((String) null);
 		food_ProductDescLabel1.setBounds(60, 214, 162, 15);
@@ -1383,10 +1165,30 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product1.add(food_ProductNameLabel);
 		
 		food_ProductNameLabel.setText(productName(6));
-		food_ProductPriceLabel1.setText(productPrice(6));
+		food_ProductPriceLabe1.setText(productPrice(6));
 		food_ProductDescLabel1.setText(productDesc(6));
 		
 		
+		
+		
+		JButton food_CartAddButton1 = new JButton("");
+		food_CartAddButton1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
+		food_CartAddButton1.setOpaque(false);
+		food_CartAddButton1.setForeground(Color.WHITE);
+		food_CartAddButton1.setBorder(null);
+		food_CartAddButton1.setBackground(Color.WHITE);
+		food_CartAddButton1.setBounds(136, 119, 31, 23);
+		food_Product1.add(food_CartAddButton1);
+		
+		JComboBox food_CartQtyComboBox1 = new JComboBox();
+		food_CartQtyComboBox1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+		food_CartQtyComboBox1.setOpaque(false);
+		food_CartQtyComboBox1.setMaximumRowCount(10);
+		food_CartQtyComboBox1.setBorder(null);
+		food_CartQtyComboBox1.setBackground(Color.WHITE);
+		food_CartQtyComboBox1.setAutoscrolls(true);
+		food_CartQtyComboBox1.setBounds(99, 119, 33, 23);
+		food_Product1.add(food_CartQtyComboBox1);
 		
 		JPanel food_Product2 = new JPanel();
 		food_Product2.setLayout(null);
@@ -1408,26 +1210,6 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product2.add(food_onLabel2);
 		
 		JButton food_CartAddButton2 = new JButton("");
-		food_CartAddButton2.setActionCommand("12");
-		food_CartAddButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loginUser!=null) {
-					Integer addCart_No = Integer.valueOf(food_CartAddButton2.getActionCommand());//1 
-					Integer addCart_Qty = Integer.valueOf((String)food_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
-					try {
-						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(5, "12000",500000 , "ui/image/Food1.png", "햇반이다"), addCart_Qty));
-						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-				}else {
-					//로그인이 필요합니다 팝업
-					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
-				}
-			}
-		});
 		food_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		food_CartAddButton2.setOpaque(false);
 		food_CartAddButton2.setForeground(Color.WHITE);
@@ -1436,7 +1218,7 @@ public class ShoppingMallFrame extends JFrame {
 		food_CartAddButton2.setBounds(136, 119, 31, 23);
 		food_Product2.add(food_CartAddButton2);
 		
-		food_CartQtyComboBox2 = new JComboBox();
+		JComboBox food_CartQtyComboBox2 = new JComboBox();
 		food_CartQtyComboBox2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		food_CartQtyComboBox2.setOpaque(false);
 		food_CartQtyComboBox2.setMaximumRowCount(10);
@@ -1446,17 +1228,17 @@ public class ShoppingMallFrame extends JFrame {
 		food_CartQtyComboBox2.setBounds(99, 119, 33, 23);
 		food_Product2.add(food_CartQtyComboBox2);
 		
-
-		JLabel food_ProductTitleLabel2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
-		food_ProductTitleLabel2.setVerticalAlignment(SwingConstants.TOP);
-		food_ProductTitleLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
-		food_ProductTitleLabel2.setHorizontalAlignment(SwingConstants.LEFT);
-		food_ProductTitleLabel2.setBounds(23, 152, 33, 84);
-		food_Product2.add(food_ProductTitleLabel2);
 		
-		JLabel food_ProductPriceLabel2 = new JLabel((String) null);
-		food_ProductPriceLabel2.setBounds(60, 184, 105, 15);
-		food_Product2.add(food_ProductPriceLabel2);
+		JLabel food_ProductTitleLabe2 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		food_ProductTitleLabe2.setVerticalAlignment(SwingConstants.TOP);
+		food_ProductTitleLabe2.setHorizontalTextPosition(SwingConstants.CENTER);
+		food_ProductTitleLabe2.setHorizontalAlignment(SwingConstants.LEFT);
+		food_ProductTitleLabe2.setBounds(23, 152, 33, 84);
+		food_Product2.add(food_ProductTitleLabe2);
+		
+		JLabel food_ProductPriceLabe2 = new JLabel((String) null);
+		food_ProductPriceLabe2.setBounds(60, 184, 105, 15);
+		food_Product2.add(food_ProductPriceLabe2);
 		
 		JLabel food_ProductDescLabel2 = new JLabel((String) null);
 		food_ProductDescLabel2.setBounds(60, 214, 162, 15);
@@ -1467,9 +1249,8 @@ public class ShoppingMallFrame extends JFrame {
 		food_Product2.add(food_ProductNameLabel2);
 		
 		food_ProductNameLabel2.setText(productName(6));
-		food_ProductPriceLabel2.setText(productPrice(6));
+		food_ProductPriceLabe2.setText(productPrice(6));
 		food_ProductDescLabel2.setText(productDesc(6));
-		
 		
 		
 		
@@ -2243,32 +2024,4 @@ public class ShoppingMallFrame extends JFrame {
 			List cartList = null;
 			
 		}
-		/*
-		private void displayOrderItemList() {
-			try {
-				List<Order> orderList= orderservice.OrderList(loginUser.getUserId());
-				
-				Vector columVector=new Vector();
-				columVector.add(" ");
-				
-				Vector tableVector=new Vector();
-				
-				for(Order order:orderList) {
-					Vector rowVector=new Vector();
-					rowVector.add(order.getOrderItemList());
-					rowVector.add(order.getMemberPassword());
-					rowVector.add(order.getMemberName());
-					rowVector.add(order.getMemberAddress());
-					rowVector.add(order.getMemberAge());
-					rowVector.add(order.getMemberMarried());
-					rowVector.add(order.getMemberRegdate());
-					tableVector.add(rowVector);
-				}
-				DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
-				adminMemberListTable.setModel(tableModel);
-				memberDeleteBtn.setEnabled(false);
-			}catch(Exception e1) {
-				System.out.println("회원리스트보기에러-->"+e1.getMessage());
-			}
-		}*/
 }
