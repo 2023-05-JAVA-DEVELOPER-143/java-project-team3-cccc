@@ -1479,6 +1479,20 @@ public class ShoppingMallFrame extends JFrame {
 
 
 		JButton btnNewButton_2 = new JButton("삭  제");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					/********상품삭제*******/
+					int selectedRow=cartTable.getSelectedRow();
+					int selectedcartno=(int)cartTable.getValueAt(selectedRow, 0);
+					cartservice.cartDeleteByCartNo(selectedcartno);
+					btnNewButton_2.setEnabled(false);
+					displayCartListUserId();
+				}catch (Exception e1) {
+					System.out.println("상품삭제에러-->"+e1.getMessage());
+				}
+			}
+		});
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		btnNewButton_2.setBounds(210, 7, 97, 23);
