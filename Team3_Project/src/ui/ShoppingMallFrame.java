@@ -13,10 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -46,12 +42,10 @@ import javax.swing.table.DefaultTableModel;
 
 import cart.Cart;
 import cart.CartDao;
-import cart.CartSQL;
 import cart.CartService;
 import order.Order;
 import order.OrderService;
 import product.Product;
-import product.ProductDao;
 import product.ProductService;
 import user.User;
 import user.UserService;
@@ -101,6 +95,7 @@ public class ShoppingMallFrame extends JFrame {
 	private JLabel fashion_ProductPriceLabel;
 	private JLabel fashion_ProductDescLabel;
 	private JLabel fashion_ProductNameLabel;
+	private JButton cart_DelBnt_1;
 
 
 	/**
@@ -1811,16 +1806,47 @@ public class ShoppingMallFrame extends JFrame {
 		cart_DelBnt.setBounds(0, 7, 97, 23);
 
 
-		cart_DelBnt = new JButton("구  매");
-		cart_DelBnt.setBounds(5, 7, 97, 23);
-		cart_ListSumPanel.add(cart_DelBnt);
-		cart_DelBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_DelBnt_1 = new JButton("구  매");
+		cart_DelBnt_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		cart_DelBnt_1.setBounds(5, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt_1);
+		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 
 		JButton cart_CahngeBnt = new JButton("수  정");
-		cart_CahngeBnt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
+		cart_DelBnt_1.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        try {
+		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
+		            int totalPrice = 0;
+		            CartService cartService = new CartService();
+
+		            for (Cart cart : cartList) {
+		                Product product = cart.getProduct();
+		                int cartQty = cart.getCart_qty();
+		                int pPrice = product.getP_price();
+		                totalPrice += cartQty * pPrice;
+		            }
+
+		            Cart firstCart = cartList.get(0);
+		            Product product = firstCart.getProduct();
+		            String name = product.getP_name();
+		            String desc = name + " 외 여러가지";
+
+		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null);
+		            cartService.cartDeleteByUserId(loginUser.getUserId());
+
+		            // 주문 정보(order1)를 사용하여 원하는 동작 수행
+		            // ...
+
+		        } catch (Exception e1) {
+		            System.out.println("주문하기 에러났다-->" + e1.getMessage());
+		        }
+		    }
 		});
 		cart_CahngeBnt.setBounds(105, 7, 97, 23);
 
