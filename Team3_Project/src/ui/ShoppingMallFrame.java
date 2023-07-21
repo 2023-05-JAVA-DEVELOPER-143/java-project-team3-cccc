@@ -51,6 +51,7 @@ import cart.CartService;
 import order.Order;
 import order.OrderService;
 import product.Product;
+import product.ProductDao;
 import product.ProductService;
 import user.User;
 import user.UserService;
@@ -96,6 +97,9 @@ public class ShoppingMallFrame extends JFrame {
 	private JTable cartTable;
 	private JTable order_Table;
 	private JLabel loginLabel;
+	private JLabel fashion_ProductPriceLabel;
+	private JLabel fashion_ProductDescLabel;
+	private JLabel fashion_ProductNameLabel;
 
 
 	/**
@@ -189,6 +193,7 @@ public class ShoppingMallFrame extends JFrame {
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.");
 					loginUser = null;
 					loginLabel.setText("  로그인");
+					shopTabbedPane.setEnabledAt(1, true);
 					}
 			}
 		});
@@ -398,13 +403,6 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_IconLabel1.setBounds(3, 1, 162, 116);
 		fashion_Product1.add(fashion_IconLabel1);
 		
-		JLabel fashion_DescLabel = new JLabel("<html>\r\n\t<font size='3'>\r\n\t\t\r\n\t\t\t상품: 옷<br>\r\n\t\t\t가격: 100,000<br>\r\n\t\t\t설명: 튼튼하네\r\n\t\t\r\n </font></html>");
-		fashion_DescLabel.setVerticalAlignment(SwingConstants.TOP);
-		fashion_DescLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		fashion_DescLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		fashion_DescLabel.setBounds(3, 143, 164, 47);
-		fashion_Product1.add(fashion_DescLabel);
-		
 		JButton fashion_CartAddButton = new JButton("");
 		fashion_CartAddButton.setActionCommand("1");
 		fashion_CartAddButton.addActionListener(new ActionListener() {
@@ -428,6 +426,13 @@ public class ShoppingMallFrame extends JFrame {
 			}
 		});
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/                       
+		
+		JLabel fashion_ProductTitleLabel = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		fashion_ProductTitleLabel.setVerticalAlignment(SwingConstants.TOP);
+		fashion_ProductTitleLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		fashion_ProductTitleLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		fashion_ProductTitleLabel.setBounds(23, 152, 33, 84);
+		fashion_Product1.add(fashion_ProductTitleLabel);
 		fashion_CartAddButton.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		fashion_CartAddButton.setOpaque(false);
 		fashion_CartAddButton.setForeground(Color.WHITE);
@@ -445,6 +450,18 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_CartQtyComboBox.setAutoscrolls(true);
 		fashion_CartQtyComboBox.setBounds(99, 119, 33, 23);
 		fashion_Product1.add(fashion_CartQtyComboBox);
+		
+		fashion_ProductPriceLabel = new JLabel("New label");
+		fashion_ProductPriceLabel.setBounds(60, 184, 105, 15);
+		fashion_Product1.add(fashion_ProductPriceLabel);
+		
+		fashion_ProductDescLabel = new JLabel("New label");
+		fashion_ProductDescLabel.setBounds(60, 214, 105, 15);
+		fashion_Product1.add(fashion_ProductDescLabel);
+		
+		fashion_ProductNameLabel = new JLabel("New label");
+		fashion_ProductNameLabel.setBounds(60, 154, 105, 15);
+		fashion_Product1.add(fashion_ProductNameLabel);
 		
 		JPanel fashion_Product2 = new JPanel();
 		fashion_Product2.setLayout(null);
@@ -1407,7 +1424,12 @@ public class ShoppingMallFrame extends JFrame {
 
 		JPanel shop_CartPanel = new JPanel();
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
+		if (loginUser== null) {
+			shopTabbedPane.setEnabledAt(5, false);
+			
+		}
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
+		
 		shopTabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				displayCartListUserId();
@@ -1525,6 +1547,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemPanel.add(scrollPane);
 		
 		cartTable = new JTable();
+		cartTable.setEnabled(false);
 		cartTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
@@ -1614,6 +1637,11 @@ public class ShoppingMallFrame extends JFrame {
 	} // 생성자 끝
 
 	
+	private void toString(Product selectByPK) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	// user-> 회원 로그인
 	private void loginProcess(User loginUser) throws Exception {
 		this.loginUser = loginUser;
@@ -1626,6 +1654,7 @@ public class ShoppingMallFrame extends JFrame {
 		shopTabbedPane.setSelectedIndex(0);
 		if (loginUser != null) {
 			shopTabbedPane.setSelectedIndex(0);
+			shopTabbedPane.setEnabledAt(5, true);
 			loginLabel.setText("  로그아웃");
 		}	
 	}
@@ -1676,9 +1705,8 @@ public class ShoppingMallFrame extends JFrame {
 		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
 		
 	}
-		
+
 	
-		
 	// cart -> userId를 이용해서 사용자 카트 안의 모든 제품 찾기	
 		
 		public void findByUserId(User loginUser) throws Exception  {		
@@ -1692,8 +1720,4 @@ public class ShoppingMallFrame extends JFrame {
 			List cartList = null;
 			
 		}
-		
-
-		
-	 
 }
