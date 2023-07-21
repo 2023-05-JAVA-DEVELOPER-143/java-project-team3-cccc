@@ -20,4 +20,19 @@ public class ProductService {
 		return productDao.SelectByPK(p_no);
 	}
 	
+	public String productName(int p_no) throws Exception{
+		Product product =  productDao.SelectByPK_Name(p_no);
+		 return product.getP_name();
+	}
+	public int productPrice(int p_no) throws Exception{
+		Product product= productDao.SelectByPK_Price(p_no);
+		 return product.getP_price();
+	}
+	public String productDesc(int p_no) throws Exception{
+		  Product product= productDao.SelectByPK_Desc(p_no);
+		 return product.getP_desc();
+	}
+	
+	
+	
 }

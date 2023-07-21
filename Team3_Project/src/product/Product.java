@@ -6,9 +6,19 @@ public class Product {
 	private int p_price;
 	private String p_image;
 	private String p_desc;
-	public Product() {
-
+	public Product(int p_price) {
+		this.p_price = p_price;
 	
+	}
+	
+	public Product (String string, String desc) {
+		super();	
+		this.p_name = string;
+		this.p_desc = desc;
+	}
+	public void Product1 (String string) {
+		this.p_name = string;
+		this.p_desc = string;
 	}
 	
 	public Product(int p_no, String p_name, int p_price, String p_image, String p_desc) {

@@ -19,5 +19,9 @@ public static final String PRODUCT_UPDATE= "update product set  p_name = ?, p_pr
 public static final String PRODUCT_DELETE = "delete from product where p_no = ?";    
 public static final String Product_SELECT_BY_NO= "select p_no, p_name, p_price, p_image, p_desc from product where p_no = ?";    
 public static final String Product_SELECT_ALL ="select p_no, p_name, p_price, p_image, p_desc from product";
-public static final String Product_SELECT_BY_NO_Pn= "select p_name,from product where p_no = ?";    
+
+public static final String Product_SELECT_BY_NO_Name = "select p_name from product where p_no = ?";    
+public static final String Product_SELECT_BY_NO_Price = "select p_price from product where p_no = ?";    
+public static final String Product_SELECT_BY_NO_desc = "select p_desc from product where p_no = ?";    
+
 }
