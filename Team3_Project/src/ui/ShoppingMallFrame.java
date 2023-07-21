@@ -1558,6 +1558,17 @@ public class ShoppingMallFrame extends JFrame {
 			));
 
 		order_scrollPane.setViewportView(order_Table);
+		
+		JButton order_List_Btn = new JButton("주 문 목 록");
+		order_List_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		order_List_Btn.setBounds(201, 261, 101, 27);
+		order_ItemPanel.add(order_List_Btn);
 
 		
 		
