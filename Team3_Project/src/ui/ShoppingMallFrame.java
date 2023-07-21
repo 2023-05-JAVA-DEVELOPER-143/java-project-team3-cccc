@@ -1855,7 +1855,43 @@ public class ShoppingMallFrame extends JFrame {
 		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 
+		
 		JButton cart_CahngeBnt = new JButton("수  정");
+		cart_CahngeBnt.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        // cartTable에서 선택된 행의 인덱스를 가져옵니다.
+		        int selectedRow = cartTable.getSelectedRow();
+		        int quantityColumnIndex = 1; // 수량이 표시된 열의 인덱스를 설정해야 합니다.
+		        // 선택된 행이 유효하면 (선택된 행의 인덱스가 -1이 아니면) 수정할 수량 값을 가져옵니다.
+		        if (selectedRow != -1) {
+		            int newQuantity = Integer.parseInt(cartTable.getValueAt(selectedRow, quantityColumnIndex).toString());
+
+		            try {
+		                // 선택된 행의 데이터를 가져옵니다.
+		                List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
+		                Cart selectedCart = cartList.get(selectedRow);
+		                String userId = selectedCart.getUserId();
+		                int p_no = selectedCart.getProduct().getP_no();
+
+		                // 데이터베이스에서 해당 레코드의 값을 수정합니다.
+		                cartservice.updateCartCartQty(userId, p_no, newQuantity);
+
+		                // 수정된 값을 테이블 모델에 반영합니다.
+		                DefaultTableModel model = (DefaultTableModel) cartTable.getModel();
+		                model.setValueAt(newQuantity, selectedRow, quantityColumnIndex);
+		            } catch (Exception ex) {
+		                ex.printStackTrace();
+		            }
+		        }
+		    }
+		});
+
+
+
+
+
+
+		
 		cart_DelBnt_1.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        try {
