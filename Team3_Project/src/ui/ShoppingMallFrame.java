@@ -1620,10 +1620,11 @@ public class ShoppingMallFrame extends JFrame {
 			for(Cart cart:CartList) {
 				Vector rowVector=new Vector();
 				Product product =cart.getProduct();
-				
+				int cartQty = cart.getCart_qty();
+				int pPrice = product.getP_price();
 				rowVector.add(product.getP_name());
-				rowVector.add(cart.getCart_qty());
-				rowVector.add(product.getP_price());
+				rowVector.add(cartQty);
+				rowVector.add(cartQty * pPrice);
 				tableVector.add(rowVector);  
 			}
 			DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
