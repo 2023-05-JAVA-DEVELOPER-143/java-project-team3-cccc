@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -39,6 +40,8 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 import cart.Cart;
@@ -1405,6 +1408,11 @@ public class ShoppingMallFrame extends JFrame {
 		JPanel shop_CartPanel = new JPanel();
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
+		shopTabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				displayCartListUserId();
+			}
+		});
 		
 		
 		
@@ -1476,6 +1484,7 @@ public class ShoppingMallFrame extends JFrame {
 		cart_ItemTotPrice_4_2_1.setBounds(382, 10, 91, 16);
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
+
 
 		JButton btnNewButton_2 = new JButton("삭  제");
 
@@ -1572,6 +1581,17 @@ public class ShoppingMallFrame extends JFrame {
 			));
 	
 		order_scrollPane.setViewportView(order_Table);
+		
+		JButton order_List_Btn = new JButton("주 문 목 록");
+		order_List_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		order_List_Btn.setBounds(201, 261, 101, 27);
+		order_ItemPanel.add(order_List_Btn);
 
 		
 		
@@ -1610,7 +1630,39 @@ public class ShoppingMallFrame extends JFrame {
 		}	
 	}
 				
+	private void displayCartListUserId() {
+		try {
+			/****************userId로 회원의 카트목록 다 보기*****************/
+			List<Cart> CartList= cartservice.getCartItemByUserId(loginUser.getUserId());//회원전체리스트
 			
+			Vector columVector=new Vector(); // 컬럼이름 추가하려고
+			columVector.add("상품명");
+			columVector.add("수량");
+			columVector.add("가격");
+			
+			Vector tableVector=new Vector(); // 컬럼의 테이블 내용 추가하려고
+			for(Cart cart:CartList) {
+				Vector rowVector=new Vector();
+				Product product =cart.getProduct();
+				int cartQty = cart.getCart_qty();
+				int pPrice = product.getP_price();
+				rowVector.add(product.getP_name());
+				rowVector.add(cartQty);
+				rowVector.add(cartQty * pPrice);
+				tableVector.add(rowVector);  
+			}
+			DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
+			//DefaultTableModel: JTable에 데이터를 제공하는 기본 테이블 모델 객체
+			/*JTable*/	cartTable.setModel(tableModel);
+			//cartTable:  JTable 객체로, 회원 정보를 표시할 테이블
+			/*JButton*/
+			/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
+			  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
+			
+		} catch(Exception e1) {
+			System.out.println("카트리스트보기에러-->"+e1.getMessage());
+		}
+	}		
 			
 	
 	// user-> 로그인 회원 상세보기
