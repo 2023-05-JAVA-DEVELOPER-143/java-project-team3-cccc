@@ -116,6 +116,9 @@ public class CartDao {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL. CART_FIND_ALL_PRODUCT_BY_USERID);
 			pstmt.setString(1, userId);
+			
+			
+			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				cartList.add(new Cart( rs.getInt("cart_no"),
