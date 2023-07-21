@@ -1392,6 +1392,8 @@ public class ShoppingMallFrame extends JFrame {
 					User updateUser = new User(id, password, name, address, phoneNumber, gender);
 					userservice.loginUpdate(updateUser);
 					
+					
+					
 					//회원정보 변경
 					
 				}catch (Exception e1) {
@@ -1417,10 +1419,14 @@ public class ShoppingMallFrame extends JFrame {
 		
 
 		JButton info_User_Btn = new JButton("회원정보");
+		info_User_Btn.addMouseListener(new MouseAdapter() {
+			
+		});
 		info_User_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				 
 				displayUserInfo(loginUser);
+				
 				
 			}
 		});
@@ -1549,14 +1555,10 @@ public class ShoppingMallFrame extends JFrame {
 		        try {
 		            // 로그인한 사용자의 카트 정보 가져오기
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
-
-
 		            // 첫 번째 카트 정보 가져오기 (여러 개의 카트가 있다면 원하는 로직으로 선택)
 		            Cart userCart = cartList.get(0);
-
 		            int cartno = userCart.getCart_no();
 		            cartservice.cartDeleteByCartNo(cartno);
-
 		            // 버튼 비활성화 후, 카트 정보 업데이트
 		            btnNewButton_2.setEnabled(false);
 		            displayCartListUserId(); // 카트 정보 업데이트
@@ -1767,6 +1769,7 @@ public class ShoppingMallFrame extends JFrame {
 		info_PasswordField.setText(loginUser.getPassword());
 		info_PhoneTextField.setText(loginUser.getPhone());
 		info_GenderComboBox.setSelectedItem(loginUser.getGender() + "");
+		
 		
 	}
 
