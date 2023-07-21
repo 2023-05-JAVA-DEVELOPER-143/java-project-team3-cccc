@@ -1473,6 +1473,8 @@ public class ShoppingMallFrame extends JFrame {
 						gender = (String)join_GenderComboBox.getSelectedItem();
 					}
 					userservice.create(new User(id, password, name, address, phone, gender));
+					JOptionPane.showMessageDialog(null, "회원가입이 되었습니다.");
+					shopTabbedPane.setSelectedIndex(1);
 				} catch (Exception e2) {
 					
 				}
