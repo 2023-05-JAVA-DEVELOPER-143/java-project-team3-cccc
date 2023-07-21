@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -35,6 +36,8 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 import cart.Cart;
@@ -1397,6 +1400,11 @@ public class ShoppingMallFrame extends JFrame {
 		JPanel shop_CartPanel = new JPanel();
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
+		shopTabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				displayCartListUserId();
+			}
+		});
 		
 		
 		
@@ -1609,7 +1617,38 @@ public class ShoppingMallFrame extends JFrame {
 		}	
 	}
 				
+	private void displayCartListUserId() {
+		try {
+			/****************userId로 회원의 카트목록 다 보기*****************/
+			List<Cart> CartList= cartservice.getCartItemByUserId(loginUser.getUserId());//회원전체리스트
 			
+			Vector columVector=new Vector(); // 컬럼이름 추가하려고
+			columVector.add("상품명");
+			columVector.add("수량");
+			columVector.add("가격");
+			
+			Vector tableVector=new Vector(); // 컬럼의 테이블 내용 추가하려고
+			for(Cart cart:CartList) {
+				Vector rowVector=new Vector();
+				Product product =cart.getProduct();
+				
+				rowVector.add(product.getP_name());
+				rowVector.add(cart.getCart_qty());
+				rowVector.add(product.getP_price());
+				tableVector.add(rowVector);  
+			}
+			DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
+			//DefaultTableModel: JTable에 데이터를 제공하는 기본 테이블 모델 객체
+			/*JTable*/	cartTable.setModel(tableModel);
+			//cartTable:  JTable 객체로, 회원 정보를 표시할 테이블
+			/*JButton*/
+			/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
+			  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
+			
+		} catch(Exception e1) {
+			System.out.println("카트리스트보기에러-->"+e1.getMessage());
+		}
+	}		
 			
 	
 
