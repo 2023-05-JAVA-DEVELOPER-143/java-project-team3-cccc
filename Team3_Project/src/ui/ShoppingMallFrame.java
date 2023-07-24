@@ -491,17 +491,24 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 		JButton fashion_CartAddButton = new JButton("");
 		fashion_CartAddButton.setActionCommand("1");
-		fashion_CartAddButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)  {
+		fashion_CartAddButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
 				if(loginUser!=null) {
 					Integer addCart_No = Integer.valueOf(fashion_CartAddButton.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)fashion_CartQtyComboBox.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 4);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(4, "티셔츠",500000 , "ui/image/fashion_Tshirt.png", "티셔츠다"), addCart_Qty));
+									new Product(4, "티셔츠",500000 , "ui/image/fashion_Tshirt.png", "티셔츠다"), qty + addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
-						//e1.printStackTrace();
+						e1.printStackTrace();
 					}
 				}else {
 					//로그인이 필요합니다 팝업
@@ -581,11 +588,18 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_Qty = Integer.valueOf((String)fashion_CartQtyComboBox2.getSelectedItem());
 				
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 3);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-								new Product(3, "바지", 60000, "", "여름용 시원한 바지"), addCart_Qty));
+								new Product(3, "바지", 60000, "", "여름용 시원한 바지"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e2) {
-						//e2.printStackTrace();
+						e2.printStackTrace();
 					}
 					
 				}else {
@@ -673,8 +687,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(sport_CartAddButton_1.getActionCommand());//3
 					Integer addCart_Qty = Integer.valueOf((String)sport_CartQtyComboBox_1.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 11);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(11, "농구공",500000 , "ui/image/sports_basketball.png", "NBA농구공"), addCart_Qty));
+									new Product(11, "농구공",500000 , "ui/image/sports_basketball.png", "NBA농구공"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						//e1.printStackTrace();
@@ -759,8 +780,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(sport_CartAddButton2.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)sport_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 12);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(12, "케틀벨",15000 , "ui/image/sports_kettler.png", "근손실방지케틀러"), addCart_Qty));
+									new Product(12, "케틀벨",15000 , "ui/image/sports_kettler.png", "근손실방지케틀러"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						//e1.printStackTrace();
@@ -852,8 +880,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(daily_CartAddButton1.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)daily_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 10);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(10, "휴지",8000 , "ui/image/life_tissue.png", "고상한 휴지"), addCart_Qty));
+									new Product(10, "휴지",8000 , "ui/image/life_tissue.png", "고상한 휴지"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						//e1.printStackTrace();
@@ -941,8 +976,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(daily_CartAddButton2.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)daily_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 9);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(9, "식기건조대",50000 , "ui/image/life_dry.png", "식기건조대다"), addCart_Qty));
+									new Product(9, "식기건조대",50000 , "ui/image/life_dry.png", "식기건조대다"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -1039,8 +1081,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(furniture_CartAddButton1.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)furniture_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 7);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(7, "의자",150000 , "ui/image/furniture_chair.png", "식탁용 의자"), addCart_Qty));
+									new Product(7, "의자",150000 , "ui/image/furniture_chair.png", "식탁용 의자"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -1127,8 +1176,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(furniture_CartAddButton2.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)furniture_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 8);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(8, "소파",900000 , "ui/image/furniture_sofa.png", "돌소파"), addCart_Qty));
+									new Product(8, "소파",900000 , "ui/image/furniture_sofa.png", "돌소파"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -1222,8 +1278,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(fashion_CartAddButton.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)digital_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 1);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(1, "컴퓨터",800000 , "ui/image/digital_computer.png", "23년도 최신형 컴퓨터"), addCart_Qty));
+									new Product(1, "컴퓨터",800000 , "ui/image/digital_computer.png", "23년도 최신형 컴퓨터"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -1310,8 +1373,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(digital_CartAddButton2.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)digital_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 2);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(2, "티비",750000 , "ui/image/digital_television.png", "23년도 최신형 티비"), addCart_Qty));
+									new Product(2, "티비",750000 , "ui/image/digital_television.png", "23년도 최신형 티비"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -1426,8 +1496,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(food_CartAddButton1.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)food_CartQtyComboBox1.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 6);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(6, "피자",23000, "ui/image/food_pizza.png", "치즈듬뿍 피자"), addCart_Qty));
+									new Product(6, "피자",23000, "ui/image/food_pizza.png", "치즈듬뿍 피자"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -1491,8 +1568,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 					Integer addCart_No = Integer.valueOf(food_CartAddButton2.getActionCommand());//1 
 					Integer addCart_Qty = Integer.valueOf((String)food_CartQtyComboBox2.getSelectedItem());// 콤보박스 클릭한 숫자
 					try {
+						Cart cart = cartservice.countCartByProductNo(loginUser.getUserId(), 5);
+						int qty = 0;
+						if(cart!=null) {
+							qty = cart.getCart_qty();
+						}else {
+							qty = 0;
+						}
 						cartservice.addCart(new Cart(0, loginUser.getUserId(), 
-									new Product(5, "12000",500000 , "ui/image/Food1.png", "햇반이다"), addCart_Qty));
+									new Product(5, "12000",500000 , "ui/image/Food1.png", "햇반이다"), qty+addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
 						e1.printStackTrace();
