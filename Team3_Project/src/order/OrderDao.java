@@ -36,7 +36,7 @@ public class OrderDao {
 			pstmt2 = con.prepareStatement(OrderSQL.ORDERITEM_INSERT);
 			for(OrderItem orderItem:order.getOrderItemList()) {
 				pstmt2.setInt(1, orderItem.getOi_qty());
-				pstmt2.setInt(2, orderItem.getOi_no());
+				pstmt2.setInt(2, orderItem.getProduct().getP_no());
 				pstmt2.executeUpdate();
 			}
 			con.commit();
@@ -100,35 +100,43 @@ public class OrderDao {
 	}
 	
 	// 주문 리스트 1건_유저아이디+상품로 주문 검색(ORDER_SELECT_WITH_PRODUCT_BY_USERID)
-	public Order findOrderWithProductByUserId(String userid,int o_no) throws Exception{
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_PRODUCT_BY_USERID);
-		pstmt.setString(1, userid);
-		pstmt.setInt(2, o_no);
-		ResultSet rs = pstmt.executeQuery();
-		Order order = null;
-		ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>(); 
+public Order findByOrderNo(String sUserId,int o_no)throws Exception{
+		
+		Order order=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		con=dataSource.getConnection();
+		pstmt=con.prepareStatement(OrderSQL.ORDER_SELECT_WITH_PRODUCT_BY_USERID);
+		pstmt.setString(1,sUserId);
+		pstmt.setInt(2,o_no);
+		rs=pstmt.executeQuery();
+		
+		
 		if(rs.next()) {
-			String o_desc = rs.getString("o_desc");
-			Date o_date = rs.getDate("o_date");
-			int o_price = rs.getInt("o_price");
-			
-			while(rs.next()) {
-				int oi_no = rs.getInt("oi_no");
-				int oi_qty = rs.getInt("oi_qty");
-				
-				orderItemList.add(new OrderItem(oi_no, oi_qty, o_no,
-						new Product(rs.getInt("p_no"),
-								rs.getString("p_name"),
-								rs.getInt("p_price"),
-								rs.getString("p_image"),
-								rs.getString("p_desc"))));
-			}
-			order = new Order(o_no, o_desc, o_date, o_price, userid, orderItemList);
+			order=new Order(rs.getInt("o_no"), 
+					rs.getString("o_desc"),
+					rs.getDate("o_date"),
+					rs.getInt("o_price"),
+					rs.getString("userid"),null);
+			do{
+				order.getOrderItemList()
+					.add(new OrderItem(
+								rs.getInt("oi_no"), 
+								rs.getInt("oi_qty"), 
+								rs.getInt("o_no"), 
+								new Product(rs.getInt("p_no"),
+											rs.getString("p_name"),
+											rs.getInt("p_price"),
+											rs.getString("p_image"),
+											rs.getString("p_desc")
+											)
+								)
+							);
+			}while(rs.next());
 		}
-		rs.close();
-		pstmt.close();
-		dataSource.close(con);
+		
+		
 		return order;
 	}
 	

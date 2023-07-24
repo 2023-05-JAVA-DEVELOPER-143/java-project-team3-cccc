@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -46,7 +47,9 @@ import cart.Cart;
 import cart.CartDao;
 import cart.CartService;
 import order.Order;
+
 import order.OrderDao;
+
 import order.OrderItem;
 import order.OrderService;
 import product.Product;
@@ -132,8 +135,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 	private JTabbedPane tabbedPane;
 	private JButton order_List_Btn;
+
+	private JButton cart_CahngeBnt_1;
+	private JTable orderDetailTable;
+
 	private JButton cart_ChangeBnt_1;
 	private JLabel cart_ItemTotPrice;
+
 
 
 
@@ -2174,6 +2182,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		cart_ItemPanel.add(cart_ListSumPanel);
 		cart_ListSumPanel.setLayout(null);
 		
+
 		JButton cart_TotPrice = new JButton("합 계");
 		cart_TotPrice.setBackground(new Color(255, 255, 255));
 		cart_TotPrice.setBounds(272, 10, 69, 24);
@@ -2205,6 +2214,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				
 			}
 		});
+
 
 
 		JButton cart_DelBtn = new JButton("삭  제");
@@ -2252,9 +2262,11 @@ public class ShoppingMallFrame<E> extends JFrame {
 		cart_DelBnt.setBounds(0, 7, 97, 23);
 
 
+
 		cart_BuyBnt_1 = new JButton("구  매");
 		cart_BuyBnt_1.setBounds(20, 10, 69, 25);
 		cart_BuyBnt_1.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				
 			}
@@ -2301,9 +2313,11 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 
 		
+
 		cart_ChangeBnt_1 = new JButton("수  정");
 		cart_ChangeBnt_1.setBounds(107, 10, 69, 25);
 		cart_ChangeBnt_1.addActionListener(new ActionListener() {
+
 		    public void actionPerformed(ActionEvent e) {
 		        // cartTable에서 선택된 행의 인덱스를 가져옵니다.
 		        int selectedRow = cartTable.getSelectedRow();
@@ -2344,6 +2358,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
 		            OrderService orderService = new OrderService();
 		            CartService cartService = new CartService();
+		            ArrayList<OrderItem> orderItemList = new ArrayList<>();
 		            
 		            int totalPrice = 0;
 		            for (Cart cart : cartList) {
@@ -2351,6 +2366,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		                int cartQty = cart.getCart_qty();
 		                int pPrice = product.getP_price();
 		                totalPrice += cartQty * pPrice;
+		                orderItemList.add(new OrderItem(0, cartQty, 0, product));
 		            }
 
 		            Cart firstCart = cartList.get(0);
@@ -2358,9 +2374,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 		            String name = product.getP_name();
 		            String desc = name + " 외 여러가지";
 
-		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null); // 되는거
+		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), orderItemList); // 되는거
 		            orderService.OrderCash(order1);//반은되고 반은 안된다
-		            cartService.cartDeleteByUserId(loginUser.getUserId());
+		            //cartService.cartDeleteByUserId(loginUser.getUserId());
 
 
 		        } catch (Exception e1) {
@@ -2493,24 +2509,45 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		order_List_Btn.setBounds(192, 261, 108, 27);
+		order_List_Btn.setBounds(93, 261, 108, 27);
 		order_ItemPanel.add(order_List_Btn);
+
+		JScrollPane orderDetail_scrollPane = new JScrollPane();
+		orderDetail_scrollPane.setBounds(12, 299, 461, 134);
+		order_ItemPanel.add(orderDetail_scrollPane);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(12, 305, 461, 115);
-		order_ItemPanel.add(scrollPane_1);
-		
-		JTable orderDetailTable = new JTable();
+		orderDetailTable = new JTable();
 		orderDetailTable.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null, null, null},
+				{null, null, null},
 				{null, null, null},
 			},
 			new String[] {
 				"\uC0C1\uD488\uBA85", "\uC218\uB7C9", "\uAC00\uACA9"
 			}
 		));
-		scrollPane_1.setViewportView(orderDetailTable);
+		orderDetail_scrollPane.setViewportView(orderDetailTable);
 		
+		JButton orderDetailButton = new JButton("주문 상세보기");
+		orderDetailButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int selectedRow = order_Table.getSelectedRow();
+					OrderService orderservice = new OrderService();
+			        List<Order> orderList = orderservice.OrderList(loginUser.getUserId());
+			        Order selectedOrder = orderList.get(selectedRow);
+			        Order itemOrder = orderservice.OrderDetail(selectedOrder);
+			        displayOrderItemDetail(itemOrder);
+				} catch (Exception e2) {
+					e2.getStackTrace();
+				}
+				
+			}
+		});
+		orderDetailButton.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		orderDetailButton.setBounds(251, 261, 133, 27);
+		order_ItemPanel.add(orderDetailButton);
 		
 		JPanel order_BntPanel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) order_BntPanel.getLayout();
@@ -2664,6 +2701,40 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 
 //////////////////////////////////////////////////////////////////////////////////
+		private void displayOrderItemDetail(Order order) {
+			try {
+				/****************userId로 회원의 카트목록 다 보기*****************/
+				List<OrderItem> orderItemList = order.getOrderItemList();
+				
+				Vector columVector=new Vector(); // 컬럼이름 추가하려고
+				columVector.add("상품명");
+				columVector.add("수량");
+				columVector.add("가격");
+				
+				Vector tableVector=new Vector(); // 컬럼의 테이블 내용 추가하려고
+				
+				for (OrderItem orderItem : orderItemList) {
+					Vector rowVector=new Vector();
+					rowVector.add(orderItem.getProduct().getP_name());
+					rowVector.add(orderItem.getOi_qty());
+					rowVector.add(orderItem.getOi_qty() * orderItem.getProduct().getP_price());
+					tableVector.add(rowVector);
+				}
+				
+				DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
+				//DefaultTableModel: JTable에 데이터를 제공하는 기본 테이블 모델 객체
+				/*JTable*/	orderDetailTable.setModel(tableModel);
+				//cartTable:  JTable 객체로, 회원 정보를 표시할 테이블
+				/*JButton*/
+				/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
+				  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
+				
+			} catch(Exception e1) {			
+				// System.out.println("카트리스트보기에러-->"+e1.getMessage());
+				//e1.printStackTrace();
+
+			}
+		}
 		
 		private void displayOrderItemList() {
 		    try {
