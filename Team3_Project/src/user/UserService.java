@@ -8,15 +8,14 @@ public class UserService {
 	}
 
 	
-	public int create(User user) throws Exception{
-		int check = userDao.countByUserId(user.getUserId());
-		if(check < 1) {
+	public User create(User user) throws Exception{
+		int usercount = userDao.countByUserId(user.getUserId());
+		if(usercount<1) {
 			userDao.insert(user);
 		}else {
 			// 중복
 		}
-		
-		return check;
+		return null;
 	}
 	
 	public User login(String userid,String password) throws Exception{
@@ -37,5 +36,14 @@ public class UserService {
 	      return userDao.delete(userId);
 	   }
 	
+	//회원 중복체크
+	   public boolean duplicatecheck (String userId)throws Exception{
+		  boolean check =false;
+		  int loginuser= userDao.countByUserId(userId);
+		  if(loginuser<1) {
+			  check = true;
+		  }
+		   return check;
+	   }
 	   
 }

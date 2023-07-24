@@ -11,6 +11,11 @@ public class CartServiceTestMain {
 	public static void main(String[] args) throws Exception{
 		CartService cartService = new CartService();
 		
+		 //카트아이템1개보기(test완료) 
+		List list =cartService.getCartItemByUserId("ddd");
+		System.out.println(list);
+	
+		
 		/*
 		 * 카트추가 or 수정(test완료)
 		 */
@@ -30,8 +35,8 @@ public class CartServiceTestMain {
 		
 		
 		// 카트보기 getCartItemByUserId(test완료)
-		List list =cartService.getCartItemByUserId("aaa");
-		System.out.println(list);
+		List list2 =cartService.getCartItemByUserId("ddd");
+		System.out.println(list2);
 		
 		
 		 //카트아이템1개보기(test완료) 

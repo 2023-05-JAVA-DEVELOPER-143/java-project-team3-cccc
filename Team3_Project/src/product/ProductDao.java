@@ -38,6 +38,45 @@ public class ProductDao {
 		}
 		return product;
 	}
+	
+	public Product SelectByPK_Name(int p_no) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_NO_Name);
+		pstmt.setInt(1, p_no);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product= new Product(rs.getString("p_name"),
+								 null
+								);		
+			} 
+		return product;
+	}
+	public Product SelectByPK_Price(int p_no) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_NO_Price);
+		pstmt.setInt(1, p_no);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product= new Product(rs.getInt("p_price"));		
+		} 
+		return product;
+	}
+	public Product SelectByPK_Desc(int p_no) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_NO_desc);
+		pstmt.setInt(1, p_no);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product= new Product(null,
+								rs.getString("p_desc"));	
+		} 
+		return product;
+	}
+	
+	
 	/*
 	 * selectAll : 상품전체검색
 	 */
@@ -58,7 +97,6 @@ public class ProductDao {
 		}
 		return productList;
 	}
-	
 	
 	
 }

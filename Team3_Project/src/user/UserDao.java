@@ -91,6 +91,8 @@ public class UserDao {
 		return rowCount;
 	}
 	
+	
+	//아이디 중복체크메서드
 	public int countByUserId(String userId) throws Exception {
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_SELECT_BY_ID_COUNT);
@@ -98,6 +100,7 @@ public class UserDao {
 		ResultSet rs=pstmt.executeQuery();
 		rs.next();
 		int userCount = rs.getInt(1);
+		
 		return userCount;
 	}
 	
