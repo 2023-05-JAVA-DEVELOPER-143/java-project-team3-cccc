@@ -156,13 +156,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("ShoppingMall ");
-		menuBar.add(mnNewMenu);
-		
-		menu_SearchTextField = new JTextField();
-		menuBar.add(menu_SearchTextField);
-		menu_SearchTextField.setColumns(10);
-		
 		JSeparator separator = new JSeparator();
 		menuBar.add(separator);
 		
@@ -197,46 +190,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 			}
 		});
-		
-		JButton btnNewButton = new JButton("검색");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String n = null;
-				int no = 0;
-				try {
-					n = productservice.productFindName(menu_SearchTextField.getText());
-					no = productservice.productFindNameNo(n);
-					// 패션
-					if (no == 4 || no == 3) {
-						tabbedPane.setSelectedIndex(1);
-					}
-					// 디지털
-					if (no == 1 || no == 2) {
-						tabbedPane.setSelectedIndex(5);
-					}
-					// 스포츠
-					if (no == 11 || no == 12) {
-						tabbedPane.setSelectedIndex(2);
-					}
-					// 생활
-					if (no == 10 || no == 9) {
-						tabbedPane.setSelectedIndex(3);
-					}
-					// 가구
-					if (no == 7 || no == 8) {
-						tabbedPane.setSelectedIndex(4);
-					}
-					// 음식
-					if (no == 6 || no == 5) {
-						tabbedPane.setSelectedIndex(6);
-					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
-				}
-			}
-		});
-		menuBar.add(btnNewButton);
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
@@ -450,6 +403,56 @@ public class ShoppingMallFrame<E> extends JFrame {
 		foodImage.setHorizontalAlignment(SwingConstants.CENTER);
 		foodImage.setBounds(338, 242, 77, 80);
 		homePanel.add(foodImage);
+		
+		menu_SearchTextField = new JTextField();
+		menu_SearchTextField.setBounds(138, 25, 192, 23);
+		homePanel.add(menu_SearchTextField);
+		menu_SearchTextField.setColumns(10);
+		
+		JMenu mnNewMenu = new JMenu("ShoppingMall ");
+		mnNewMenu.setBounds(35, 25, 91, 23);
+		homePanel.add(mnNewMenu);
+		
+		JButton btnNewButton = new JButton("검색");
+		btnNewButton.setBounds(348, 25, 67, 23);
+		homePanel.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String n = null;
+				int no = 0;
+				try {
+					n = productservice.productFindName(menu_SearchTextField.getText());
+					no = productservice.productFindNameNo(n);
+					// 패션
+					if (no == 4 || no == 3) {
+						tabbedPane.setSelectedIndex(1);
+					}
+					// 디지털
+					if (no == 1 || no == 2) {
+						tabbedPane.setSelectedIndex(5);
+					}
+					// 스포츠
+					if (no == 11 || no == 12) {
+						tabbedPane.setSelectedIndex(2);
+					}
+					// 생활
+					if (no == 10 || no == 9) {
+						tabbedPane.setSelectedIndex(3);
+					}
+					// 가구
+					if (no == 7 || no == 8) {
+						tabbedPane.setSelectedIndex(4);
+					}
+					// 음식
+					if (no == 6 || no == 5) {
+						tabbedPane.setSelectedIndex(6);
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
+				}
+			}
+		});
 		
 		JPanel fashionPanel = new JPanel();
 		tabbedPane.addTab("패 션", null, fashionPanel, null);
