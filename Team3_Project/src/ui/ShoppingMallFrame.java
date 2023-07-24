@@ -13,9 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import java.util.ArrayList;
-import java.text.DateFormat;
 import java.util.List;
 import java.util.Vector;
 
@@ -110,7 +107,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 	private JLabel fashion_ProductPriceLabel;
 	private JLabel fashion_ProductDescLabel;
 	private JLabel fashion_ProductNameLabel;
-
 	private JButton cart_DelBnt_1;
 	private JLabel fashion_ProductNameLabel2;
 	private JLabel sport_ProductNameLabel1;
@@ -123,9 +119,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 	private JLabel food_ProductNameLabel;
 	private JLabel food_ProductNameLabel2;
 	private JLabel sport_ProductNameLabel2;
+
 	private JTabbedPane tabbedPane;
 	private JButton order_List_Btn;
-
 
 
 
@@ -159,13 +155,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
-		JMenu mnNewMenu = new JMenu("ShoppingMall ");
-		menuBar.add(mnNewMenu);
-		
-		menu_SearchTextField = new JTextField();
-		menuBar.add(menu_SearchTextField);
-		menu_SearchTextField.setColumns(10);
 		
 		JSeparator separator = new JSeparator();
 		menuBar.add(separator);
@@ -201,46 +190,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 			}
 		});
-		
-		JButton btnNewButton = new JButton("검색");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String n = null;
-				int no = 0;
-				try {
-					n = productservice.productFindName(menu_SearchTextField.getText());
-					no = productservice.productFindNameNo(n);
-					// 패션
-					if (no == 4 || no == 3) {
-						tabbedPane.setSelectedIndex(1);
-					}
-					// 디지털
-					if (no == 1 || no == 2) {
-						tabbedPane.setSelectedIndex(5);
-					}
-					// 스포츠
-					if (no == 11 || no == 12) {
-						tabbedPane.setSelectedIndex(2);
-					}
-					// 생활
-					if (no == 10 || no == 9) {
-						tabbedPane.setSelectedIndex(3);
-					}
-					// 가구
-					if (no == 7 || no == 8) {
-						tabbedPane.setSelectedIndex(4);
-					}
-					// 음식
-					if (no == 6 || no == 5) {
-						tabbedPane.setSelectedIndex(6);
-					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
-				}
-			}
-		});
-		menuBar.add(btnNewButton);
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
@@ -263,11 +212,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 					loginLabel.setText("  로그인");
 					shopTabbedPane.setEnabledAt(1, true);
 					shopTabbedPane.setEnabledAt(2, true);
-
 					shopTabbedPane.setEnabledAt(3, false);
-
+					shopTabbedPane.setEnabledAt(4, false);
 					shopTabbedPane.setEnabledAt(5, false);
-					shopTabbedPane.setEnabledAt(6, false);
 					shopTabbedPane.setSelectedIndex(1);	
 
 					setTitle("TEAM_SAMJO");
@@ -456,6 +403,62 @@ public class ShoppingMallFrame<E> extends JFrame {
 		foodImage.setHorizontalAlignment(SwingConstants.CENTER);
 		foodImage.setBounds(338, 242, 77, 80);
 		homePanel.add(foodImage);
+		
+		menu_SearchTextField = new JTextField();
+		menu_SearchTextField.setBounds(117, 33, 225, 31);
+		homePanel.add(menu_SearchTextField);
+		menu_SearchTextField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("검색");
+		btnNewButton.setBackground(new Color(250, 250, 210));
+		btnNewButton.setBounds(348, 33, 67, 31);
+		homePanel.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/miniLogo.png")));
+		lblNewLabel_1.setBounds(80, 30, 38, 36);
+		homePanel.add(lblNewLabel_1);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String n = null;
+				int no = 0;
+				try {
+					n = productservice.productFindName(menu_SearchTextField.getText());
+					System.out.println(n);
+					no = productservice.productFindNameNo(n);
+
+					// 패션
+					if (no == 4 || no == 3) {
+						tabbedPane.setSelectedIndex(1);
+					}
+					// 디지털
+					if (no == 1 || no == 2) {
+						tabbedPane.setSelectedIndex(5);
+					}
+					// 스포츠
+					if (no == 11 || no == 12) {
+						tabbedPane.setSelectedIndex(2);
+					}
+					// 생활
+					if (no == 10 || no == 9) {
+						tabbedPane.setSelectedIndex(3);
+					}
+					// 가구
+					if (no == 7 || no == 8) {
+						tabbedPane.setSelectedIndex(4);
+					}
+					// 음식
+					if (no == 6 || no == 5) {
+						tabbedPane.setSelectedIndex(6);
+					}
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
+				}
+			}
+		});
 		
 		JPanel fashionPanel = new JPanel();
 		tabbedPane.addTab("패 션", null, fashionPanel, null);
@@ -1655,7 +1658,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 						
 				} 
 			catch (Exception e1) {
-				System.out.println("로그인에러-->"+e1.getMessage());
+				
 			}
 
 			}
@@ -1965,23 +1968,18 @@ public class ShoppingMallFrame<E> extends JFrame {
 		info_User_Btn.setBounds(83, 381, 95, 33);
 		shop_InfoPanel.add(info_User_Btn);
 		
-		JPanel shop_AdminPanel = new JPanel();
-		shopTabbedPane.addTab("관리창", null, shop_AdminPanel, null);
-		
 
 		JPanel shop_CartPanel = new JPanel();
 		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
 		if (loginUser== null) {
-			shopTabbedPane.setEnabledAt(5, false);
+			shopTabbedPane.setEnabledAt(4, false);
 			
 		}
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
 		
 		shopTabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				if(loginUser!=null) {
-					displayCartListUserId();	
-				}
+				displayCartListUserId();
 			}
 		});
 		
@@ -2111,7 +2109,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 		cart_ListSumPanel.add(btnNewButton_2);
 
 
-
 		JButton cart_DelBnt = new JButton("구매");
 		cart_DelBnt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -2125,9 +2122,56 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		cart_DelBnt.setBounds(0, 7, 97, 23);
+
+
+		cart_DelBnt_1 = new JButton("구  매");
+		cart_DelBnt_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+
+		});
+		cart_DelBnt_1.setBounds(5, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt_1);
+		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 
 		JButton cart_CahngeBnt = new JButton("수  정");
+		cart_DelBnt_1.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        try {
+		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
+		            int totalPrice = 0;
+		            CartService cartService = new CartService();
+
+		            for (Cart cart : cartList) {
+		                Product product = cart.getProduct();
+		                int cartQty = cart.getCart_qty();
+		                int pPrice = product.getP_price();
+		                totalPrice += cartQty * pPrice;
+		            }
+
+		            Cart firstCart = cartList.get(0);
+		            Product product = firstCart.getProduct();
+		            String name = product.getP_name();
+		            String desc = name + " 외 여러가지";
+
+		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null);
+		            cartService.cartDeleteByUserId(loginUser.getUserId());
+
+		            // 주문 정보(order1)를 사용하여 원하는 동작 수행
+		            // ...
+
+		        } catch (Exception e1) {
+		            System.out.println("");
+		        }
+		    }
+
+		});
+		cart_DelBnt_1.setBounds(5, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt_1);
+		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
 
 		
 		cart_CahngeBnt = new JButton("수  정");
@@ -2159,45 +2203,12 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        }
 		    }
 		});
-		
-
-		
-		cart_CahngeBnt.setBounds(105, 7, 97, 23);
-		cart_ListSumPanel.add(cart_CahngeBnt);
-		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		
-		
-		cart_DelBnt_1 = new JButton("구  매");
-		cart_DelBnt_1.setBounds(12, 7, 97, 23);
-		cart_ListSumPanel.add(cart_DelBnt_1);
-		cart_DelBnt_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {	
-		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
-		            int totalPrice = 0;
-		            for (Cart cart : cartList) {
-		                Product product = cart.getProduct();
-		                int cartQty = cart.getCart_qty();
-		                int pPrice = product.getP_price();
-		                totalPrice += cartQty * pPrice;
-		            }
-		            
-		            Cart firstCart = cartList.get(0);
-		            Product product = firstCart.getProduct();
-		            String name = product.getP_name();
-		            String desc = name + " 외 여러가지";
-		            
-		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null); // 되는거
-		            orderservice.OrderCash(order1);
-		            cartservice.cartDeleteByUserId(loginUser.getUserId());
 
 
-		        } catch (Exception e1) {
-		            System.out.println("주문하기 에러났다-->" + e1.getMessage());
-		        }
-			}
-		});
-		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+
+
+
+
 		
 		cart_DelBnt_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -2229,7 +2240,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        }
 		    }
 		});
+		cart_DelBnt_1.setBounds(5, 7, 97, 23);
+		cart_ListSumPanel.add(cart_DelBnt_1);
 		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
+
+		
+		cart_CahngeBnt.setBounds(105, 7, 97, 23);
+		cart_ListSumPanel.add(cart_CahngeBnt);
+		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(36, 23, 428, 161);
@@ -2250,21 +2269,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
 		if (loginUser== null) {
-			shopTabbedPane.setEnabledAt(6, false);
+			shopTabbedPane.setEnabledAt(5, false);
 		}
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
 		
 		shopTabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-			try {
-				if(loginUser!=null) {
-					displayOrderItemList();
-				}
-			} catch (Exception e2) {
-
-			}	
-			
-				
+				displayOrderItemList();
 			}
 		});
 		
@@ -2295,16 +2306,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 		// Cart_주문목록 테이블
 		order_Table = new JTable();
 		order_Table.setModel(new DefaultTableModel(
-
 			new Object[][] {
 				{null, null, null},
 			},
-			// 컬럼 이름
 			new String[] {
 				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uAC00\uACA9"
 			}
-
-			));
+		));
 	
 		order_scrollPane.setViewportView(order_Table);
 		
@@ -2355,57 +2363,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 				
 			}
 		});
-	
-		order_scrollPane.setViewportView(order_Table);
-		
-		order_List_Btn = new JButton("주 문 목 록");
-		order_List_Btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				displayOrderItemList();
-//				try {
-//					/****************userId로 회원의 카트목록 다 보기*****************/
-//					List<Cart> CartList= cartservice.getCartItemByUserId(loginUser.getUserId());//회원전체리스트
-//					
-//					List<Order> OrderList = orderservice.OrderList(loginUser.getUserId());
-//					
-//					Vector columVector=new Vector(); // 컬럼이름 추가하려고
-//					columVector.add("주문번호");
-//					columVector.add("주문날짜");
-//					columVector.add("주문가격");
-//					
-//					Vector tableVector=new Vector(); //테이블 값들이 들어갈 곳
-//					for(Order order:OrderList) {
-//						Vector rowVector=new Vector(); // 컬럼의 테이블 내용 옮겨담을곳
-//						Order order2 = new Order();
-//						
-//						int orderNo =order.getO_no(); // 주문번호 들어갈것
-//						DateFormat dateFormat = DateFormat.getInstance();
-//						String date = dateFormat.format( order.getO_date());//주문날짜 들어갈것
-//						int orderPrice = order.getO_price();//주문가격 들어갈것
-//						
-//						rowVector.add(orderNo);
-//						rowVector.add(date);
-//						rowVector.add(orderPrice);
-//						
-//						tableVector.add(rowVector);  
-//					}
-//					DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
-//					//DefaultTableModel: JTable에 데이터를 제공하는 기본 테이블 모델 객체
-//					/*JTable*/	order_Table.setModel(tableModel);
-//					//cartTable:  JTable 객체로, 회원 정보를 표시할 테이블
-//					/*JButton*/
-//					/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
-//					  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
-//					//displayCartListUserId()
-//					displayOrderItemList();
-//				} catch(Exception e1) {
-//					System.out.println("주문목록보기에러-->"+e1.getMessage());
-//				}
-
-				
-				
-			}
-		});
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		order_List_Btn.setBounds(201, 261, 101, 27);
 		order_ItemPanel.add(order_List_Btn);
@@ -2419,7 +2376,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 		order_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		order_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				try {
 	            //테이블에서 선택된 행의 인덱스 가져오기
 				int selectedRow = order_Table.getSelectedRow();
@@ -2435,7 +2391,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}catch (Exception e1) {
 					System.out.println("삭제할 주문을 선택해 주세요"+ e1.getMessage());
 				}
-
 			}
 		});
 		order_BntPanel.add(order_Btn);
@@ -2443,9 +2398,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		userservice = new UserService();
 
 		cartservice = new CartService();
-
 		productservice = new ProductService();
-
 
 	} // 생성자 끝
 
@@ -2492,10 +2445,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 		shopTabbedPane.setSelectedIndex(0);
 		if (loginUser != null) {
 			shopTabbedPane.setSelectedIndex(0);
+			shopTabbedPane.setEnabledAt(4, true);
 			shopTabbedPane.setEnabledAt(5, true);
-
-			shopTabbedPane.setEnabledAt(6, true);
-
 			loginLabel.setText("  로그아웃");
 		}	
 	}
@@ -2532,6 +2483,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		} catch(Exception e1) {			
 			// System.out.println("카트리스트보기에러-->"+e1.getMessage());
 			e1.printStackTrace();
+
 		}
 	}		
 			
@@ -2564,36 +2516,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 			List cartList = null;
 			
 		}
-
-		/*
-		private void displayOrderItemList() {
-			try {
-				List<Order> orderList= orderservice.OrderList(loginUser.getUserId());
-				
-				Vector columVector=new Vector();
-				columVector.add(" ");
-				
-				Vector tableVector=new Vector();
-				
-				for(Order order:orderList) {
-					Vector rowVector=new Vector();
-					rowVector.add(order.getOrderItemList());
-					rowVector.add(order.getMemberPassword());
-					rowVector.add(order.getMemberName());
-					rowVector.add(order.getMemberAddress());
-					rowVector.add(order.getMemberAge());
-					rowVector.add(order.getMemberMarried());
-					rowVector.add(order.getMemberRegdate());
-					tableVector.add(rowVector);
-				}
-				DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
-				adminMemberListTable.setModel(tableModel);
-				memberDeleteBtn.setEnabled(false);
-			}catch(Exception e1) {
-				System.out.println("회원리스트보기에러-->"+e1.getMessage());
-			}
-		}*/
-
 		
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -2601,7 +2523,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 		private void displayOrderItemList() {
 		    try {
 		    	OrderService orderservice = new OrderService();
-		    	System.out.println(loginUser);
 		        List<Order> orderList = orderservice.OrderList(loginUser.getUserId());
 
 		       
@@ -2623,11 +2544,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        DefaultTableModel tableModel = new DefaultTableModel(tableVector, columnVector);
 		        order_Table.setModel(tableModel);
 		        order_List_Btn.setEnabled(false);
+
 		    } catch (Exception e1) {
 		    	e1.printStackTrace();
 		    }
 		}
-
-
 }
-

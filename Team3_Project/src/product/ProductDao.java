@@ -40,17 +40,20 @@ public class ProductDao {
 	}
 	
 	// 상품 이름으로 상품이름 검색
-	public Product SelectByname_Name(String p_name) throws Exception{
-		Product product=null;
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_Name_Name);
-		pstmt.setString(1, p_name);
-		ResultSet rs=pstmt.executeQuery();
-		if(rs.next()) {
-			product= new Product(rs.getString("p_name"),
-								 null
-								);		
-			} 
+	public Product SelectByname_Name(String p_name) throws Exception {
+		Product product = null;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.Product_SELECT_BY_Name_Name);
+		if (p_name.equals("")) {
+			return null;
+		} else {
+			pstmt.setString(1, p_name);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				product = new Product(rs.getString("p_name"), null);
+			}
+		}
+
 		return product;
 	}
 	
