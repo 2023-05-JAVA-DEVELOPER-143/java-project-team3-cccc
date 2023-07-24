@@ -46,7 +46,7 @@ public class OrderService {
 	 * 주문상세보기
 	 */
 	public Order OrderDetail(Order order) throws Exception{
-		return orderDao.findOrderWithProductByUserId(order.getUserId(), order.getO_no());
+		return orderDao.findByOrderNo(order.getUserId(), order.getO_no());
 	}
 	
 	/*
