@@ -548,7 +548,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		fashion_CartQtyComboBox.setBorder(null);
 		fashion_CartQtyComboBox.setBackground(Color.WHITE);
 		fashion_CartQtyComboBox.setAutoscrolls(true);
-		fashion_CartQtyComboBox.setBounds(99, 119, 33, 23);
+		fashion_CartQtyComboBox.setBounds(99, 119, 40, 23);
 		fashion_Product1.add(fashion_CartQtyComboBox);
 		
 		fashion_ProductPriceLabel = new JLabel("");
@@ -656,7 +656,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		fashion_CartQtyComboBox2.setBorder(null);
 		fashion_CartQtyComboBox2.setBackground(Color.WHITE);
 		fashion_CartQtyComboBox2.setAutoscrolls(true);
-		fashion_CartQtyComboBox2.setBounds(99, 119, 33, 23);
+		fashion_CartQtyComboBox2.setBounds(99, 119, 40, 23);
 		fashion_Product2.add(fashion_CartQtyComboBox2);
 		
 		JPanel sportPanel = new JPanel();
@@ -729,7 +729,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		sport_CartQtyComboBox_1.setBorder(null);
 		sport_CartQtyComboBox_1.setBackground(Color.WHITE);
 		sport_CartQtyComboBox_1.setAutoscrolls(true);
-		sport_CartQtyComboBox_1.setBounds(99, 119, 33, 23);
+		sport_CartQtyComboBox_1.setBounds(99, 119, 40, 23);
 		sport_Product1.add(sport_CartQtyComboBox_1);
 		
 
@@ -822,7 +822,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		sport_CartQtyComboBox2.setBorder(null);
 		sport_CartQtyComboBox2.setBackground(Color.WHITE);
 		sport_CartQtyComboBox2.setAutoscrolls(true);
-		sport_CartQtyComboBox2.setBounds(99, 119, 33, 23);
+		sport_CartQtyComboBox2.setBounds(99, 119, 40, 23);
 		sport_Product2.add(sport_CartQtyComboBox2);
 		
 
@@ -922,7 +922,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		daily_CartQtyComboBox1.setBorder(null);
 		daily_CartQtyComboBox1.setBackground(Color.WHITE);
 		daily_CartQtyComboBox1.setAutoscrolls(true);
-		daily_CartQtyComboBox1.setBounds(99, 119, 33, 23);
+		daily_CartQtyComboBox1.setBounds(99, 119, 40, 23);
 		daily_Product1.add(daily_CartQtyComboBox1);
 		
 
@@ -1018,7 +1018,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		daily_CartQtyComboBox2.setBorder(null);
 		daily_CartQtyComboBox2.setBackground(Color.WHITE);
 		daily_CartQtyComboBox2.setAutoscrolls(true);
-		daily_CartQtyComboBox2.setBounds(99, 119, 33, 23);
+		daily_CartQtyComboBox2.setBounds(99, 119, 40, 23);
 		daily_Product2.add(daily_CartQtyComboBox2);
 		
 
@@ -1123,7 +1123,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		furniture_CartQtyComboBox1.setBorder(null);
 		furniture_CartQtyComboBox1.setBackground(Color.WHITE);
 		furniture_CartQtyComboBox1.setAutoscrolls(true);
-		furniture_CartQtyComboBox1.setBounds(99, 119, 33, 23);
+		furniture_CartQtyComboBox1.setBounds(99, 119, 40, 23);
 		furniture_Product1.add(furniture_CartQtyComboBox1);
 		
 
@@ -1218,7 +1218,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		furniture_CartQtyComboBox2.setBorder(null);
 		furniture_CartQtyComboBox2.setBackground(Color.WHITE);
 		furniture_CartQtyComboBox2.setAutoscrolls(true);
-		furniture_CartQtyComboBox2.setBounds(99, 119, 33, 23);
+		furniture_CartQtyComboBox2.setBounds(99, 119, 40, 23);
 		furniture_Product2.add(furniture_CartQtyComboBox2);
 		
 
@@ -1272,7 +1272,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		digital_ContentPanel.add(digital_Product1);
 		
 		JLabel digital_IconLabel1 = new JLabel("");
-		digital_IconLabel1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/digital3.jpg")));
+		digital_IconLabel1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/digital.computer.png")));
 		digital_IconLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		digital_IconLabel1.setBounds(3, 1, 162, 116);
 		digital_Product1.add(digital_IconLabel1);
@@ -1320,7 +1320,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		digital_CartQtyComboBox1.setBorder(null);
 		digital_CartQtyComboBox1.setBackground(Color.WHITE);
 		digital_CartQtyComboBox1.setAutoscrolls(true);
-		digital_CartQtyComboBox1.setBounds(99, 119, 33, 23);
+		digital_CartQtyComboBox1.setBounds(99, 119, 40, 23);
 		digital_Product1.add(digital_CartQtyComboBox1);
 		
 
@@ -1367,7 +1367,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		digital_ContentPanel.add(digital_Product2);
 		
 		JLabel digital_onLabel2 = new JLabel("");
-		digital_onLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/digital2.png")));
+		digital_onLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/digital.television2.png")));
 		digital_onLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		digital_onLabel2.setBounds(3, 1, 162, 116);
 		digital_Product2.add(digital_onLabel2);
@@ -1415,7 +1415,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		digital_CartQtyComboBox2.setBorder(null);
 		digital_CartQtyComboBox2.setBackground(Color.WHITE);
 		digital_CartQtyComboBox2.setAutoscrolls(true);
-		digital_CartQtyComboBox2.setBounds(99, 119, 33, 23);
+		digital_CartQtyComboBox2.setBounds(99, 119, 40, 23);
 		digital_Product2.add(digital_CartQtyComboBox2);
 		
 
@@ -1439,9 +1439,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 		digital_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		digital_Product2.add(digital_ProductNameLabel2);
 		
-		digital_ProductNameLabel2.setText(productName(1));
-		digital_ProductPriceLabe2.setText(productPrice(1));
-		digital_ProductDescLabel2.setText(productDesc(1));
+		digital_ProductNameLabel2.setText(productName(2));
+		digital_ProductPriceLabe2.setText(productPrice(2));
+		digital_ProductDescLabel2.setText(productDesc(2));
 		
 		
 		
@@ -1538,7 +1538,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		food_CartQtyComboBox1.setBorder(null);
 		food_CartQtyComboBox1.setBackground(Color.WHITE);
 		food_CartQtyComboBox1.setAutoscrolls(true);
-		food_CartQtyComboBox1.setBounds(99, 119, 33, 23);
+		food_CartQtyComboBox1.setBounds(99, 119, 40, 23);
 		food_Product1.add(food_CartQtyComboBox1);
 		
 		JLabel food_ProductTitleLabe2_1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
@@ -1562,7 +1562,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		food_ContentPanel.add(food_Product2);
 		
 		JLabel food_onLabel2 = new JLabel("");
-		food_onLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/Food1.png")));
+		food_onLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/food.maratang2.png")));
 		food_onLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		food_onLabel2.setBounds(3, 1, 162, 116);
 		food_Product2.add(food_onLabel2);
@@ -1610,7 +1610,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		food_CartQtyComboBox2.setBorder(null);
 		food_CartQtyComboBox2.setBackground(Color.WHITE);
 		food_CartQtyComboBox2.setAutoscrolls(true);
-		food_CartQtyComboBox2.setBounds(99, 119, 33, 23);
+		food_CartQtyComboBox2.setBounds(99, 119, 40, 23);
 		food_Product2.add(food_CartQtyComboBox2);
 		
 
@@ -1634,10 +1634,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 		food_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		food_Product2.add(food_ProductNameLabel2);
 		
-		food_ProductNameLabel2.setText(productName(6));
-		food_ProductNameLabel2.setText(productName(6));
-		food_ProductPriceLabe2.setText(productPrice(6));
-		food_ProductDescLabel2.setText(productDesc(6));
+		food_ProductNameLabel2.setText(productName(5));
+		food_ProductNameLabel2.setText(productName(5));
+		food_ProductPriceLabe2.setText(productPrice(5));
+		food_ProductDescLabel2.setText(productDesc(5));
 		
 		
 		
