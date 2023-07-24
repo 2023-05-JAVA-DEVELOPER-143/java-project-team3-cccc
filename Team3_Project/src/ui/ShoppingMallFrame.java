@@ -189,7 +189,7 @@ public class ShoppingMallFrame extends JFrame {
 		menuBar.add(lblNewLabel_5);
 		
 		
-		loginLabel = new JLabel("  로그인");
+		loginLabel =   new JLabel("  로그인");
 		loginLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
