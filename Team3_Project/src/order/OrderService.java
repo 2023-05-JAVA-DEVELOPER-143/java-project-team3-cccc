@@ -12,7 +12,7 @@ public class OrderService {
 	
 	public OrderService() throws Exception{
 		orderDao = new OrderDao();
-		cartDao=new CartDao();
+		cartDao = new CartDao();
 	}
 	
 	
