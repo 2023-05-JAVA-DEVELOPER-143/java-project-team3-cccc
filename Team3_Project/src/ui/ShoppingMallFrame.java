@@ -157,6 +157,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JSeparator separator = new JSeparator();
+		separator.setForeground(new Color(255, 255, 255));
 		menuBar.add(separator);
 		
 		JLabel serchLabel = new JLabel("");
@@ -237,6 +238,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		menuBar.add(joinLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("   ");
+		menuBar.add(lblNewLabel_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
