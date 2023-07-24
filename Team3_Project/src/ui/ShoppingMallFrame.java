@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ContainerListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -45,12 +46,19 @@ import cart.Cart;
 import cart.CartDao;
 import cart.CartService;
 import order.Order;
+import order.OrderDao;
+import order.OrderItem;
 import order.OrderService;
 import product.Product;
 import product.ProductService;
 import user.User;
 import user.UserService;
 import java.awt.Insets;
+import java.awt.FlowLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ShoppingMallFrame<E> extends JFrame {
 
@@ -148,7 +156,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public ShoppingMallFrame() throws Exception{
 		setResizable(false);
 		setAutoRequestFocus(false);
@@ -415,19 +423,20 @@ public class ShoppingMallFrame<E> extends JFrame {
 		menu_SearchTextField = new JTextField();
 		menu_SearchTextField.setBounds(117, 33, 225, 31);
 		homePanel.add(menu_SearchTextField);
-		menu_SearchTextField.setColumns(10);
+		menu_SearchTextField.setColumns(10);		
 		
-		JButton btnNewButton = new JButton("검색");
-		btnNewButton.setBackground(new Color(250, 250, 210));
-		btnNewButton.setBounds(348, 33, 67, 31);
-		homePanel.add(btnNewButton);
+		
+		JButton searchBnt = new JButton("검색");
+		searchBnt.setBackground(new Color(250, 250, 210));
+		searchBnt.setBounds(348, 33, 67, 31);
+		homePanel.add(searchBnt);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/miniLogo.png")));
 		lblNewLabel_1.setBounds(80, 30, 38, 36);
 		homePanel.add(lblNewLabel_1);
-		btnNewButton.addActionListener(new ActionListener() {
+		searchBnt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String n = null;
 				int no = 0;
@@ -466,6 +475,16 @@ public class ShoppingMallFrame<E> extends JFrame {
 					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
 				}
 			}
+		});
+		menu_SearchTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+						  int key = e.getKeyCode();	  
+						  if (key ==e.VK_ENTER) {
+							  searchBnt.doClick();;
+							}
+					}
+				
 		});
 		
 		JPanel fashionPanel = new JPanel();
@@ -1734,10 +1753,27 @@ public class ShoppingMallFrame<E> extends JFrame {
 		shop_LoginPanel.add(login_IdTextField);
 		
 		login_PasswordField = new JPasswordField();
+		
 		login_PasswordField.setBounds(235, 280, 116, 21);
 		shop_LoginPanel.add(login_PasswordField);
 		
+		// 엔터 시 로그인
 		JButton login_Btn = new JButton("로그인");
+		login_Btn.setBounds(135, 342, 97, 23);
+		shop_LoginPanel.add(login_Btn);
+		login_PasswordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+						  int key = e.getKeyCode();	  
+						  if (key ==e.VK_ENTER) {
+							 login_Btn.doClick();;
+							}
+					}
+				
+		});
+		
+		/////////
+		
 		login_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			try {
@@ -1762,8 +1798,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 			}
 		});
-		login_Btn.setBounds(135, 342, 97, 23);
-		shop_LoginPanel.add(login_Btn);
 		
 		JButton login_joinBtn = new JButton("회원가입");
 		login_joinBtn.addMouseListener(new MouseAdapter() {
@@ -2461,12 +2495,28 @@ public class ShoppingMallFrame<E> extends JFrame {
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		order_List_Btn.setBounds(192, 261, 108, 27);
 		order_ItemPanel.add(order_List_Btn);
-
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(12, 305, 461, 115);
+		order_ItemPanel.add(scrollPane_1);
+		
+		JTable orderDetailTable = new JTable();
+		orderDetailTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+			},
+			new String[] {
+				"\uC0C1\uD488\uBA85", "\uC218\uB7C9", "\uAC00\uACA9"
+			}
+		));
+		scrollPane_1.setViewportView(orderDetailTable);
 		
 		
 		JPanel order_BntPanel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) order_BntPanel.getLayout();
+		flowLayout.setHgap(10);
+		flowLayout.setVgap(10);
 		shop_OrderListPanel.add(order_BntPanel, BorderLayout.SOUTH);
-		
 		JButton order_Btn = new JButton("주 문 삭 제");
 		order_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		order_Btn.addActionListener(new ActionListener() {
@@ -2494,7 +2544,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 		cartservice = new CartService();
 		productservice = new ProductService();
-
+	
 	} // 생성자 끝
 
 	// 상품이름_DB에서 가져오기
@@ -2643,6 +2693,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		    } catch (Exception e1) {
 		        System.out.println("");
 		    }
+		
 
 		}
 }
