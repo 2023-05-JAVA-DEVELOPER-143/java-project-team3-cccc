@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -60,6 +61,7 @@ import java.awt.Insets;
 import java.awt.FlowLayout;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -141,6 +143,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 	private JButton cart_ChangeBnt_1;
 	private JLabel cart_ItemTotPrice;
+	private JButton login_Btn;
 
 
 
@@ -428,11 +431,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 		foodImage.setBounds(338, 242, 77, 80);
 		homePanel.add(foodImage);
 		
-		menu_SearchTextField = new JTextField();
+		menu_SearchTextField = new JTextField(); 
 		menu_SearchTextField.setBounds(117, 33, 225, 31);
 		homePanel.add(menu_SearchTextField);
-		menu_SearchTextField.setColumns(10);		
-		
+		menu_SearchTextField.setColumns(10);
 		
 		JButton searchBnt = new JButton("검색");
 		searchBnt.setBackground(new Color(250, 250, 210));
@@ -484,11 +486,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}
 			}
 		});
+		
+		// 엔터 시 검색실행
 		menu_SearchTextField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 						  int key = e.getKeyCode();	  
-						  if (key ==e.VK_ENTER) {
+						  if (key == e.VK_ENTER) {
 							  searchBnt.doClick();;
 							}
 					}
@@ -1766,7 +1770,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		shop_LoginPanel.add(login_PasswordField);
 		
 		// 엔터 시 로그인
-		JButton login_Btn = new JButton("로그인");
+		login_Btn = new JButton("로그인");
 		login_Btn.setBounds(135, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		login_PasswordField.addKeyListener(new KeyAdapter() {
@@ -2630,6 +2634,17 @@ public class ShoppingMallFrame<E> extends JFrame {
 			shopTabbedPane.setEnabledAt(4, true);
 			shopTabbedPane.setEnabledAt(5, true);
 			loginLabel.setText("  로그아웃");
+			login_PasswordField.requestFocus();
+			login_PasswordField.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					int key = e.getKeyCode();	  
+					if (key ==e.VK_ENTER) {
+						login_Btn.doClick();;
+					}
+				}
+				
+			});
 		}	
 	}
 				
