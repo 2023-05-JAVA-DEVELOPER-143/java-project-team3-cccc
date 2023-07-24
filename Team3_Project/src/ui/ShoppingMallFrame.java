@@ -201,9 +201,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 			}
 		});
-		
-		JSeparator separator = new JSeparator();
-		menuBar.add(separator);
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
@@ -2508,7 +2505,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		order_List_Btn.setBounds(120, 261, 101, 27);
+		order_List_Btn.setBounds(111, 261, 110, 27);
 		order_ItemPanel.add(order_List_Btn);
 
 
