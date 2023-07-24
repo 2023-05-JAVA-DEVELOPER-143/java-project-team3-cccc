@@ -6,10 +6,13 @@ public class Product {
 	private int p_price;
 	private String p_image;
 	private String p_desc;
+
+	
+	
 	public Product(int p_price) {
 		this.p_price = p_price;
-	
 	}
+	
 	
 	public Product (String string, String desc) {
 		super();	
