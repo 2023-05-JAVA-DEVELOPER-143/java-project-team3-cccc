@@ -2058,7 +2058,8 @@ public class ShoppingMallFrame extends JFrame {
 					/*JButton*/
 					/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
 					  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
-					
+					//displayCartListUserId()
+					displayOrderItemList();
 				} catch(Exception e1) {
 					System.out.println("주문목록보기에러-->"+e1.getMessage());
 				}
@@ -2194,32 +2195,32 @@ public class ShoppingMallFrame extends JFrame {
 			List cartList = null;
 			
 		}
-		/*
+		
 		private void displayOrderItemList() {
-			try {
-				List<Order> orderList= orderservice.OrderList(loginUser.getUserId());
-				
-				Vector columVector=new Vector();
-				columVector.add(" ");
-				
-				Vector tableVector=new Vector();
-				
-				for(Order order:orderList) {
-					Vector rowVector=new Vector();
-					rowVector.add(order.getOrderItemList());
-					rowVector.add(order.getMemberPassword());
-					rowVector.add(order.getMemberName());
-					rowVector.add(order.getMemberAddress());
-					rowVector.add(order.getMemberAge());
-					rowVector.add(order.getMemberMarried());
-					rowVector.add(order.getMemberRegdate());
-					tableVector.add(rowVector);
-				}
-				DefaultTableModel tableModel=new DefaultTableModel(tableVector,columVector);
-				adminMemberListTable.setModel(tableModel);
-				memberDeleteBtn.setEnabled(false);
-			}catch(Exception e1) {
-				System.out.println("회원리스트보기에러-->"+e1.getMessage());
-			}
-		}*/
+		    try {
+		        List<Order> orderList = orderservice.OrderList(loginUser.getUserId());
+
+		        // 여기서부터 orderList를 이용하여 JTable에 표시하는 로직을 추가하면 됩니다.
+		        // 예시: JTable에 orderList를 표시하는 방법
+		        Vector columnVector = new Vector();
+		        columnVector.add("주문번호");
+		        columnVector.add("주문날짜");
+		        columnVector.add("주문가격");
+
+		        Vector tableVector = new Vector();
+		        for (Order order : orderList) {
+		            Vector rowVector = new Vector();
+		            rowVector.add(order.getO_no());
+		            rowVector.add(order.getO_date());
+		            rowVector.add(order.getO_price());
+		            tableVector.add(rowVector);
+		        }
+
+		        DefaultTableModel tableModel = new DefaultTableModel(tableVector, columnVector);
+		        order_Table.setModel(tableModel);
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		        System.out.println("주문목록보기에러 --> " + ex.getMessage());
+		    }
+		}
 }
