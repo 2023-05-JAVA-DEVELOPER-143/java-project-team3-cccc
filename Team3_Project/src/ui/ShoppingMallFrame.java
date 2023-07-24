@@ -1747,7 +1747,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 		login_IdTextField = new JTextField();
 		login_IdTextField.setColumns(10);
-		login_IdTextField.setBounds(243, 218, 116, 21);
+		login_IdTextField.setBounds(235, 218, 116, 21);
 		shop_LoginPanel.add(login_IdTextField);
 		
 		login_PasswordField = new JPasswordField();
@@ -2508,7 +2508,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		order_List_Btn.setBounds(201, 261, 101, 27);
+		order_List_Btn.setBounds(120, 261, 101, 27);
 		order_ItemPanel.add(order_List_Btn);
 
 
