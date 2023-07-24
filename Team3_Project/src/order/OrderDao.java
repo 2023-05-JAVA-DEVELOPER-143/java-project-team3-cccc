@@ -23,7 +23,7 @@ public class OrderDao {
 		Connection con = null;
 		PreparedStatement pstmt1=null;
 		PreparedStatement pstmt2=null;
-		
+		int rowCount= 0;
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
@@ -31,7 +31,7 @@ public class OrderDao {
 			pstmt1.setString(1, order.getO_desc());
 			pstmt1.setInt	(2, order.getO_price());
 			pstmt1.setString(3, order.getUserId());
-			pstmt1.executeUpdate();
+			 rowCount = pstmt1.executeUpdate();
 			
 			pstmt2 = con.prepareStatement(OrderSQL.ORDERITEM_INSERT);
 			for(OrderItem orderItem:order.getOrderItemList()) {
@@ -47,7 +47,7 @@ public class OrderDao {
 		}finally {
 			if(con!=null)con.close();
 		}
-		return 0;
+		return rowCount;
 	}
 
 	// 개인주문삭제(ORDER_DELETE_BY_USERID)
