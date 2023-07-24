@@ -2489,7 +2489,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			
 		} catch(Exception e1) {			
 			// System.out.println("카트리스트보기에러-->"+e1.getMessage());
-			e1.printStackTrace();
+			//e1.printStackTrace();
 
 		}
 	}		
