@@ -2367,7 +2367,12 @@ public class ShoppingMallFrame<E> extends JFrame {
 		            Cart firstCart = cartList.get(0);
 		            Product product = firstCart.getProduct();
 		            String name = product.getP_name();
-		            String desc = name + " 외 여러가지";
+		            String desc = " ";
+		            if (cartList.size() > 1) {
+		                desc = name + " 외 여러가지";
+		            } else {
+		                desc = name;
+		            }
 
 		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null); // 되는거
 		            orderService.OrderCash(order1);//반은되고 반은 안된다
