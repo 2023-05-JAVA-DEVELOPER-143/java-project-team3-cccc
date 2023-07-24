@@ -2027,7 +2027,7 @@ public class ShoppingMallFrame extends JFrame {
 				try {
 					/****************userId로 회원의 카트목록 다 보기*****************/
 //					List<Cart> CartList= cartservice.getCartItemByUserId(loginUser.getUserId());//회원전체리스트
-					
+					OrderService orderservice = new OrderService();
 					List<Order> OrderList = orderservice.OrderList(loginUser.getUserId());
 					
 					Vector columVector=new Vector(); // 컬럼이름 추가하려고
