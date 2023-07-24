@@ -2439,7 +2439,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		order_ContentPane.add(order_ItemPanel);
 		
 		JScrollPane order_scrollPane = new JScrollPane();
-		order_scrollPane.setBounds(12, 10, 461, 241);
+		order_scrollPane.setBounds(24, 10, 461, 241);
 		order_ItemPanel.add(order_scrollPane);
 		
 		// Cart_주문목록 테이블
@@ -2742,6 +2742,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        columnVector.add("주문번호");
 		        columnVector.add("주문날짜");
 		        columnVector.add("주문가격");
+		        columnVector.add("주문내용");
 
 		        Vector tableVector = new Vector();
 		        
@@ -2750,6 +2751,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		            rowVector.add(order.getO_no());
 		            rowVector.add(order.getO_date());
 		            rowVector.add(order.getO_price());
+		            rowVector.add(order.getO_desc());
 		            tableVector.add(rowVector);
 		        }
 
