@@ -39,6 +39,7 @@ public class ProductDao {
 		return product;
 	}
 	
+	// 상품 이름으로 상품이름 검색
 	public Product SelectByname_Name(String p_name) throws Exception{
 		Product product=null;
 		Connection con=dataSource.getConnection();
@@ -52,6 +53,21 @@ public class ProductDao {
 			} 
 		return product;
 	}
+	
+	// 상품 이름으로 상품번호 검색
+	public Product SelectByname_No(String p_name) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_Name_No);
+		pstmt.setString(1, p_name);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product= new Product(
+					rs.getInt("p_no"),null,0,null,null);	
+			} 
+		return product;
+	}
+
 	
 	
 	// 상품번호로 상품이름 검색
@@ -91,6 +107,20 @@ public class ProductDao {
 		if(rs.next()) {
 			product= new Product(null,
 								rs.getString("p_desc"));	
+		} 
+		return product;
+	}
+	// 상품번호로 상품이미지 
+	public Product SelectByPK_Image(int p_no) throws Exception{
+		Product product=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.Product_SELECT_BY_NO_Image);
+		pstmt.setInt(1, p_no);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			product=new Product(
+					0,null,0,rs.getString("p_image"),null);
+	
 		} 
 		return product;
 	}

@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -50,7 +51,7 @@ import product.ProductService;
 import user.User;
 import user.UserService;
 
-public class ShoppingMallFrame extends JFrame {
+public class ShoppingMallFrame<E> extends JFrame {
 
 
 	/************ 1. 서비스 객체변수 선언 **************/
@@ -65,7 +66,7 @@ public class ShoppingMallFrame extends JFrame {
 	private Cart loginCart = null;
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField menu_SearchTextField;
 	private JTextField join_PhoneTextField;
 	private JTextField join_AddressTextField;
 	private JTextField join_NameTextFiled;
@@ -96,6 +97,18 @@ public class ShoppingMallFrame extends JFrame {
 	private JLabel fashion_ProductDescLabel;
 	private JLabel fashion_ProductNameLabel;
 	private JButton cart_DelBnt_1;
+	private JLabel fashion_ProductNameLabel2;
+	private JLabel sport_ProductNameLabel1;
+	private JLabel daily_ProductNameLabel1;
+	private JLabel daily_ProductNameLabel2;
+	private JLabel furniture_ProductNameLabel1;
+	private JLabel furniture_ProductNameLabel2;
+	private JLabel digital_ProductNameLabel;
+	private JLabel digital_ProductNameLabel2;
+	private JLabel food_ProductNameLabel;
+	private JLabel food_ProductNameLabel2;
+	private JLabel sport_ProductNameLabel2;
+	private JTabbedPane tabbedPane;
 
 
 	/**
@@ -132,10 +145,9 @@ public class ShoppingMallFrame extends JFrame {
 		JMenu mnNewMenu = new JMenu("ShoppingMall ");
 		menuBar.add(mnNewMenu);
 		
-		textField = new JTextField();
-		textField.setText("     ");
-		menuBar.add(textField);
-		textField.setColumns(10);
+		menu_SearchTextField = new JTextField();
+		menuBar.add(menu_SearchTextField);
+		menu_SearchTextField.setColumns(10);
 		
 		JSeparator separator = new JSeparator();
 		menuBar.add(separator);
@@ -171,6 +183,46 @@ public class ShoppingMallFrame extends JFrame {
 			}
 			}
 		});
+		
+		JButton btnNewButton = new JButton("검색");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String n = null;
+				int no = 0;
+				try {
+					n = productservice.productFindName(menu_SearchTextField.getText());
+					no = productservice.productFindNameNo(n);
+					// 패션
+					if (no == 4 || no == 3) {
+						tabbedPane.setSelectedIndex(1);
+					}
+					// 디지털
+					if (no == 1 || no == 2) {
+						tabbedPane.setSelectedIndex(5);
+					}
+					// 스포츠
+					if (no == 11 || no == 12) {
+						tabbedPane.setSelectedIndex(2);
+					}
+					// 생활
+					if (no == 10 || no == 9) {
+						tabbedPane.setSelectedIndex(3);
+					}
+					// 가구
+					if (no == 7 || no == 8) {
+						tabbedPane.setSelectedIndex(4);
+					}
+					// 음식
+					if (no == 6 || no == 5) {
+						tabbedPane.setSelectedIndex(6);
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
+				}
+			}
+		});
+		menuBar.add(btnNewButton);
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
@@ -235,7 +287,7 @@ public class ShoppingMallFrame extends JFrame {
 		shop_MainPanel.add(subPanel);
 		subPanel.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		subPanel.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel homePanel = new JPanel();
@@ -402,6 +454,8 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product1.setAlignmentY(1.0f);
 		fashion_Product1.setAlignmentX(1.0f);
 		fashion_ContentPanel.add(fashion_Product1);
+
+		
 		
 		JLabel fashion_IconLabel1 = new JLabel("");
 		fashion_IconLabel1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/fashion.Tshirt.png")));
@@ -468,7 +522,6 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_ProductNameLabel = new JLabel("");
 		fashion_ProductNameLabel.setBounds(60, 154, 105, 15);
 		fashion_Product1.add(fashion_ProductNameLabel);
-	
 		fashion_ProductNameLabel.setText(productName(4));
 		fashion_ProductPriceLabel.setText(productPrice(4));
 		fashion_ProductDescLabel.setText(productDesc(4));
@@ -541,7 +594,7 @@ public class ShoppingMallFrame extends JFrame {
 		fashion_Product2.add(fashion_ProductDescLabel2);
 		fashion_ProductDescLabel2.setText(productDesc(3));
 		
-		JLabel fashion_ProductNameLabel2 = new JLabel("");
+		fashion_ProductNameLabel2 = new JLabel("");
 		fashion_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		fashion_Product2.add(fashion_ProductNameLabel2);
 		fashion_ProductNameLabel2.setText(productName(3));
@@ -620,9 +673,10 @@ public class ShoppingMallFrame extends JFrame {
 		sport_ProductDescLabel1.setBounds(60, 214, 162, 15);
 		sport_Product1.add(sport_ProductDescLabel1);
 		
-		JLabel sport_ProductNameLabel1 = new JLabel((String) null);
+		sport_ProductNameLabel1 = new JLabel((String) null);
 		sport_ProductNameLabel1.setBounds(60, 154, 105, 15);
 		sport_Product1.add(sport_ProductNameLabel1);
+		
 		
 		sport_ProductNameLabel1.setText(productName(11));
 		sport_ProductPriceLabel.setText(productPrice(11));
@@ -682,9 +736,10 @@ public class ShoppingMallFrame extends JFrame {
 		sport_ProductDescLabel2.setBounds(60, 214, 162, 15);
 		sport_Product2.add(sport_ProductDescLabel2);
 		
-		JLabel sport_ProductNameLabel2 = new JLabel((String) null);
+		sport_ProductNameLabel2 = new JLabel((String) null);
 		sport_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		sport_Product2.add(sport_ProductNameLabel2);
+		
 		
 		sport_ProductNameLabel2.setText(productName(12));
 		sport_ProductPriceLabel2.setText(productPrice(12));
@@ -755,10 +810,12 @@ public class ShoppingMallFrame extends JFrame {
 		daily_ProductDescLabel1.setBounds(60, 214, 162, 15);
 		daily_Product1.add(daily_ProductDescLabel1);
 		
-		JLabel daily_ProductNameLabel1 = new JLabel((String) null);
+		daily_ProductNameLabel1 = new JLabel((String) null);
 		daily_ProductNameLabel1.setBounds(60, 154, 105, 15);
 		daily_Product1.add(daily_ProductNameLabel1);
 		
+		
+		// daily_IconLabel1.setText(productName(10));
 		daily_ProductNameLabel1.setText(productName(10));
 		daily_ProductPriceLabel.setText(productPrice(10));
 		daily_ProductDescLabel1.setText(productDesc(10));
@@ -777,11 +834,11 @@ public class ShoppingMallFrame extends JFrame {
 		daily_Product2.setAlignmentX(1.0f);
 		daily_ContentPanel.add(daily_Product2);
 		
-		JLabel daily_conLabel2 = new JLabel("");
-		daily_conLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/life.dry.png")));
-		daily_conLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		daily_conLabel2.setBounds(3, 1, 162, 116);
-		daily_Product2.add(daily_conLabel2);
+		JLabel daily_IconLabel2 = new JLabel("");
+		daily_IconLabel2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/life.dry.png")));
+		daily_IconLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+		daily_IconLabel2.setBounds(3, 1, 162, 116);
+		daily_Product2.add(daily_IconLabel2);
 		
 		JButton daily_CartAddButton2 = new JButton("");
 		daily_CartAddButton2.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
@@ -818,10 +875,11 @@ public class ShoppingMallFrame extends JFrame {
 		daily_ProductDescLabel2.setBounds(60, 214, 162, 15);
 		daily_Product2.add(daily_ProductDescLabel2);
 		
-		JLabel daily_ProductNameLabel2 = new JLabel((String) null);
+		daily_ProductNameLabel2 = new JLabel((String) null);
 		daily_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		daily_Product2.add(daily_ProductNameLabel2);
 		
+	
 		daily_ProductNameLabel2.setText(productName(9));
 		daily_ProductPriceLabel2.setText(productPrice(9));
 		daily_ProductDescLabel2.setText(productDesc(9));
@@ -852,6 +910,7 @@ public class ShoppingMallFrame extends JFrame {
 		
 		JLabel furniture_IconLabel1 = new JLabel("");
 		furniture_IconLabel1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/furniture.chair.png")));
+		//furniture_IconLabel1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/furniture.chair.png")));
 		furniture_IconLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		furniture_IconLabel1.setBounds(3, 1, 162, 116);
 		furniture_Product1.add(furniture_IconLabel1);
@@ -895,7 +954,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_ProductDescLabel1.setBounds(60, 214, 162, 15);
 		furniture_Product1.add(furniture_ProductDescLabel1);
 		
-		JLabel furniture_ProductNameLabel1 = new JLabel((String) null);
+		furniture_ProductNameLabel1 = new JLabel((String) null);
 		furniture_ProductNameLabel1.setBounds(60, 154, 105, 15);
 		furniture_Product1.add(furniture_ProductNameLabel1);
 		
@@ -961,7 +1020,7 @@ public class ShoppingMallFrame extends JFrame {
 		furniture_ProductDescLabel2.setBounds(60, 214, 162, 15);
 		furniture_Product2.add(furniture_ProductDescLabel2);
 		
-		JLabel furniture_ProductNameLabel2 = new JLabel((String) null);
+		furniture_ProductNameLabel2 = new JLabel((String) null);
 		furniture_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		furniture_Product2.add(furniture_ProductNameLabel2);
 		
@@ -1035,7 +1094,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_ProductDescLabel1.setBounds(60, 214, 162, 15);
 		digital_Product1.add(digital_ProductDescLabel1);
 		
-		JLabel digital_ProductNameLabel = new JLabel((String) null);
+		digital_ProductNameLabel = new JLabel((String) null);
 		digital_ProductNameLabel.setBounds(60, 154, 105, 15);
 		digital_Product1.add(digital_ProductNameLabel);
 		
@@ -1100,7 +1159,7 @@ public class ShoppingMallFrame extends JFrame {
 		digital_ProductDescLabel2.setBounds(60, 214, 162, 15);
 		digital_Product2.add(digital_ProductDescLabel2);
 		
-		JLabel digital_ProductNameLabel2 = new JLabel((String) null);
+		digital_ProductNameLabel2 = new JLabel((String) null);
 		digital_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		digital_Product2.add(digital_ProductNameLabel2);
 		
@@ -1155,7 +1214,7 @@ public class ShoppingMallFrame extends JFrame {
 		food_ProductDescLabel1.setBounds(60, 214, 162, 15);
 		food_Product1.add(food_ProductDescLabel1);
 		
-		JLabel food_ProductNameLabel = new JLabel((String) null);
+		food_ProductNameLabel = new JLabel((String) null);
 		food_ProductNameLabel.setBounds(60, 154, 105, 15);
 		food_Product1.add(food_ProductNameLabel);
 		
@@ -1239,10 +1298,11 @@ public class ShoppingMallFrame extends JFrame {
 		food_ProductDescLabel2.setBounds(60, 214, 162, 15);
 		food_Product2.add(food_ProductDescLabel2);
 		
-		JLabel food_ProductNameLabel2 = new JLabel((String) null);
+		food_ProductNameLabel2 = new JLabel((String) null);
 		food_ProductNameLabel2.setBounds(60, 154, 105, 15);
 		food_Product2.add(food_ProductNameLabel2);
 		
+		food_ProductNameLabel2.setText(productName(6));
 		food_ProductNameLabel2.setText(productName(6));
 		food_ProductPriceLabe2.setText(productPrice(6));
 		food_ProductDescLabel2.setText(productDesc(6));
@@ -1255,6 +1315,7 @@ public class ShoppingMallFrame extends JFrame {
 		JLabel fashion_IconLabel_1 = new JLabel("");
 		fashion_IconLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		fashion_IconLabel_1.setBounds(50, 90, 75, 81);
+			
 		foodPanel_1.add(fashion_IconLabel_1);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("패 션");
@@ -1948,16 +2009,18 @@ public class ShoppingMallFrame extends JFrame {
 		userservice = new UserService();
 
 		cartservice = new CartService();
+		productservice = new ProductService();
 
 	} // 생성자 끝
 
-	
+	// 상품이름_DB에서 가져오기
 	private String productName(int no) throws Exception {
 		ProductService productService = new ProductService(); 
 		String name = productService.productName(no);	
 		return name;	
 	}
 	
+	// 상품가격_DB에서 가져오기
 	@SuppressWarnings("unused")
 	private String productPrice(int no) throws Exception {
 		ProductService productService = new ProductService(); 
@@ -1965,11 +2028,17 @@ public class ShoppingMallFrame extends JFrame {
 		return Integer.toString(price);	
 	}
 	
-	@SuppressWarnings("unused")
+	// 상품세부정보_DB에서 가져오기
 	private String productDesc(int no) throws Exception {
 		ProductService productService = new ProductService(); 
-		String name = productService.productDesc(no);	
-		return name;	
+		String desc = productService.productDesc(no);	
+		return desc;	
+	}
+	// 상품이미지정보_DB에서 가져오기
+	private String productIcon(int no) throws Exception {
+		ProductService productService = new ProductService(); 
+		String image = productService.productImage(no);	
+		return image;	
 	}
 	
 	
@@ -2055,4 +2124,6 @@ public class ShoppingMallFrame extends JFrame {
 			List cartList = null;
 			
 		}
+		
+	
 }

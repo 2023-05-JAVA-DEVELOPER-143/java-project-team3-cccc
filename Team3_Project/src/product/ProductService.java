@@ -23,10 +23,12 @@ public class ProductService {
 	// 상품이름으로 상품이름 찾기
 	public String productFindName(String p_name) throws Exception{
 		 Product product =  productDao.SelectByname_Name(p_name);
-		 if (product.getP_name() == null) {
-			System.out.println("없는 상품");
-		}
 		 return product.getP_name();
+	}
+	// 상품이름으로 상품 번호 찾기
+	public int productFindNameNo(String p_name) throws Exception{
+		Product product =  productDao.SelectByname_No(p_name);
+		return product.getP_no();
 	}
 	
 	// 상품번호로 이름 찾기 
@@ -44,6 +46,11 @@ public class ProductService {
 	public String productDesc(int p_no) throws Exception{
 		  Product product= productDao.SelectByPK_Desc(p_no);
 		 return product.getP_desc();
+	}
+	// 상품번호로 상품이미지 찾기 
+	public String productImage(int p_no) throws Exception{
+		Product product= productDao.SelectByPK_Image(p_no);
+		return product.getP_image();
 	}
 	
 	

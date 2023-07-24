@@ -24,8 +24,10 @@ public static final String Product_SELECT_ALL ="select p_no, p_name, p_price, p_
 public static final String Product_SELECT_BY_NO_Name = "select p_name from product where p_no = ?";    
 public static final String Product_SELECT_BY_NO_Price = "select p_price from product where p_no = ?";    
 public static final String Product_SELECT_BY_NO_desc = "select p_desc from product where p_no = ?";    
+public static final String Product_SELECT_BY_NO_Image = "select p_image from product where p_no = ?";    
 
-// 상품 이름으로 이름, 가격, 세부내역 검색
-public static final String Product_SELECT_BY_Name_Name = "select p_name from product where p_name = ?";    
+// 상품 이름으로 상품이름 검색 기능
+public static final String Product_SELECT_BY_Name_Name = "select p_name from product where p_name like '%'||?||'%'";    
+public static final String Product_SELECT_BY_Name_No = "select p_no from product where p_name like '%'||?||'%'";    
 
 }
