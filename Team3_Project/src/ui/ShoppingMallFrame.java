@@ -49,6 +49,7 @@ import product.Product;
 import product.ProductService;
 import user.User;
 import user.UserService;
+import java.awt.Insets;
 
 public class ShoppingMallFrame<E> extends JFrame {
 
@@ -154,6 +155,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		setBounds(100, 100, 525, 582);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setMargin(new Insets(2, 0, 2, 0));
 		setJMenuBar(menuBar);
 		
 		JSeparator separator = new JSeparator();
