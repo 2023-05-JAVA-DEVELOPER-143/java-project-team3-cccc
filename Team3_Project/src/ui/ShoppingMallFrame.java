@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -123,6 +124,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 	private JTabbedPane tabbedPane;
 	private JButton order_List_Btn;
+	private JButton cart_CahngeBnt_1;
 
 
 
@@ -155,12 +157,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 		setBounds(100, 100, 525, 582);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setMargin(new Insets(2, 0, 2, 0));
+		menuBar.setMargin(new Insets(25, 15, 25, 0));
 		setJMenuBar(menuBar);
-		
-		JSeparator separator = new JSeparator();
-		separator.setForeground(new Color(255, 255, 255));
-		menuBar.add(separator);
 		
 		JLabel serchLabel = new JLabel("");
 		serchLabel.setToolTipText("    ");
@@ -174,6 +172,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		menuBar.add(cartLabel);
 		
 		JLabel lblNewLabel_5 = new JLabel("장바구니");
+		lblNewLabel_5.setBorder(BorderFactory.createEmptyBorder(10 , 10 , 10 , 10));
 		lblNewLabel_5.addMouseListener(new MouseAdapter() {
 			@Override
 			
@@ -197,7 +196,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 		menuBar.add(lblNewLabel_5);
 		
 		
-		loginLabel = new JLabel("  로그인");
+		loginLabel = new JLabel("로그인");
+		loginLabel.setBorder(BorderFactory.createEmptyBorder(10 , 10 , 10 , 10));
 		loginLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -228,7 +228,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 		loginLabel.setToolTipText(" ");
 		menuBar.add(loginLabel);
 		
-		JLabel joinLabel = new JLabel("  회원가입");
+		JLabel joinLabel = new JLabel("회원가입");
+		joinLabel.setBorder(BorderFactory.createEmptyBorder(10 , 10, 10 , 10));
 		joinLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1635,20 +1636,20 @@ public class ShoppingMallFrame<E> extends JFrame {
 		shop_LoginPanel.setLayout(null);
 		
 		JLabel login_IdLabel = new JLabel("아이디");
-		login_IdLabel.setBounds(143, 221, 57, 15);
+		login_IdLabel.setBounds(135, 221, 57, 15);
 		shop_LoginPanel.add(login_IdLabel);
 		
 		JLabel lgoin_PasswordLabel = new JLabel("패쓰워드");
-		lgoin_PasswordLabel.setBounds(143, 283, 57, 15);
+		lgoin_PasswordLabel.setBounds(135, 283, 57, 15);
 		shop_LoginPanel.add(lgoin_PasswordLabel);
 		
 		login_IdTextField = new JTextField();
 		login_IdTextField.setColumns(10);
-		login_IdTextField.setBounds(243, 218, 116, 21);
+		login_IdTextField.setBounds(235, 218, 116, 21);
 		shop_LoginPanel.add(login_IdTextField);
 		
 		login_PasswordField = new JPasswordField();
-		login_PasswordField.setBounds(243, 280, 116, 21);
+		login_PasswordField.setBounds(235, 280, 116, 21);
 		shop_LoginPanel.add(login_PasswordField);
 		
 		JButton login_Btn = new JButton("로그인");
@@ -1676,7 +1677,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 			}
 		});
-		login_Btn.setBounds(143, 342, 97, 23);
+		login_Btn.setBounds(135, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		
 		JButton login_joinBtn = new JButton("회원가입");
@@ -1686,20 +1687,20 @@ public class ShoppingMallFrame<E> extends JFrame {
 				shopTabbedPane.setSelectedIndex(2);
 			}
 		});
-		login_joinBtn.setBounds(262, 342, 97, 23);
+		login_joinBtn.setBounds(254, 342, 97, 23);
 		shop_LoginPanel.add(login_joinBtn);
 		
 		JLabel login_Label = new JLabel("L O G I N");
 		login_Label.setFont(new Font("굴림", Font.BOLD, 30));
 		login_Label.setHorizontalAlignment(SwingConstants.CENTER);
-		login_Label.setBounds(224, 102, 155, 44);
+		login_Label.setBounds(216, 102, 155, 44);
 		shop_LoginPanel.add(login_Label);
 		
 		JLabel login_Icon = new JLabel("");
 		login_Icon.setHorizontalAlignment(SwingConstants.CENTER);
 		login_Icon.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/로그인.png")));
 		
-				login_Icon.setBounds(115, 74, 111, 100);
+				login_Icon.setBounds(107, 74, 111, 100);
 				shop_LoginPanel.add(login_Icon);
 		
 		JPanel shop_JoinPanel = new JPanel();
@@ -2050,20 +2051,21 @@ public class ShoppingMallFrame<E> extends JFrame {
 		cart_ContentPanel.add(cart_ItemPanel);
 		
 		Panel cart_ListSumPanel = new Panel();
-		cart_ListSumPanel.setLayout(null);
-		cart_ListSumPanel.setBounds(0, 358, 485, 45);
+		cart_ListSumPanel.setBounds(0, 358, 492, 45);
 		cart_ItemPanel.add(cart_ListSumPanel);
+		cart_ListSumPanel.setLayout(null);
 		
 		JButton cart_itemPrice_4_2_1 = new JButton("합 계");
-		cart_itemPrice_4_2_1.setForeground(Color.GREEN);
+		cart_itemPrice_4_2_1.setBackground(new Color(255, 255, 255));
+		cart_itemPrice_4_2_1.setBounds(371, 11, 97, 24);
+		cart_itemPrice_4_2_1.setForeground(new Color(0, 0, 128));
 		cart_itemPrice_4_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_itemPrice_4_2_1.setBounds(309, 8, 73, 20);
 		cart_ListSumPanel.add(cart_itemPrice_4_2_1);
 		
 		JLabel cart_ItemTotPrice_4_2_1 = new JLabel("");
+		cart_ItemTotPrice_4_2_1.setBounds(394, 12, 91, 16);
 		cart_ItemTotPrice_4_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		cart_ItemTotPrice_4_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ItemTotPrice_4_2_1.setBounds(394, 12, 91, 16);
 		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
 		
 		cart_itemPrice_4_2_1.addActionListener(new ActionListener() {
@@ -2093,6 +2095,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 
 		JButton btnNewButton_2 = new JButton("삭  제");
+		btnNewButton_2.setBounds(254, 10, 97, 25);
 		btnNewButton_2.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        try {
@@ -2118,7 +2121,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 
 		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		btnNewButton_2.setBounds(210, 7, 97, 23);
 		cart_ListSumPanel.add(btnNewButton_2);
 
 
@@ -2138,13 +2140,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 
 		cart_DelBnt_1 = new JButton("구  매");
+		cart_DelBnt_1.setBounds(20, 10, 97, 25);
 		cart_DelBnt_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 
 		});
-		cart_DelBnt_1.setBounds(5, 7, 97, 23);
 		cart_ListSumPanel.add(cart_DelBnt_1);
 		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
@@ -2181,14 +2183,14 @@ public class ShoppingMallFrame<E> extends JFrame {
 		    }
 
 		});
-		cart_DelBnt_1.setBounds(5, 7, 97, 23);
 		cart_ListSumPanel.add(cart_DelBnt_1);
 		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 
 		
-		cart_CahngeBnt = new JButton("수  정");
-		cart_CahngeBnt.addActionListener(new ActionListener() {
+		cart_CahngeBnt_1 = new JButton("수  정");
+		cart_CahngeBnt_1.setBounds(137, 10, 97, 25);
+		cart_CahngeBnt_1.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        // cartTable에서 선택된 행의 인덱스를 가져옵니다.
 		        int selectedRow = cartTable.getSelectedRow();
@@ -2253,15 +2255,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        }
 		    }
 		});
-		cart_DelBnt_1.setBounds(5, 7, 97, 23);
 		cart_ListSumPanel.add(cart_DelBnt_1);
 		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		
-
-		
-		cart_CahngeBnt.setBounds(105, 7, 97, 23);
-		cart_ListSumPanel.add(cart_CahngeBnt);
-		cart_CahngeBnt.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_CahngeBnt_1);
+		cart_CahngeBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(36, 23, 428, 161);
@@ -2377,7 +2374,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		order_List_Btn.setBounds(201, 261, 101, 27);
+		order_List_Btn.setBounds(192, 261, 108, 27);
 		order_ItemPanel.add(order_List_Btn);
 
 		
