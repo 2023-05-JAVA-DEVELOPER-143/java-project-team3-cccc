@@ -2478,7 +2478,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 			  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
 			
 		} catch(Exception e1) {
-			System.out.println("카트리스트보기에러-->"+e1.getMessage());
+			
+			// System.out.println("카트리스트보기에러-->"+e1.getMessage());
 		}
 	}		
 			
@@ -2540,7 +2541,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        order_Table.setModel(tableModel);
 		        order_List_Btn.setEnabled(false);
 		    } catch (Exception e1) {
-		        System.out.println("주문목록보기에러 --> " + e1.getMessage());
+		       // System.out.println("주문목록보기에러 --> " + e1.getMessage());
 		    }
 		}
 
