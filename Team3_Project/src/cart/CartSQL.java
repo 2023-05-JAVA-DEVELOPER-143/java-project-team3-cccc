@@ -38,4 +38,5 @@ public class CartSQL {
 //delete from cart where userId='guard1';
 	public static final String CART_DELETE_BY_USERID 
 		= "delete from cart where userId=?";
+
 }

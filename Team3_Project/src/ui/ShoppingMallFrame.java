@@ -111,7 +111,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 	private JLabel fashion_ProductPriceLabel;
 	private JLabel fashion_ProductDescLabel;
 	private JLabel fashion_ProductNameLabel;
-	private JButton cart_DelBnt_1;
+	private JButton cart_BuyBnt_1;
 	private JLabel fashion_ProductNameLabel2;
 	private JLabel sport_ProductNameLabel1;
 	private JLabel daily_ProductNameLabel1;
@@ -126,8 +126,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 	private JTabbedPane tabbedPane;
 	private JButton order_List_Btn;
+
 	private JButton cart_CahngeBnt_1;
 	private JTable orderDetailTable;
+
+	private JButton cart_ChangeBnt_1;
+	private JLabel cart_ItemTotPrice;
+
 
 
 
@@ -2142,20 +2147,15 @@ public class ShoppingMallFrame<E> extends JFrame {
 		cart_ItemPanel.add(cart_ListSumPanel);
 		cart_ListSumPanel.setLayout(null);
 		
-		JButton cart_itemPrice_4_2_1 = new JButton("합 계");
-		cart_itemPrice_4_2_1.setBackground(new Color(255, 255, 255));
-		cart_itemPrice_4_2_1.setBounds(287, 11, 97, 24);
-		cart_itemPrice_4_2_1.setForeground(new Color(0, 0, 128));
-		cart_itemPrice_4_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListSumPanel.add(cart_itemPrice_4_2_1);
+
+		JButton cart_TotPrice = new JButton("합 계");
+		cart_TotPrice.setBackground(new Color(255, 255, 255));
+		cart_TotPrice.setBounds(272, 10, 69, 24);
+		cart_TotPrice.setForeground(new Color(0, 0, 128));
+		cart_TotPrice.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_TotPrice);
 		
-		JLabel cart_ItemTotPrice_4_2_1 = new JLabel("");
-		cart_ItemTotPrice_4_2_1.setBounds(389, 11, 91, 16);
-		cart_ItemTotPrice_4_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		cart_ItemTotPrice_4_2_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListSumPanel.add(cart_ItemTotPrice_4_2_1);
-		
-		cart_itemPrice_4_2_1.addActionListener(new ActionListener() {
+		cart_TotPrice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 					try {
 						/****************userId로 회원의 카트목록 다 보기*****************/
@@ -2171,7 +2171,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			  
 						}
 						//이제 JLabel에 totalPrice변수를 넣으면 된다.
-						cart_ItemTotPrice_4_2_1.setText(String.valueOf(totalPrice));
+						cart_ItemTotPrice.setText(String.valueOf(totalPrice));
 						
 					} catch(Exception e1) {
 						System.out.println("카트 상품 총합 보기에러-->"+e1.getMessage());
@@ -2181,9 +2181,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 		});
 
 
-		JButton btnNewButton_2 = new JButton("삭  제");
-		btnNewButton_2.setBounds(200, 11, 75, 25);
-		btnNewButton_2.addActionListener(new ActionListener() {
+
+		JButton cart_DelBtn = new JButton("삭  제");
+		cart_DelBtn.setBounds(191, 10, 69, 25);
+		cart_DelBtn.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        try {
 		            // 테이블에서 선택된 행의 인덱스 가져오기
@@ -2207,8 +2208,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 
 
-		btnNewButton_2.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListSumPanel.add(btnNewButton_2);
+		cart_DelBtn.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_DelBtn);
 
 
 		JButton cart_DelBnt = new JButton("구매");
@@ -2226,20 +2227,22 @@ public class ShoppingMallFrame<E> extends JFrame {
 		cart_DelBnt.setBounds(0, 7, 97, 23);
 
 
-		cart_DelBnt_1 = new JButton("구  매");
-		cart_DelBnt_1.setBounds(20, 10, 75, 25);
-		cart_DelBnt_1.addActionListener(new ActionListener() {
+
+		cart_BuyBnt_1 = new JButton("구  매");
+		cart_BuyBnt_1.setBounds(20, 10, 69, 25);
+		cart_BuyBnt_1.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 
 		});
-		cart_ListSumPanel.add(cart_DelBnt_1);
-		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_BuyBnt_1);
+		cart_BuyBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 
 		JButton cart_CahngeBnt = new JButton("수  정");
-		cart_DelBnt_1.addActionListener(new ActionListener() {
+		cart_BuyBnt_1.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        try {
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
@@ -2270,14 +2273,16 @@ public class ShoppingMallFrame<E> extends JFrame {
 		    }
 
 		});
-		cart_ListSumPanel.add(cart_DelBnt_1);
-		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_BuyBnt_1);
+		cart_BuyBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 
 		
-		cart_CahngeBnt_1 = new JButton("수  정");
-		cart_CahngeBnt_1.setBounds(107, 11, 81, 25);
-		cart_CahngeBnt_1.addActionListener(new ActionListener() {
+
+		cart_ChangeBnt_1 = new JButton("수  정");
+		cart_ChangeBnt_1.setBounds(107, 10, 69, 25);
+		cart_ChangeBnt_1.addActionListener(new ActionListener() {
+
 		    public void actionPerformed(ActionEvent e) {
 		        // cartTable에서 선택된 행의 인덱스를 가져옵니다.
 		        int selectedRow = cartTable.getSelectedRow();
@@ -2312,7 +2317,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 
 		
-		cart_DelBnt_1.addActionListener(new ActionListener() {
+		cart_BuyBnt_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 		        try {
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
@@ -2344,10 +2349,16 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        }
 		    }
 		});
-		cart_ListSumPanel.add(cart_DelBnt_1);
-		cart_DelBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
-		cart_ListSumPanel.add(cart_CahngeBnt_1);
-		cart_CahngeBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_BuyBnt_1);
+		cart_BuyBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		cart_ListSumPanel.add(cart_ChangeBnt_1);
+		cart_ChangeBnt_1.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
+		
+		cart_ItemTotPrice = new JLabel("");
+		cart_ItemTotPrice.setBounds(353, 10, 127, 24);
+		cart_ListSumPanel.add(cart_ItemTotPrice);
+		cart_ItemTotPrice.setHorizontalAlignment(SwingConstants.CENTER);
+		cart_ItemTotPrice.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 15));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(36, 23, 428, 161);
