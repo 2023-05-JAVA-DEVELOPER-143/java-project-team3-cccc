@@ -26,6 +26,11 @@ public class CartService {
 		return rowCount;
 	}
 	
+	public Cart countCartByProductNo(String userid, int p_no) throws Exception{
+		Cart cart = cartDao.findByUserIdPNo(userid, p_no);
+		return cart;
+	}
+	
 	/*
 	 * 카트수량변경수정
 	 */
