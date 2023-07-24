@@ -208,7 +208,7 @@ public class ShoppingMallFrame extends JFrame {
 					shopTabbedPane.setEnabledAt(1, true);
 					shopTabbedPane.setEnabledAt(2, true);
 					shopTabbedPane.setEnabledAt(3, false);
-
+					shopTabbedPane.setSelectedIndex(1);	
 					setTitle("TEAM_SAMJO");
 					}
 			}
@@ -1980,6 +1980,16 @@ public class ShoppingMallFrame extends JFrame {
 		JPanel shop_OrderListPanel = new JPanel();
 		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
+		if (loginUser== null) {
+			shopTabbedPane.setEnabledAt(6, false);
+		}
+		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
+		
+		shopTabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				displayOrderItemList();
+			}
+		});
 		
 		JScrollPane order_ScrollPane = new JScrollPane();
 		order_ScrollPane.setPreferredSize(new Dimension(390, 780));
@@ -2140,6 +2150,7 @@ public class ShoppingMallFrame extends JFrame {
 		if (loginUser != null) {
 			shopTabbedPane.setSelectedIndex(0);
 			shopTabbedPane.setEnabledAt(5, true);
+			shopTabbedPane.setEnabledAt(6, true);
 			loginLabel.setText("  로그아웃");
 		}	
 	}
@@ -2208,7 +2219,7 @@ public class ShoppingMallFrame extends JFrame {
 			
 		}
 		
-		//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 		
 		private void displayOrderItemList() {
 		    try {
