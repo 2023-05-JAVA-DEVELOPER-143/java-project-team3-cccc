@@ -2417,10 +2417,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 		order_Table = new JTable();
 		order_Table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
+				{null, null, null, null},
 			},
 			new String[] {
-				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uAC00\uACA9"
+				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uAC00\uACA9", "\uC8FC\uBB38\uB0B4\uC6A9"
 			}
 		));
 	
