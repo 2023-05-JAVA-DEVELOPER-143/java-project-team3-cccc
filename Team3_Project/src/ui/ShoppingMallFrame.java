@@ -206,8 +206,11 @@ public class ShoppingMallFrame extends JFrame {
 					loginUser = null;
 					loginLabel.setText("  로그인");
 					shopTabbedPane.setEnabledAt(1, true);
+					
 					shopTabbedPane.setEnabledAt(2, true);
 					shopTabbedPane.setEnabledAt(3, false);
+					shopTabbedPane.setEnabledAt(5, false);
+					shopTabbedPane.setEnabledAt(6, false);
 					shopTabbedPane.setSelectedIndex(1);	
 					setTitle("TEAM_SAMJO");
 					}
