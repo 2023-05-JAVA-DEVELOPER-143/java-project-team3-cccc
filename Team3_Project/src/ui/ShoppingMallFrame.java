@@ -2537,7 +2537,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        order_Table.setModel(tableModel);
 		        order_List_Btn.setEnabled(false);
 		    } catch (Exception e1) {
-		        System.out.println(""); 
+		        System.out.println("");
 		    }
 		}
 
