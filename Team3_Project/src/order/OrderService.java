@@ -12,7 +12,9 @@ public class OrderService {
 	
 	public OrderService() throws Exception{
 		orderDao = new OrderDao();
+		cartDao=new CartDao();
 	}
+	
 	
 	/*
 	 * 주문1개삭제
