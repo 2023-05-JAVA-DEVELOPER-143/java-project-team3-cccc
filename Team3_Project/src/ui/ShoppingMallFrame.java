@@ -156,9 +156,6 @@ public class ShoppingMallFrame<E> extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JSeparator separator = new JSeparator();
-		menuBar.add(separator);
-		
 		JLabel serchLabel = new JLabel("");
 		serchLabel.setToolTipText("    ");
 	
@@ -190,6 +187,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 			}
 		});
+		
+		JSeparator separator = new JSeparator();
+		menuBar.add(separator);
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
