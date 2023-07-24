@@ -38,10 +38,10 @@ public class UserService {
 	
 	//회원 중복체크
 	   public boolean duplicatecheck (String userId)throws Exception{
-		  boolean check =false;
+		  boolean check =true;
 		  int loginuser= userDao.countByUserId(userId);
 		  if(loginuser<1) {
-			  check = true;
+			  check = false;
 		  }
 		   return check;
 	   }
