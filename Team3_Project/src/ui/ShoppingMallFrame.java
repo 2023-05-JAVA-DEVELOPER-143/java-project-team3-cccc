@@ -119,8 +119,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 	private JLabel food_ProductNameLabel;
 	private JLabel food_ProductNameLabel2;
 	private JLabel sport_ProductNameLabel2;
-	private JTabbedPane tabbedPane;
 
+	private JTabbedPane tabbedPane;
 	private JButton order_List_Btn;
 
 
@@ -405,24 +405,29 @@ public class ShoppingMallFrame<E> extends JFrame {
 		homePanel.add(foodImage);
 		
 		menu_SearchTextField = new JTextField();
-		menu_SearchTextField.setBounds(138, 25, 192, 23);
+		menu_SearchTextField.setBounds(117, 33, 225, 31);
 		homePanel.add(menu_SearchTextField);
 		menu_SearchTextField.setColumns(10);
 		
-		JMenu mnNewMenu = new JMenu("ShoppingMall ");
-		mnNewMenu.setBounds(35, 25, 91, 23);
-		homePanel.add(mnNewMenu);
-		
 		JButton btnNewButton = new JButton("검색");
-		btnNewButton.setBounds(348, 25, 67, 23);
+		btnNewButton.setBackground(new Color(250, 250, 210));
+		btnNewButton.setBounds(348, 33, 67, 31);
 		homePanel.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/miniLogo.png")));
+		lblNewLabel_1.setBounds(80, 30, 38, 36);
+		homePanel.add(lblNewLabel_1);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String n = null;
 				int no = 0;
 				try {
 					n = productservice.productFindName(menu_SearchTextField.getText());
+					System.out.println(n);
 					no = productservice.productFindNameNo(n);
+
 					// 패션
 					if (no == 4 || no == 3) {
 						tabbedPane.setSelectedIndex(1);
@@ -447,8 +452,9 @@ public class ShoppingMallFrame<E> extends JFrame {
 					if (no == 6 || no == 5) {
 						tabbedPane.setSelectedIndex(6);
 					}
+
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					//e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, "해당상품이 없습니다.");
 				}
 			}
@@ -495,7 +501,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 									new Product(4, "티셔츠",500000 , "ui/image/fashion_Tshirt.png", "티셔츠다"), addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
-						e1.printStackTrace();
+						//e1.printStackTrace();
 					}
 				}else {
 					//로그인이 필요합니다 팝업
@@ -579,7 +585,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 								new Product(3, "바지", 60000, "", "여름용 시원한 바지"), addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e2) {
-						e2.printStackTrace();
+						//e2.printStackTrace();
 					}
 					
 				}else {
@@ -671,7 +677,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 									new Product(11, "농구공",500000 , "ui/image/sports_basketball.png", "NBA농구공"), addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
-						e1.printStackTrace();
+						//e1.printStackTrace();
 					}
 				}else {
 					//로그인이 필요합니다 팝업
@@ -757,7 +763,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 									new Product(12, "케틀벨",15000 , "ui/image/sports_kettler.png", "근손실방지케틀러"), addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
-						e1.printStackTrace();
+						//e1.printStackTrace();
 					}
 				}else {
 					//로그인이 필요합니다 팝업
@@ -850,7 +856,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 									new Product(10, "휴지",8000 , "ui/image/life_tissue.png", "고상한 휴지"), addCart_Qty));
 						JOptionPane.showMessageDialog(null, "상품이 추가되었습니다.");
 					} catch (Exception e1) {
-						e1.printStackTrace();
+						//e1.printStackTrace();
 					}
 				}else {
 					//로그인이 필요합니다 팝업
@@ -1451,6 +1457,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 		food_CartQtyComboBox1.setBounds(99, 119, 33, 23);
 		food_Product1.add(food_CartQtyComboBox1);
 		
+		JLabel food_ProductTitleLabe2_1 = new JLabel("<html>\r\n\t상품: <br>\r\n\t<br>\r\n \t가격: <br>\r\n\t<br>\r\n\t설명: <br>\r\n</html>");
+		food_ProductTitleLabe2_1.setVerticalAlignment(SwingConstants.TOP);
+		food_ProductTitleLabe2_1.setHorizontalTextPosition(SwingConstants.CENTER);
+		food_ProductTitleLabe2_1.setHorizontalAlignment(SwingConstants.LEFT);
+		food_ProductTitleLabe2_1.setBounds(12, 154, 33, 84);
+		food_Product1.add(food_ProductTitleLabe2_1);
+		
 		JPanel food_Product2 = new JPanel();
 		food_Product2.setLayout(null);
 		food_Product2.setSize(new Dimension(120, 120));
@@ -1638,7 +1651,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			try {
 				String id = login_IdTextField.getText();
 				String password = new String(login_PasswordField.getText());
-					User userloginUser = userservice.login(id, password);
+				User userloginUser = userservice.login(id, password);
 					if(userloginUser!=null) {
 						loginProcess(userloginUser);	
 						
@@ -2474,8 +2487,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 			/*memberDeleteBtn: 회원을 삭제하는 버튼으로, 
 			  여기서는 setEnabled(false)로 설정되어 있으므로 초기에는 사용 불가능한 상태입니다.*/
 			
-		} catch(Exception e1) {
-			System.out.println("");
+		} catch(Exception e1) {			
+			// System.out.println("카트리스트보기에러-->"+e1.getMessage());
+			e1.printStackTrace();
+
 		}
 	}		
 			
@@ -2536,9 +2551,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 		        DefaultTableModel tableModel = new DefaultTableModel(tableVector, columnVector);
 		        order_Table.setModel(tableModel);
 		        order_List_Btn.setEnabled(false);
+
 		    } catch (Exception e1) {
 		        System.out.println("");
 		    }
-		}
 
+		}
 }
