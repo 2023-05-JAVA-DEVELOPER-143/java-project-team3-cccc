@@ -27,6 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -202,19 +203,16 @@ public class ShoppingMallFrame<E> extends JFrame {
 			
 				if (loginUser == null) {
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}else {			
 			try {
-				shopTabbedPane.setSelectedIndex(5);
+				getShopTabbedPane().setSelectedIndex(5);
 			} catch (Exception e2) {
 				
 			}
 			}
 			}
 		});
-		
-		JSeparator separator = new JSeparator();
-		menuBar.add(separator);
 		lblNewLabel_5.setIcon(new ImageIcon(ShoppingMallFrame.class.getResource("/ui/image/카트.png")));
 		menuBar.add(lblNewLabel_5);
 		
@@ -228,20 +226,31 @@ public class ShoppingMallFrame<E> extends JFrame {
 					// 로그인 확인 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
 
-					shopTabbedPane.setSelectedIndex(1);				
+					getShopTabbedPane().setSelectedIndex(1);				
 
 				}else {		
 					// 로그아웃 확인 팝업
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.");
 					loginUser = null;
 					loginLabel.setText("  로그인");
-					shopTabbedPane.setEnabledAt(1, true);
-					shopTabbedPane.setEnabledAt(2, true);
-					shopTabbedPane.setEnabledAt(3, false);
-					shopTabbedPane.setEnabledAt(4, false);
-					shopTabbedPane.setEnabledAt(5, false);
-					shopTabbedPane.setSelectedIndex(1);	
-
+					getShopTabbedPane().setEnabledAt(1, true);
+					getShopTabbedPane().setEnabledAt(2, true);
+					getShopTabbedPane().setEnabledAt(3, false);
+					getShopTabbedPane().setEnabledAt(4, false);
+					getShopTabbedPane().setEnabledAt(5, false);
+					getShopTabbedPane().setSelectedIndex(1);	
+					
+					login_PasswordField.addKeyListener(new KeyAdapter() {
+						@Override
+						public void keyPressed(KeyEvent e) {
+									  int key = e.getKeyCode();	  
+									  if (key ==e.VK_ENTER) {
+										 login_Btn.doClick();;
+										}
+								}
+							
+					});
+					
 					setTitle("TEAM_SAMJO");
 					}
 			}
@@ -255,7 +264,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(loginUser==null) {
-					shopTabbedPane.setSelectedIndex(2);
+					getShopTabbedPane().setSelectedIndex(2);
 				}else {
 					joinLabel.setEnabled(rootPaneCheckingEnabled);
 				}
@@ -268,13 +277,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		shopTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		shopTabbedPane.setBounds(0, 0, 509, 517);
-		contentPane.add(shopTabbedPane);
+		setShopTabbedPane(new JTabbedPane(JTabbedPane.TOP));
+		getShopTabbedPane().setBounds(0, 0, 509, 517);
+		contentPane.add(getShopTabbedPane());
 		
 		JPanel shop_MainPanel = new JPanel();
 		shop_MainPanel.setToolTipText("");
-		shopTabbedPane.addTab(" 상 품 ", null, shop_MainPanel, null);
+		getShopTabbedPane().addTab(" 상 품 ", null, shop_MainPanel, null);
 		shop_MainPanel.setLayout(null);
 		
 		subPanel = new JPanel();
@@ -550,7 +559,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 				
 			}
@@ -642,7 +651,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -740,7 +749,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -833,7 +842,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -933,7 +942,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1029,7 +1038,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1134,7 +1143,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1229,7 +1238,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1331,7 +1340,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1426,7 +1435,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1549,7 +1558,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1621,7 +1630,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 				}else {
 					//로그인이 필요합니다 팝업
 					JOptionPane.showMessageDialog(null, "로그인이 필요합니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				}
 			}
 		});
@@ -1746,7 +1755,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 		
 		JPanel shop_LoginPanel = new JPanel();
-		shopTabbedPane.addTab("로그인", null, shop_LoginPanel, null);
+		getShopTabbedPane().addTab("로그인", null, shop_LoginPanel, null);
 		shop_LoginPanel.setLayout(null);
 		
 		JLabel login_IdLabel = new JLabel("아이디");
@@ -1771,7 +1780,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 		shop_LoginPanel.add(login_PasswordField);
 		
-		// 엔터 시 로그인
+		// login_PasswordField에서 엔터 시 로그인
 		login_Btn = new JButton("로그인");
 		login_Btn.setBounds(135, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
@@ -1812,8 +1821,10 @@ public class ShoppingMallFrame<E> extends JFrame {
 
 			}
 		});
-
+		
+			
 		login_Btn.setBounds(143, 342, 97, 23);
+		
 		shop_LoginPanel.add(login_Btn);
 
 		
@@ -1821,7 +1832,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		login_joinBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				shopTabbedPane.setSelectedIndex(2);
+				getShopTabbedPane().setSelectedIndex(2);
 			}
 		});
 		login_joinBtn.setBounds(262, 342, 97, 23);
@@ -1839,9 +1850,29 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 				login_Icon.setBounds(115, 74, 111, 100);
 				shop_LoginPanel.add(login_Icon);
+				
+				JButton btnNewButton = new JButton("아이디 비밀번호 찾기");
+				btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							
+							JDialog find_IdPassword_Dialog = new Find_IdPassword_Dialog();
+							find_IdPassword_Dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+							find_IdPassword_Dialog.setVisible(true); 
+							//find_IdPassword_Dialog.setShopMainFrame(ShoppingMallFrame.this);
+						} catch (Exception e1) {
+							
+							e1.printStackTrace();
+						}
+						
+					}
+				});
+				
+				btnNewButton.setBounds(143, 375, 215, 23);
+				shop_LoginPanel.add(btnNewButton);
 		
 		JPanel shop_JoinPanel = new JPanel();
-		shopTabbedPane.addTab("회원가입", null, shop_JoinPanel, null);
+		getShopTabbedPane().addTab("회원가입", null, shop_JoinPanel, null);
 		shop_JoinPanel.setLayout(null);
 		
 		JLabel join_IdLabel = new JLabel("아이디");
@@ -1917,7 +1948,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 					}
 					userservice.create(new User(id, password, name, address, phone, gender));
 					JOptionPane.showMessageDialog(null, "회원가입이 되었습니다.");
-					shopTabbedPane.setSelectedIndex(1);
+					getShopTabbedPane().setSelectedIndex(1);
 				} catch (Exception e2) {
 					
 				}
@@ -1972,8 +2003,8 @@ public class ShoppingMallFrame<E> extends JFrame {
 		shop_JoinPanel.add(join_Label);
 		
 		JPanel shop_InfoPanel = new JPanel();
-		shopTabbedPane.addTab("내정보", null, shop_InfoPanel, null);
-		shopTabbedPane.setEnabledAt(3, false);
+		getShopTabbedPane().addTab("내정보", null, shop_InfoPanel, null);
+		getShopTabbedPane().setEnabledAt(3, false);
 		shop_InfoPanel.setLayout(null);
 	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 		JLabel info_IdLabel = new JLabel("아이디");
@@ -2121,14 +2152,14 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 
 		JPanel shop_CartPanel = new JPanel();
-		shopTabbedPane.addTab("장바구니", null, shop_CartPanel, null);
+		getShopTabbedPane().addTab("장바구니", null, shop_CartPanel, null);
 		if (loginUser== null) {
-			shopTabbedPane.setEnabledAt(4, false);
+			getShopTabbedPane().setEnabledAt(4, false);
 			
 		}
 		shop_CartPanel.setLayout(new BorderLayout(0, 0));
 		
-		shopTabbedPane.addChangeListener(new ChangeListener() {
+		getShopTabbedPane().addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				displayCartListUserId();
 			}
@@ -2422,14 +2453,14 @@ public class ShoppingMallFrame<E> extends JFrame {
 		scrollPane.setViewportView(cartTable);
 		
 		JPanel shop_OrderListPanel = new JPanel();
-		shopTabbedPane.addTab("주문목록", null, shop_OrderListPanel, null);
+		getShopTabbedPane().addTab("주문목록", null, shop_OrderListPanel, null);
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
 		if (loginUser== null) {
-			shopTabbedPane.setEnabledAt(5, false);
+			getShopTabbedPane().setEnabledAt(5, false);
 		}
 		shop_OrderListPanel.setLayout(new BorderLayout(0, 0));
 		
-		shopTabbedPane.addChangeListener(new ChangeListener() {
+		getShopTabbedPane().addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				displayOrderItemList();
 			}
@@ -2631,19 +2662,20 @@ public class ShoppingMallFrame<E> extends JFrame {
 	private void loginProcess(User loginUser) throws Exception {
 		this.loginUser = loginUser;
 		setTitle(loginUser.getName() + "님 로그인");
-		shopTabbedPane.setEnabledAt(1, false);
-		shopTabbedPane.setEnabledAt(2, false);
+		getShopTabbedPane().setEnabledAt(1, false);
+		getShopTabbedPane().setEnabledAt(2, false);
 
-		shopTabbedPane.setEnabledAt(3, true);
-		shopTabbedPane.setSelectedIndex(0);
+		getShopTabbedPane().setEnabledAt(3, true);
+		getShopTabbedPane().setSelectedIndex(0);
 
-		shopTabbedPane.setSelectedIndex(0);
+		getShopTabbedPane().setSelectedIndex(0);
 		if (loginUser != null) {
-			shopTabbedPane.setSelectedIndex(0);
-			shopTabbedPane.setEnabledAt(4, true);
-			shopTabbedPane.setEnabledAt(5, true);
+			getShopTabbedPane().setSelectedIndex(0);
+			getShopTabbedPane().setEnabledAt(4, true);
+			getShopTabbedPane().setEnabledAt(5, true);
 			loginLabel.setText("  로그아웃");
 			login_PasswordField.requestFocus();
+			login_PasswordField.requestFocusInWindow();
 			login_PasswordField.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyPressed(KeyEvent e) {
@@ -2652,7 +2684,17 @@ public class ShoppingMallFrame<E> extends JFrame {
 						login_Btn.doClick();;
 					}
 				}
-				
+					
+			});
+			login_Btn.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+							  int key = e.getKeyCode();	  
+							  if (key ==e.VK_ENTER) {
+								 login_Btn.doClick();;
+								}
+						}
+					
 			});
 		}	
 	}
@@ -2792,5 +2834,13 @@ public class ShoppingMallFrame<E> extends JFrame {
 		    }
 		
 
+		}
+
+		public JTabbedPane getShopTabbedPane() {
+			return shopTabbedPane;
+		}
+
+		public void setShopTabbedPane(JTabbedPane shopTabbedPane) {
+			this.shopTabbedPane = shopTabbedPane;
 		}
 }

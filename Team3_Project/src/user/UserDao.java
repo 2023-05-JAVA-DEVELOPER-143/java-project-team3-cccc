@@ -104,5 +104,53 @@ public class UserDao {
 		return userCount;
 	}
 	
+	//아이디 찾기
+		public User findUserId(String name, String phone) throws Exception {
+			Connection con=dataSource.getConnection();
+			PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_FIND_BY_ID);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			ResultSet rs=pstmt.executeQuery();
+			User user = null;
+			while(rs.next()) {
+				String userid = rs.getString("userid");
+				String password = rs.getString("password");
+				String name1 = rs.getString("name");
+				String address = rs.getString("address");
+				String phone2 = rs.getString("phone");
+				String gender = rs.getString("gender");
+				return user = new User(userid, password, name1, address, phone2, gender);
+			}
+			pstmt.close();
+			dataSource.close(con);
+			return user;
+		}
+		
+		//아이디 찾기
+				public User findUserPassword(String userid, String name, String phone) throws Exception {
+					Connection con=dataSource.getConnection();
+					PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_FIND_BY_ID);
+					pstmt.setString(1, userid);
+					pstmt.setString(2, name);
+					pstmt.setString(3, phone);
+					ResultSet rs=pstmt.executeQuery();
+					User user = null;
+					while(rs.next()) {
+						String userid1 = rs.getString("userid");
+						String password = rs.getString("password");
+						String name1 = rs.getString("name");
+						String address = rs.getString("address");
+						String phone2 = rs.getString("phone");
+						String gender = rs.getString("gender");
+						return user = new User(userid, password, name1, address, phone2, gender);
+					}
+					pstmt.close();
+					dataSource.close(con);
+					return user;
+				}
+		
+
+		
+	
 	
 }

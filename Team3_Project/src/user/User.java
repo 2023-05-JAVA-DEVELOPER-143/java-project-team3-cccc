@@ -22,6 +22,11 @@ public class User {
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
+	public User(String name, String phone) {
+		this.name = name;
+		this.phone = phone;
+	}
+		
 
 	public User(String userId, String password, String name, String address, String phone, String gender) {
 		super();
