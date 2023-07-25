@@ -1782,6 +1782,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		
 		// login_PasswordField에서 엔터 시 로그인
 		login_Btn = new JButton("로그인");
+		
 		login_Btn.setBounds(135, 342, 97, 23);
 		shop_LoginPanel.add(login_Btn);
 		login_PasswordField.addKeyListener(new KeyAdapter() {
@@ -2398,6 +2399,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		            List<Cart> cartList = cartservice.getCartItemByUserId(loginUser.getUserId());
 		            OrderService orderService = new OrderService();
 		            CartService cartService = new CartService();
+		            ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		            
 		            int totalPrice = 0;
 		            for (Cart cart : cartList) {
@@ -2405,6 +2407,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		                int cartQty = cart.getCart_qty();
 		                int pPrice = product.getP_price();
 		                totalPrice += cartQty * pPrice;
+		                orderItemList.add(new OrderItem(0, cartQty, 0, product));
 		            }
 
 		            Cart firstCart = cartList.get(0);
@@ -2417,7 +2420,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 		                desc = name;
 		            }
 
-		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), null); // 되는거
+		            Order order1 = new Order(0, desc, null, totalPrice, loginUser.getUserId(), orderItemList); // 되는거
 		            orderService.OrderCash(order1);//반은되고 반은 안된다
 		            cartService.cartDeleteByUserId(loginUser.getUserId());
 
@@ -2551,7 +2554,7 @@ public class ShoppingMallFrame<E> extends JFrame {
 			}
 		});
 		order_List_Btn.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		order_List_Btn.setBounds(120, 261, 101, 27);
+		order_List_Btn.setBounds(111, 261, 110, 27);
 		order_ItemPanel.add(order_List_Btn);
 
 
